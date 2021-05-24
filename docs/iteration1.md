@@ -17,11 +17,27 @@ beigetragen hat (GitHub-IDs referenzieren):
     Erstellt: #5 #28 #29 #30
     Beteiligung: #21
     
-    Valentin Damjantschitsch
+    Valentin Damjantschitsch:
     Erstellt: #13 #17 #19 #24
     Beteiligung: #5 #8 #14 #16 #20 #22 #23 #30 #34 #39 #46
 
 (2) Welches Gruppenmitglied zu welchen Tasks (GitHub-IDs) beigetragen hat:
+
+    Kilian Lichtenauer:
+    #49 #71 #72 #73 #74 #75 #76 #77 #78 #82 #92 #104
+    
+    Michael Grantner:
+    #49 #50 #51 #52 #53 #54 #55 #56 #70 #89
+    
+    Sebastian Redinger:
+    #79 #80 #81 #82 #96 #97 #98 #100 #101 #102 #105 #106 #108 #109
+    
+    Alica Belz:
+    #83 #84 #85 #86 #87 #88 #89 #95 #107
+    
+    Valentin Damjantschitsch:
+    #53 #57 #58 #59 #60 #61 #62 #63 #64 #65 #66 #67 #68 #69 #72 #89 #91 #103
+    
 
 (3) Welches Gruppenmitglied für welche Iteration die Rolle des Scrum-Masters übernimmt:
 
