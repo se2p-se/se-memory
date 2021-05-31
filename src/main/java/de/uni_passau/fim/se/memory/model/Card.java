@@ -1,7 +1,7 @@
 package de.uni_passau.fim.se.memory.model;
 
 public class Card {
-	private Character value;
+	private Character value ;
 	private boolean isHidden = true ;
 	private static Character hiddenValue = '▯';
 
