@@ -1,26 +1,23 @@
 package de.uni_passau.fim.se.memory.model;
 
 public class Card {
-	private char value;
+	private Character value;
 	private boolean isHidden = true ;
-	private static String hiddenValue = "[]" ;
+	private static Character hiddenValue = '▯';
+
 
 	public Card(Character ch) {
 		this.value = ch ;
 	}
 
-	public char getValue () {
+	public Character getValue () {
 		return value ;
 	}
-	public void setValue (char wert) {
+	public void setValue (Character wert) {
 		value = wert ;
 	}
 	public void flipCard () {
-		if (isHidden) {
-			isHidden = false ;
-		}
-		else {
-			isHidden = true ;
-		}
+		isHidden = !isHidden;
 	}
 }
+
