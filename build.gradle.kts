@@ -2,6 +2,7 @@ plugins {
     java
     idea
     eclipse
+	application
 }
 
 repositories {
@@ -41,4 +42,12 @@ idea.module {
 eclipse.classpath {
     isDownloadJavadoc = true
     isDownloadSources = true
+}
+
+application {
+    mainClass.set("de.uni_passau.fim.se.memory.Main")
+}
+
+tasks.named<JavaExec>("run") {
+    standardInput = System.`in`
 }
