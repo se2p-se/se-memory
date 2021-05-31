@@ -17,7 +17,7 @@ public class Game {
 	public Game(int[] size) {
 		this.cards = new ArrayList<>();
 		this.gameBoardSize = size;
-		this.amountPairs = (size[0] * size[1]) / 2 - 1;
+		this.amountPairs = 1 + (size[0] * size[1]) / 8;
 
 		generateCards();
 		mixCards();
@@ -59,10 +59,10 @@ public class Game {
 				sb.append(i);
 			} else {
 				if (i % (gameBoardSize[0]+1) == 0) {
-					sb.append(i / gameBoardSize[0]);
+					sb.append(i / (gameBoardSize[0] + 1));
 				} else {
 					sb.append(cards.get(element) == null ? " "
-							: cards.get(element));
+							: cards.get(element).getValue());
 					element++;
 				}
 			}
