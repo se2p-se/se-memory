@@ -13,8 +13,8 @@ public class Card {
 	public Character getValue () {
 		return value ;
 	}
-	public void setValue (Character wert) {
-		value = wert ;
+	public void setValue (Character val) {
+		value = val ;
 	}
 	public void flipCard () {
 		isHidden = !isHidden;
