@@ -17,7 +17,7 @@ public class Card {
 		value = val ;
 	}
 	public void flipCard () {
-		isHidden = !isHidden;
+		isHidden = !isHidden ;
 	}
 }
 
