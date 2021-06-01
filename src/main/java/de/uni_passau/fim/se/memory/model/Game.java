@@ -7,17 +7,13 @@ public class Game {
 
 	private ArrayList<Card> cards;
 	private int[] gameBoardSize;
-	private int amountPairs;
 
 	/**
 	 * Initializes a new game object.
-	 *
-	 * @param size size in X Y lengths of the board.
 	 */
-	public Game(int[] size) {
+	public Game() {
 		this.cards = new ArrayList<>();
-		this.gameBoardSize = size;
-		this.amountPairs = 1 + (size[0] * size[1]) / 8;
+		this.gameBoardSize = new int[]{5,4};
 
 		generateCards();
 		mixCards();
@@ -28,6 +24,7 @@ public class Game {
 	 * of the card array.
 	 */
 	private void generateCards() {
+		int amountPairs = gameBoardSize[0] * gameBoardSize[1] / 2;
 		for (int i = 1; i < amountPairs * 2 + 1; ++i) {
 			cards.add(new Card((char)('A' + (i-1)/2)));
 		}
