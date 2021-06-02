@@ -104,10 +104,9 @@ public class Game {
 	}
 
 	/**
-	 * Selects the card at @param position of @param game
-	 * @return the selected Card
+	 * Selects and @return the card at @param position
 	 */
-	public Card selectCard(Game game, int position) {
+	public Card selectCard(int position) {
 		return this.getCards().get(position);
 	}
 
