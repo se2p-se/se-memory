@@ -89,4 +89,33 @@ public class Game {
 
 		return sb.toString();
 	}
+
+	/**
+	 * Compares the values of @param card1 and @param card2
+	 * If the values are identical call remove on these cards and @return true, otherwise false.
+	 */
+	public static boolean compareCards(Card card1, Card card2) {
+		if (card1.getValue() == card2.getValue()) {
+			removeCards(card1, card2);
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	/**
+	 * Selects the card at @param position of @param game
+	 * @return the selected Card
+	 */
+	public Card selectCard(Game game, int position) {
+		return this.getCards().get(position);
+	}
+
+	/**
+	 * Removes @param card by setting its value to null
+	 */
+	public static void removeCards(Card card1, Card card2) {
+		card1.setValue(null);
+		card2.setValue(null);
+	}
 }
