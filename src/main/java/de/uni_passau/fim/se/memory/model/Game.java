@@ -9,6 +9,21 @@ public class Game {
 	private int[] gameBoardSize;
 
 	/**
+	 * Getter for cards
+	 * @return ArrayList<Card> cards
+	 */
+	public ArrayList<Card> getCards() {
+		return cards;
+	}
+	/**
+	 * Getter for cards
+	 * @return int[] gameBoardSize
+	 */
+	public int[] getGameBoardSize() {
+		return gameBoardSize;
+	}
+
+	/**
 	 * Initializes a new game object.
 	 */
 	public Game() {
