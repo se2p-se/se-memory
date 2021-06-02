@@ -6,6 +6,23 @@ import java.util.Collections;
 public class Game {
 
 	private ArrayList<Card> cards;
+
+	/**
+	 *
+	 * @return Columns and rows of the gameboard in an integer array
+	 */
+	public int[] getGameBoardSize() {
+		return gameBoardSize;
+	}
+
+	/**
+	 * Set the columns and rows of the gameboard
+	 * @param gameBoardSize, an integer array with the columns and rows
+	 */
+	public void setGameBoardSize(int[] gameBoardSize) {
+		this.gameBoardSize = gameBoardSize;
+	}
+
 	private int[] gameBoardSize;
 
 	/**
