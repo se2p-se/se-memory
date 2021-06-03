@@ -91,4 +91,13 @@ public class Game {
 
 		return sb.toString();
 	}
+
+	/**
+	 * Check if all cards have been opened
+	 *
+	 * @return True if all cards have been opened
+	 */
+	public boolean isGameFinished() {
+		return cards.stream().allMatch((c) -> c == null);
+	}
 }
