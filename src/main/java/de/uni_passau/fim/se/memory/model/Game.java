@@ -15,13 +15,6 @@ public class Game {
 	public ArrayList<Card> getCards() {
 		return cards;
 	}
-	/**
-	 * Getter for cards
-	 * @return int[] gameBoardSize
-	 */
-	public int[] getGameBoardSize() {
-		return gameBoardSize;
-	}
 
 	/**
 	 * Initializes a new game object.
@@ -99,39 +92,10 @@ public class Game {
 	}
 
 	/**
-	 * Selects and @return the card at @param position
+	 * Selects and @return the card at @param position col, row
 	 */
-	public void selectCards(int positionCard1, int positionCard2) {
-
-		if (positionCard1 == positionCard2) {
-			throw new IllegalArgumentException("You can't select the sam card twice");
-		}
-
-		Card selectedCard1 = this.getCards().get(positionCard1);
-		Card selectedCard2 = this.getCards().get(positionCard2);
-
-		if(!selectedCard1.getIsHidden()) {
-			throw new IllegalArgumentException("Card 1 is already flipped");
-		} else if (selectedCard1.getValue() == null) {
-			throw new IllegalArgumentException("Card 1 has been found already");
-		}
-
-		if(!selectedCard2.getIsHidden()) {
-			throw new IllegalArgumentException("Card 2 is already flipped");
-		} else if (selectedCard2.getValue() == null) {
-			throw new IllegalArgumentException("Card 2 has been found already");
-		}
-
-		selectedCard1.flipCard();
-		selectedCard2.flipCard();
-
-		if (compareCards(selectedCard1, selectedCard2)) {
-			removeCards(selectedCard1, selectedCard2);
-		} else {
-			selectedCard1.setHidden(true);
-			selectedCard2.setHidden(true);
-		}
-
+	public Card selectCard(int row, int col) {
+		return cards.get((row-1)*col+(col-1));
 	}
 
 	/**
