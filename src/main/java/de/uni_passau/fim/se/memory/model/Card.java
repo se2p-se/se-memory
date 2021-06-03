@@ -10,6 +10,14 @@ public class Card {
 		this.value = ch ;
 	}
 
+	public boolean getIsHidden() {
+		return this.isHidden;
+	}
+
+	public void setHidden(boolean hidden) {
+		isHidden = hidden;
+	}
+
 	public Character getValue () {
 		return value ;
 	}
