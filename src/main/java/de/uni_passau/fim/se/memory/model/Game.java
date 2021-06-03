@@ -95,19 +95,43 @@ public class Game {
 	 * If the values are identical call remove on these cards and @return true, otherwise false.
 	 */
 	public static boolean compareCards(Card card1, Card card2) {
-		if (card1.getValue() == card2.getValue()) {
-			removeCards(card1, card2);
-			return true;
-		} else {
-			return false;
-		}
+		return card1.getValue() == card2.getValue();
 	}
 
 	/**
 	 * Selects and @return the card at @param position
 	 */
-	public Card selectCard(int position) {
-		return this.getCards().get(position);
+	public void selectCards(int positionCard1, int positionCard2) {
+
+		if (positionCard1 == positionCard2) {
+			throw new IllegalArgumentException("You can't select the sam card twice");
+		}
+
+		Card selectedCard1 = this.getCards().get(positionCard1);
+		Card selectedCard2 = this.getCards().get(positionCard2);
+
+		if(!selectedCard1.getIsHidden()) {
+			throw new IllegalArgumentException("Card 1 is already flipped");
+		} else if (selectedCard1.getValue() == null) {
+			throw new IllegalArgumentException("Card 1 has been found already");
+		}
+
+		if(!selectedCard2.getIsHidden()) {
+			throw new IllegalArgumentException("Card 2 is already flipped");
+		} else if (selectedCard2.getValue() == null) {
+			throw new IllegalArgumentException("Card 2 has been found already");
+		}
+
+		selectedCard1.flipCard();
+		selectedCard2.flipCard();
+
+		if (compareCards(selectedCard1, selectedCard2)) {
+			removeCards(selectedCard1, selectedCard2);
+		} else {
+			selectedCard1.setHidden(true);
+			selectedCard2.setHidden(true);
+		}
+
 	}
 
 	/**
