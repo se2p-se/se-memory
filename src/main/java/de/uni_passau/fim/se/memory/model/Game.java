@@ -105,4 +105,13 @@ public class Game {
 		card1.setValue(null);
 		card2.setValue(null);
 	}
+
+	/**
+	 * Check if all cards have been opened
+	 *
+	 * @return True if all cards have been opened
+	 */
+	public boolean isGameFinished() {
+		return cards.stream().allMatch((c) -> c.getValue() == null);
+	}
 }
