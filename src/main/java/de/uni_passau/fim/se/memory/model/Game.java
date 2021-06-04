@@ -98,6 +98,6 @@ public class Game {
 	 * @return True if all cards have been opened
 	 */
 	public boolean isGameFinished() {
-		return cards.stream().allMatch((c) -> c == null);
+		return cards.stream().allMatch((c) -> c.getValue() == null);
 	}
 }
