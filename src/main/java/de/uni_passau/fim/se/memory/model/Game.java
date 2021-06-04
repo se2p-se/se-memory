@@ -16,6 +16,18 @@ public class Game {
 	}
 
 	/**
+	 * @param row, row from where the card is to be selected
+	 * @param col, col from where the card is to be selected
+	 *
+	 * @return Card on the row and col on the gameboard
+	 */
+	public Card getCard(int row, int col) {
+		int y = row * gameBoardSize[0];
+		int index = y + col;
+		return cards.get(index);
+	}
+
+	/**
 	 * Set the columns and rows of the gameboard
 	 * @param gameBoardSize, an integer array with the columns and rows
 	 */
