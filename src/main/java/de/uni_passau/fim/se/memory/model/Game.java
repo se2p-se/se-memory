@@ -6,36 +6,15 @@ import java.util.Collections;
 public class Game {
 
 	private ArrayList<Card> cards;
-
-	/**
-	 *
-	 * @return Columns and rows of the gameboard in an integer array
-	 */
-	public int[] getGameBoardSize() {
-		return gameBoardSize;
-	}
-
-	/**
-	 * @param row, row from where the card is to be selected
-	 * @param col, col from where the card is to be selected
-	 *
-	 * @return Card on the row and col on the gameboard
-	 */
-	public Card getCard(int row, int col) {
-		int y = row * gameBoardSize[0];
-		int index = y + col;
-		return cards.get(index);
-	}
-
-	/**
-	 * Set the columns and rows of the gameboard
-	 * @param gameBoardSize, an integer array with the columns and rows
-	 */
-	public void setGameBoardSize(int[] gameBoardSize) {
-		this.gameBoardSize = gameBoardSize;
-	}
-
 	private int[] gameBoardSize;
+
+	/**
+	 * Getter for cards
+	 * @return ArrayList<Card> cards
+	 */
+	public ArrayList<Card> getCards() {
+		return cards;
+	}
 
 	/**
 	 * Initializes a new game object.
@@ -102,6 +81,29 @@ public class Game {
 		}
 
 		return sb.toString();
+	}
+
+	/**
+	 * Compares the values of @param card1 and @param card2
+	 * If the values are identical call remove on these cards and @return true, otherwise false.
+	 */
+	public static boolean compareCards(Card card1, Card card2) {
+		return card1.getValue() == card2.getValue();
+	}
+
+	/**
+	 * Selects and @return the card at @param position col, row
+	 */
+	public Card selectCard(int row, int col) {
+		return cards.get((row-1)*col+(col-1));
+	}
+
+	/**
+	 * Removes @param card by setting its value to null
+	 */
+	public static void removeCards(Card card1, Card card2) {
+		card1.setValue(null);
+		card2.setValue(null);
 	}
 
 	/**
