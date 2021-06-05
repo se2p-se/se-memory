@@ -66,8 +66,11 @@ public class Game {
 				if (i % (gameBoardSize[0]+1) == 0) {
 					sb.append(i / (gameBoardSize[0] + 1));
 				} else {
-					sb.append(cards.get(element) == null ? " "
-							: cards.get(element).getValue());
+					sb.append(
+							cards.get(element) == null ? ' '
+							: cards.get(element).getValue() == null ? ' ' :
+							cards.get(element).isHidden() ? Card.hiddenValue :
+							cards.get(element).getValue());
 					element++;
 				}
 			}
@@ -84,15 +87,12 @@ public class Game {
 	}
 
 	/**
-	 * Compares the values of @param card1 and @param card2
-	 * If the values are identical call remove on these cards and @return true, otherwise false.
-	 */
-	public static boolean compareCards(Card card1, Card card2) {
-		return card1.getValue() == card2.getValue();
-	}
-
-	/**
-	 * Selects and @return the card at @param position col, row
+	 * Gets a card by its row and column.
+	 *
+	 * @param row - The Row.
+	 * @param col - The Column.
+	 *
+	 * @return The Card.
 	 */
 	public Card selectCard(int row, int col) {
 		
@@ -100,7 +100,10 @@ public class Game {
 	}
 
 	/**
-	 * Removes @param card by setting its value to null
+	 * Removes a pair by setting its value to null.
+	 *
+	 * @param card1 The first card to be removed.
+	 * @param card2 The second card to be removed.
 	 */
 	public static void removeCards(Card card1, Card card2) {
 		card1.setValue(null);
@@ -108,9 +111,9 @@ public class Game {
 	}
 
 	/**
-	 * Check if all cards have been opened
+	 * Check if all cards have been opened.
 	 *
-	 * @return True if all cards have been opened
+	 * @return True if all cards have been opened.
 	 */
 	public boolean isGameFinished() {
 		return cards.stream().allMatch((c) -> c.getValue() == null);
