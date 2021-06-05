@@ -16,6 +16,8 @@ public class InputStreamPlayer {
 
     Game game = new Game();
 
+    boolean firstBoard = true;
+
     Scanner scanner = new Scanner(System.in);
 
     /**
@@ -24,6 +26,14 @@ public class InputStreamPlayer {
 
     public void startRound() {
 
+        /**
+         * printing the covered Board for the game start
+         */
+
+        if(firstBoard){
+            System.out.println(game.toString());
+            firstBoard = !firstBoard;
+        }
 
 
         Card card1;
@@ -55,7 +65,7 @@ public class InputStreamPlayer {
          */
 
 
-        while (row1 == row2 && col1 == col2 || card1 == null || card2 == null) {
+        while (row1 == row2 && col1 == col2 || card1.getValue() == null || card2.getValue() == null) {
             if (row1 == row2 && col1 == col2) {
                 OutputStream.sameCardsChosen();
                 OutputStream.printSelectCol2();
@@ -65,7 +75,7 @@ public class InputStreamPlayer {
 
                 card2 = game.selectCard(row2, col2);
 
-            } else if (card1 == null) {
+            } else if (card1.getValue() == null) {
                 OutputStream.chosenCard1IsNull();
                 OutputStream.printSelectCol1();
                 col1 = scanner.nextInt();
@@ -96,8 +106,9 @@ public class InputStreamPlayer {
 
 
         if (Game.compareCards(card2, card1)) {
-            Game.removeCards(card1, card2);
+
             OutputStream.pairFound(card1);
+            Game.removeCards(card1, card2);
 
         } else {
             OutputStream.noPairFound();
@@ -113,7 +124,7 @@ public class InputStreamPlayer {
          */
 
 
-        gameLoop();
+
 
 
     }
@@ -129,6 +140,7 @@ public class InputStreamPlayer {
             OutputStream.nextRound();
             startRound();
         }
+
         OutputStream.printEndOfGame();
 
     }
