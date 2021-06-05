@@ -95,7 +95,8 @@ public class Game {
 	 * Selects and @return the card at @param position col, row
 	 */
 	public Card selectCard(int row, int col) {
-		return cards.get((row-1)*col+(col-1));
+		
+		return cards.get((row-1)*gameBoardSize[0]+(col-1));
 	}
 
 	/**
