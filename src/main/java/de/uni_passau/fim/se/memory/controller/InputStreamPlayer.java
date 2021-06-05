@@ -3,7 +3,6 @@ package de.uni_passau.fim.se.memory.controller;
 
 import de.uni_passau.fim.se.memory.model.Card;
 import de.uni_passau.fim.se.memory.model.Game;
-import de.uni_passau.fim.se.memory.model.GameState;
 import de.uni_passau.fim.se.memory.view.OutputStream;
 
 import java.util.Scanner;
@@ -16,8 +15,6 @@ public class InputStreamPlayer {
 
     Game game = new Game();
 
-    boolean firstBoard = true;
-
     Scanner scanner = new Scanner(System.in);
 
     /**
@@ -29,11 +26,6 @@ public class InputStreamPlayer {
         /**
          * printing the covered Board for the game start
          */
-
-        if(firstBoard){
-            System.out.println(game.toString());
-            firstBoard = !firstBoard;
-        }
 
 
         Card card1;
@@ -105,7 +97,7 @@ public class InputStreamPlayer {
         card2.flipCard();
 
 
-        if (Game.compareCards(card2, card1)) {
+        if (card1.compareWith(card2)) {
 
             OutputStream.pairFound(card1);
             Game.removeCards(card1, card2);
@@ -135,6 +127,8 @@ public class InputStreamPlayer {
      */
 
     public void gameLoop() {
+
+        System.out.println(game.toString());
 
         while (!game.isGameFinished()) {
             OutputStream.nextRound();
