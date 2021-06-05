@@ -36,7 +36,7 @@ public class InputStreamPlayer {
          * Scanning the input of the players
          */
 
-        OutputStream.printSelectCol1(); //Von Zeile 34 - 46 in eigene Methode? WEnn ja, wie ist dann die Überprüfung von Zeile 52?
+        OutputStream.printSelectCol1();
         col1 = scanner.nextInt();
         OutputStream.printSelectRow1();
         row1 = scanner.nextInt();
@@ -98,11 +98,15 @@ public class InputStreamPlayer {
         if (Game.compareCards(card2, card1)) {
             Game.removeCards(card1, card2);
             OutputStream.pairFound(card1);
+
         } else {
             OutputStream.noPairFound();
+
         }
 
         System.out.println(game.toString());
+        card1.flipCard();
+        card2.flipCard();
 
         /**
          * checking the game state, if the games is not finished we use gameLoop to start a new round
