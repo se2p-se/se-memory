@@ -14,6 +14,7 @@ public class InputStreamPlayer {
      * Saving selected Cards
      */
 
+    Game game = new Game();
 
     Scanner scanner = new Scanner(System.in);
 
@@ -22,6 +23,8 @@ public class InputStreamPlayer {
      */
 
     public void startRound() {
+
+
 
         Card card1;
         Card card2;
@@ -38,14 +41,14 @@ public class InputStreamPlayer {
         OutputStream.printSelectRow1();
         row1 = scanner.nextInt();
 
-        card1 = selectCard(row1, col1);
+        card1 = game.selectCard(row1, col1);
 
         OutputStream.printSelectCol2();
         col2 = scanner.nextInt();
         OutputStream.printSelectRow2();
         row2 = scanner.nextInt();
 
-        card2 = selectCard(row2, col2);
+        card2 = game.selectCard(row2, col2);
 
         /**
          *  Checking the correctness of the Users-Input // !!!!!!!!!Exceptions fehlen noch!!!!!
@@ -60,7 +63,7 @@ public class InputStreamPlayer {
                 OutputStream.printSelectRow2();
                 row2 = scanner.nextInt();
 
-                card2 = selectCard(row2, col2);
+                card2 = game.selectCard(row2, col2);
 
             } else if (card1 == null) {
                 OutputStream.chosenCard1IsNull();
@@ -69,7 +72,7 @@ public class InputStreamPlayer {
                 OutputStream.printSelectRow1();
                 row1 = scanner.nextInt();
 
-                card1 = selectCard(row1, col1);
+                card1 = game.selectCard(row1, col1);
 
             } else {
                 OutputStream.chosenCard2IsNull();
@@ -78,9 +81,8 @@ public class InputStreamPlayer {
                 OutputStream.printSelectRow2();
                 row2 = scanner.nextInt();
 
-                card2 = selectCard(row2, col2);
+                card2 = game.selectCard(row2, col2);
             }
-
 
 
         }
@@ -89,19 +91,18 @@ public class InputStreamPlayer {
          * comparingCards(card1, card2) compares the selected cards and removes them, if they match
          */
 
-        Game.flipCard(card1);
-        Game.flipCard(card2);
-
+        card1.flipCard();
+        card2.flipCard();
 
 
         if (Game.compareCards(card2, card1)) {
-            Game.remove(card1,card2);
+            Game.removeCards(card1, card2);
             OutputStream.pairFound(card1);
         } else {
             OutputStream.noPairFound();
         }
 
-        System.out.println(Game.toString());
+        System.out.println(game.toString());
 
         /**
          * checking the game state, if the games is not finished we use gameLoop to start a new round
@@ -113,15 +114,6 @@ public class InputStreamPlayer {
 
     }
 
-    /**
-     * comparingCards compares the selected Cards with the method in Game and controls the associated tasks
-     */
-
-
-    public Card selectCard(int row, int col) {
-
-        return getCard(row, col);
-    }
 
     /**
      * gameLoop gives out text and starts new round
@@ -129,7 +121,7 @@ public class InputStreamPlayer {
 
     public void gameLoop() {
 
-        while (!Game.isGameFinished()) {
+        while (!game.isGameFinished()) {
             OutputStream.nextRound();
             startRound();
         }
