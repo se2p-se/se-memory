@@ -9,6 +9,14 @@ public class Game {
 	private int[] gameBoardSize;
 
 	/**
+	 * Getter for cards
+	 * @return ArrayList<Card> cards
+	 */
+	public ArrayList<Card> getCards() {
+		return cards;
+	}
+
+	/**
 	 * Initializes a new game object.
 	 */
 	public Game() {
@@ -73,5 +81,37 @@ public class Game {
 		}
 
 		return sb.toString();
+	}
+
+	/**
+	 * Compares the values of @param card1 and @param card2
+	 * If the values are identical call remove on these cards and @return true, otherwise false.
+	 */
+	public static boolean compareCards(Card card1, Card card2) {
+		return card1.getValue() == card2.getValue();
+	}
+
+	/**
+	 * Selects and @return the card at @param position col, row
+	 */
+	public Card selectCard(int row, int col) {
+		return cards.get((row-1)*col+(col-1));
+	}
+
+	/**
+	 * Removes @param card by setting its value to null
+	 */
+	public static void removeCards(Card card1, Card card2) {
+		card1.setValue(null);
+		card2.setValue(null);
+	}
+
+	/**
+	 * Check if all cards have been opened
+	 *
+	 * @return True if all cards have been opened
+	 */
+	public boolean isGameFinished() {
+		return cards.stream().allMatch((c) -> c.getValue() == null);
 	}
 }
