@@ -1,3 +1,4 @@
+[Klassendiagramm_06062021 (2).pdf](https://github.com/se2p-se/se-memory-se21-team-23/files/6605080/Klassendiagramm_06062021.2.pdf)
 (1) Welches Gruppenmitglied welche User Stories / Tasks (GitHub-IDs) für Iteration 3 geplant hat.
 
 Killian Lichentauner:     #146 #147 #148 #149
