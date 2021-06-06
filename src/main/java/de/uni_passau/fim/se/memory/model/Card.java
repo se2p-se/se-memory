@@ -24,15 +24,6 @@ public class Card {
 	}
 
 	/**
-	 * Sets whether the card is currently hidden or not.
-	 *
-	 * @param hidden Whether to hide the card or not.
-	 */
-	public void setHidden(boolean hidden) {
-		isHidden = hidden;
-	}
-
-	/**
 	 * Gets the value of the card.
 	 *
 	 * @return The card value.
