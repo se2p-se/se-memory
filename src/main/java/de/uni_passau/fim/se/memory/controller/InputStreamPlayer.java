@@ -81,7 +81,7 @@ public class InputStreamPlayer {
 
             }
 
-            System.out.println(game.toString());
+            OutputStream.printBoard(game);
             card1.flipCard();
             card2.flipCard();
 
@@ -92,9 +92,6 @@ public class InputStreamPlayer {
             scanner = new Scanner(System.in);
         }
 
-        OutputStream.printBoard(game);
-        card1.flipCard();
-        card2.flipCard();
     }
 
 
