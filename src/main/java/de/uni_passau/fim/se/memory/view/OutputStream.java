@@ -2,11 +2,12 @@ package de.uni_passau.fim.se.memory.view;
 
 import de.uni_passau.fim.se.memory.model.Card;
 import de.uni_passau.fim.se.memory.model.GameState;
+import de.uni_passau.fim.se.memory.model.Game;
 
 public class OutputStream {
 
-    public static void printBoard(String board) {
-        System.out.println(board);
+    public static void printBoard(Game board) {
+        System.out.println(board.toString());
     }
 
     public static void printEndOfGame() {
