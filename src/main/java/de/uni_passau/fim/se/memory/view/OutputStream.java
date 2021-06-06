@@ -1,21 +1,33 @@
 package de.uni_passau.fim.se.memory.view;
 
 import de.uni_passau.fim.se.memory.model.Card;
-import de.uni_passau.fim.se.memory.model.GameState;
 import de.uni_passau.fim.se.memory.model.Game;
 
 public class OutputStream {
 
     public static void printBoard(Game board) {
         System.out.println(board.toString());
+
+    public static void printIntro() {
+        System.out.println(
+                " /$$      /$$ /$$$$$$$$ /$$      /$$  /$$$$$$  /$$$$$$$  /$$     /$$\n"
+                        + "| $$$    /$$$| $$_____/| $$$    /$$$ /$$__  $$| $$__  $$|  $$   /$$/\n"
+                        + "| $$$$  /$$$$| $$      | $$$$  /$$$$| $$  \\ $$| $$  \\ $$ \\  $$ /$$/ \n"
+                        + "| $$ $$/$$ $$| $$$$$   | $$ $$/$$ $$| $$  | $$| $$$$$$$/  \\  $$$$/  \n"
+                        + "| $$  $$$| $$| $$__/   | $$  $$$| $$| $$  | $$| $$__  $$   \\  $$/   \n"
+                        + "| $$\\  $ | $$| $$      | $$\\  $ | $$| $$  | $$| $$  \\ $$    | $$    \n"
+                        + "| $$ \\/  | $$| $$$$$$$$| $$ \\/  | $$|  $$$$$$/| $$  | $$    | $$    \n"
+                        + "|__/     |__/|________/|__/     |__/ \\______/ |__/  |__/    |__/    \n"
+                        + "                                                                    \n");
     }
 
     public static void printEndOfGame() {
-
         System.out.println("Your game of Memory is over. You uncovered all pairs." +
                 " Hope you have had a lot of fun and come back soon");
+    }
 
-
+    public static void printInvalidInput() {
+        System.out.println("Your input was invalid. Please try again: ");
     }
 
     public static void printSelectCol1() {
@@ -39,11 +51,13 @@ public class OutputStream {
     }
 
     public static void chosenCard2IsNull() {
-        System.out.println("The second card you chose has the value null, please select again: ");
+        System.out.println("The second card you chose is invalid, please "
+                + "select again:");
     }
 
     public static void chosenCard1IsNull() {
-        System.out.println("The first card you chose has the value null, please select again: ");
+        System.out.println("The first card you chose is invalid, please "
+                + "select again: ");
     }
 
     public static void pairFound(Card card) {

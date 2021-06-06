@@ -1,5 +1,6 @@
 package de.uni_passau.fim.se.memory;
 import de.uni_passau.fim.se.memory.controller.InputStreamPlayer;
+import de.uni_passau.fim.se.memory.view.OutputStream;
 
 /**
  * Main class and main entry point. The program starts within this.
@@ -18,14 +19,8 @@ public final class Main {
      * @param args command line arguments passed to the program
      */
     public static void main(String[] args) {
-
+        OutputStream.printIntro();
         InputStreamPlayer player = new InputStreamPlayer();
-
         player.gameLoop();
-
-
-
-
-
     }
 }
