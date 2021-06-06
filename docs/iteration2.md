@@ -6,7 +6,7 @@ Michael Grantner: #39
 
 Sebastian Redinger: #20
 
-Valentin Demjantschitsch: #24
+Valentin Demjantschitsch: #133 #134 #135 #136 #137 #138 #139 #140
 
 Alica Belz: #17
 
