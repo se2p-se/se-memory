@@ -8,10 +8,10 @@ public class Card {
 	/**
 	 * Initializes a new Card.
 	 *
-	 * @param ch The initial value.
+	 * @param value The initial value.
 	 */
-	public Card(Character ch) {
-		this.value = ch ;
+	public Card(Character value) {
+		this.value = value ;
 	}
 
 	/**
@@ -19,8 +19,17 @@ public class Card {
 	 *
 	 * @return Whether the card is hidden or not.
 	 */
-	public boolean isHidden() {
+	public boolean getIsHidden() {
 		return isHidden;
+	}
+
+	/**
+	 * Sets whether the card is currently hidden or not.
+	 *
+	 * @param hidden Whether to hide the card or not.
+	 */
+	public void setIsHidden(boolean hidden) {
+		isHidden = hidden;
 	}
 
 	/**
