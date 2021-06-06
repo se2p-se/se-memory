@@ -27,9 +27,9 @@ public class InputStreamPlayer {
          * printing the covered Board for the game start
          */
 
-
         Card card1;
         Card card2;
+
 
         int row1, row2;
         int col1, col2;
@@ -81,7 +81,7 @@ public class InputStreamPlayer {
 
             }
 
-            System.out.println(game.toString());
+            OutputStream.printBoard(game);
             card1.flipCard();
             card2.flipCard();
 
@@ -91,6 +91,7 @@ public class InputStreamPlayer {
             System.out.println("Invalid input!");
             scanner = new Scanner(System.in);
         }
+
     }
 
 
@@ -99,7 +100,7 @@ public class InputStreamPlayer {
      */
     public void gameLoop() {
 
-        System.out.println(game.toString());
+        OutputStream.printBoard(game);
 
         while (!game.isGameFinished()) {
             OutputStream.nextRound();
