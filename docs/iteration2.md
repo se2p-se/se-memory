@@ -1,5 +1,12 @@
 
-(1) Welches Gruppenmitglied welche User Stories / Tasks (GitHub-IDs) für Iteration 3 geplant hat.
+(1) Klassendiagramm
+[Klassendiagramm_06062021 (2).pdf](https://github.com/se2p-se/se-memory-se21-team-23/files/6605083/Klassendiagramm_06062021.2.pdf)
+
+
+
+
+
+(2) Welches Gruppenmitglied welche User Stories / Tasks (GitHub-IDs) für Iteration 3 geplant hat.
 
 Killian Lichentauner:     #146 #147 #148 #149
 
@@ -15,7 +22,7 @@ Alica Belz:               #141 #142 #143 #144
 
 
 
-(2) Beteiligung der Gruppenmitglieder und Realisierung der Tasks 
+(3) Beteiligung der Gruppenmitglieder und Realisierung der Tasks 
 
 Killian Lichentauner:   #19 #33 #58 #60 #61 #62 #65 #68 #71 #75 #119 #123 #124 #129
 
@@ -26,3 +33,5 @@ Sebastian Redinger:     #19 #33 #59 #62 #71 #72 #73 #76 #77 #83 #91 #92 #105 #11
 Valentin Demjantschitsch:#19 #60 #61 #66 #67 #73 #77 #91 #119 #128 #130 #132
 
 Alica Belz:              #66 #74 #78 #83 #84 #105 #119 #120 #121 #122
+
+
