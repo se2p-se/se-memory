@@ -69,7 +69,7 @@ public class Game {
 					sb.append(
 							cards.get(element) == null ? ' '
 							: cards.get(element).getValue() == null ? ' ' :
-							cards.get(element).isHidden() ? Card.hiddenValue :
+							cards.get(element).getIsHidden() ? Card.hiddenValue :
 							cards.get(element).getValue());
 					element++;
 				}
