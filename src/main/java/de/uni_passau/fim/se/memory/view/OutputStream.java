@@ -1,7 +1,6 @@
 package de.uni_passau.fim.se.memory.view;
 
 import de.uni_passau.fim.se.memory.model.Card;
-import de.uni_passau.fim.se.memory.model.GameState;
 
 public class OutputStream {
 
@@ -15,6 +14,10 @@ public class OutputStream {
                 " Hope you have had a lot of fun and come back soon");
 
 
+    }
+
+    public static void printInvalidInput() {
+        System.out.println("Your input was invalid. Please try again: ");
     }
 
     public static void printSelectCol1() {
@@ -38,11 +41,13 @@ public class OutputStream {
     }
 
     public static void chosenCard2IsNull() {
-        System.out.println("The second card you chose has the value null, please select again: ");
+        System.out.println("The second card you chose is invalid, please "
+                + "select again:");
     }
 
     public static void chosenCard1IsNull() {
-        System.out.println("The first card you chose has the value null, please select again: ");
+        System.out.println("The first card you chose is invalid, please "
+                + "select again: ");
     }
 
     public static void pairFound(Card card) {

@@ -3,9 +3,9 @@ package de.uni_passau.fim.se.memory.controller;
 
 import de.uni_passau.fim.se.memory.model.Card;
 import de.uni_passau.fim.se.memory.model.Game;
-import de.uni_passau.fim.se.memory.model.GameState;
 import de.uni_passau.fim.se.memory.view.OutputStream;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class InputStreamPlayer {
@@ -16,24 +16,16 @@ public class InputStreamPlayer {
 
     Game game = new Game();
 
-    boolean firstBoard = true;
-
     Scanner scanner = new Scanner(System.in);
 
     /**
-     * startGame() method for the controlling of the game
+     * startRound() method for the controlling of the game
      */
-
     public void startRound() {
 
         /**
          * printing the covered Board for the game start
          */
-
-        if(firstBoard){
-            System.out.println(game.toString());
-            firstBoard = !firstBoard;
-        }
 
 
         Card card1;
@@ -46,95 +38,68 @@ public class InputStreamPlayer {
          * Scanning the input of the players
          */
 
-        OutputStream.printSelectCol1();
-        col1 = scanner.nextInt();
-        OutputStream.printSelectRow1();
-        row1 = scanner.nextInt();
+        try {
+            OutputStream.printSelectCol1();
+            col1 = scanner.nextInt();
+            OutputStream.printSelectRow1();
+            row1 = scanner.nextInt();
 
-        card1 = game.selectCard(row1, col1);
+            card1 = game.selectCard(row1, col1);
 
-        OutputStream.printSelectCol2();
-        col2 = scanner.nextInt();
-        OutputStream.printSelectRow2();
-        row2 = scanner.nextInt();
-
-        card2 = game.selectCard(row2, col2);
-
-        /**
-         *  Checking the correctness of the Users-Input // !!!!!!!!!Exceptions fehlen noch!!!!!
-         */
-
-
-        while (row1 == row2 && col1 == col2 || card1.getValue() == null || card2.getValue() == null) {
-            if (row1 == row2 && col1 == col2) {
-                OutputStream.sameCardsChosen();
-                OutputStream.printSelectCol2();
-                col2 = scanner.nextInt();
-                OutputStream.printSelectRow2();
-                row2 = scanner.nextInt();
-
-                card2 = game.selectCard(row2, col2);
-
-            } else if (card1.getValue() == null) {
+            if (card1.getValue() == null) {
                 OutputStream.chosenCard1IsNull();
-                OutputStream.printSelectCol1();
-                col1 = scanner.nextInt();
-                OutputStream.printSelectRow1();
-                row1 = scanner.nextInt();
 
-                card1 = game.selectCard(row1, col1);
-
-            } else {
-                OutputStream.chosenCard2IsNull();
-                OutputStream.printSelectCol2();
-                col2 = scanner.nextInt();
-                OutputStream.printSelectRow2();
-                row2 = scanner.nextInt();
-
-                card2 = game.selectCard(row2, col2);
+                return;
             }
 
+            OutputStream.printSelectCol2();
+            col2 = scanner.nextInt();
+            OutputStream.printSelectRow2();
+            row2 = scanner.nextInt();
 
+            card2 = game.selectCard(row2, col2);
+
+            if (card2.getValue() == null) {
+                OutputStream.chosenCard2IsNull();
+
+            }
+
+            if (row1 == row2 && col1 == col2) {
+                OutputStream.sameCardsChosen();
+                return;
+            }
+
+            card1.flipCard();
+            card2.flipCard();
+
+            if (card1.compareWith(card2)) {
+                OutputStream.pairFound(card1);
+                Game.removeCards(card1, card2);
+
+            } else {
+                OutputStream.noPairFound();
+
+            }
+
+            System.out.println(game.toString());
+            card1.flipCard();
+            card2.flipCard();
+
+        } catch (IllegalArgumentException x) {
+            System.out.println("Wrong column or row picked!");
+        } catch (InputMismatchException x) {
+            System.out.println("Invalid input!");
+            scanner = new Scanner(System.in);
         }
-
-        /**
-         * comparingCards(card1, card2) compares the selected cards and removes them, if they match
-         */
-
-        card1.flipCard();
-        card2.flipCard();
-
-
-        if (Game.compareCards(card2, card1)) {
-
-            OutputStream.pairFound(card1);
-            Game.removeCards(card1, card2);
-
-        } else {
-            OutputStream.noPairFound();
-
-        }
-
-        System.out.println(game.toString());
-        card1.flipCard();
-        card2.flipCard();
-
-        /**
-         * checking the game state, if the games is not finished we use gameLoop to start a new round
-         */
-
-
-
-
-
     }
 
 
     /**
      * gameLoop gives out text and starts new round
      */
-
     public void gameLoop() {
+
+        System.out.println(game.toString());
 
         while (!game.isGameFinished()) {
             OutputStream.nextRound();
@@ -142,9 +107,6 @@ public class InputStreamPlayer {
         }
 
         OutputStream.printEndOfGame();
-
     }
-
-
 }
 
