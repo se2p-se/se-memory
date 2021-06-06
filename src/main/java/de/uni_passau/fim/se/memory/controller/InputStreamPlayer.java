@@ -39,6 +39,7 @@ public class InputStreamPlayer {
         Card card1;
         Card card2;
 
+
         int row1, row2;
         int col1, col2;
 
@@ -115,7 +116,7 @@ public class InputStreamPlayer {
 
         }
 
-        System.out.println(game.toString());
+        OutputStream.printBoard(game);
         card1.flipCard();
         card2.flipCard();
 
