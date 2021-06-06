@@ -95,6 +95,10 @@ public class Game {
 	 * @return The Card.
 	 */
 	public Card selectCard(int row, int col) {
+
+		if (row <= 0 || col <= 0 || col > gameBoardSize[0] || row > gameBoardSize[1]) {
+			throw new IllegalArgumentException();
+		}
 		
 		return cards.get((row-1)*gameBoardSize[0]+(col-1));
 	}
