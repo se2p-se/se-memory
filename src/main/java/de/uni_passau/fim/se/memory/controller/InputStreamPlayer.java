@@ -31,7 +31,7 @@ public class InputStreamPlayer {
          */
 
         if(firstBoard){
-            System.out.println(game.toString());
+            OutputStream.printBoard(game);
             firstBoard = !firstBoard;
         }
 
