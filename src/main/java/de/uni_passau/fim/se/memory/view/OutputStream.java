@@ -4,16 +4,26 @@ import de.uni_passau.fim.se.memory.model.Card;
 
 public class OutputStream {
 
+    public static void printIntro() {
+        System.out.println(
+                " /$$      /$$ /$$$$$$$$ /$$      /$$  /$$$$$$  /$$$$$$$  /$$     /$$\n"
+                        + "| $$$    /$$$| $$_____/| $$$    /$$$ /$$__  $$| $$__  $$|  $$   /$$/\n"
+                        + "| $$$$  /$$$$| $$      | $$$$  /$$$$| $$  \\ $$| $$  \\ $$ \\  $$ /$$/ \n"
+                        + "| $$ $$/$$ $$| $$$$$   | $$ $$/$$ $$| $$  | $$| $$$$$$$/  \\  $$$$/  \n"
+                        + "| $$  $$$| $$| $$__/   | $$  $$$| $$| $$  | $$| $$__  $$   \\  $$/   \n"
+                        + "| $$\\  $ | $$| $$      | $$\\  $ | $$| $$  | $$| $$  \\ $$    | $$    \n"
+                        + "| $$ \\/  | $$| $$$$$$$$| $$ \\/  | $$|  $$$$$$/| $$  | $$    | $$    \n"
+                        + "|__/     |__/|________/|__/     |__/ \\______/ |__/  |__/    |__/    \n"
+                        + "                                                                    \n");
+    }
+
     public static void printBoard(String board) {
         System.out.println(board);
     }
 
     public static void printEndOfGame() {
-
         System.out.println("Your game of Memory is over. You uncovered all pairs." +
                 " Hope you have had a lot of fun and come back soon");
-
-
     }
 
     public static void printInvalidInput() {
