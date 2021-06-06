@@ -72,4 +72,12 @@ public class OutputStream {
         public static void nextRound () {
             System.out.println("Starting next round.");
         }
+
+        public static void wrongPick () {
+        System.out.println ("Wrong column or row picked!") ;
+        }
+
+        public static void invalidInput () {
+        System.out.println ("Invalid input!") ;
+        }
     }

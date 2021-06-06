@@ -86,9 +86,9 @@ public class InputStreamPlayer {
             card2.flipCard();
 
         } catch (IllegalArgumentException x) {
-            System.out.println("Wrong column or row picked!");
+            OutputStream.wrongPick();
         } catch (InputMismatchException x) {
-            System.out.println("Invalid input!");
+            OutputStream.invalidInput();
             scanner = new Scanner(System.in);
         }
 
