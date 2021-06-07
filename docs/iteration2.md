@@ -12,7 +12,7 @@ Killian Lichentauner:     #146 #147 #148 #149
 
 Michael Grantner:         #150 #151 #152 #153 #154 #155 #156 #157 #158
 
-Sebastian Redinger:       #145
+Sebastian Redinger:       #145 #159 #160 #161# 162
 
 Valentin Damjantschitsch: #133 #134 #135 #136 #137 #138 #139 #140
 
