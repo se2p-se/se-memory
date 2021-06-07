@@ -144,6 +144,3 @@ gradle-app.setting
 
 # .DS_Store-Dateien
 .DS_Store
-src/main/java/de/uni_passau/.DS_Store
-src/main/java/de/uni_passau/fim/.DS_Store
-src/main/java/de/uni_passau/fim/se/.DS_Store
