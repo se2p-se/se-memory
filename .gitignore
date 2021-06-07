@@ -141,3 +141,9 @@ gradle-app.setting
 
 # # Work around https://youtrack.jetbrains.com/issue/IDEA-116898
 # gradle/wrapper/gradle-wrapper.properties
+
+# .DS_Store-Dateien
+.DS_Store
+src/main/java/de/uni_passau/.DS_Store
+src/main/java/de/uni_passau/fim/.DS_Store
+src/main/java/de/uni_passau/fim/se/.DS_Store
