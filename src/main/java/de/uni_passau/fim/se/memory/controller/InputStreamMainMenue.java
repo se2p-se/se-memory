@@ -20,7 +20,6 @@ public class InputStreamMainMenue {
     public void pickMainMenueOptioin () {
         int option = menueScanner.nextInt() ;
         if (option == 5) {
-
         }
         else {
             switch (option) {
