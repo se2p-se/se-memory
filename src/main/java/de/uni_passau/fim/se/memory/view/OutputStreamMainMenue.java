@@ -3,25 +3,24 @@ package de.uni_passau.fim.se.memory.view;
 import de.uni_passau.fim.se.memory.model.MainMenue;
 
 public class OutputStreamMainMenue {
-    MainMenue mainMenue = new MainMenue();
-    public void showMainMenue () {
+    public static void showMainMenue () {
         System.out.println("You are in the Main Menue! Choose an Option");
-        System.out.println("(1) for " + mainMenue.getTitleStartGame());
-        System.out.println("(2) for " + mainMenue.getTitleGameMode());
-        System.out.println("(3) for " + mainMenue.getTitleGameBoardSize());
-        System.out.println("(4) for " + mainMenue.getTitleActivateHelp());
+        System.out.println("(1) for " + MainMenue.getTitleStartGame());
+        System.out.println("(2) for " + MainMenue.getTitleGameMode());
+        System.out.println("(3) for " + MainMenue.getTitleGameBoardSize());
+        System.out.println("(4) for " + MainMenue.getTitleActivateHelp());
     }
-    public void showModeBot () {
-        System.out.println("(1) for " + mainMenue.getTitleGameModeTime());
+    public static void showModeBot () {
+        System.out.println("(1) for " + MainMenue.getTitleGameModeTime());
     }
-    public void showModeTime () {
-        System.out.println("(2) for " + mainMenue.getTitleGameModeBot());
+    public static void showModeTime () {
+        System.out.println("(2) for " + MainMenue.getTitleGameModeBot());
     }
-    public void showActivateHelpSetFalse () {
+    public static void showActivateHelpSetFalse () {
             System.out.println("You just disabled help");
         }
 
-    public void showActivateHelpSetTrue () {
+    public static void showActivateHelpSetTrue () {
         System.out.println("You just enabled help");
     }
 }
