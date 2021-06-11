@@ -9,6 +9,7 @@ public class OutputStreamMainMenue {
         System.out.println("(2) for " + MainMenue.getTitleGameMode());
         System.out.println("(3) for " + MainMenue.getTitleGameBoardSize());
         System.out.println("(4) for " + MainMenue.getTitleActivateHelp());
+        System.out.println("(5) for " + MainMenue.getTitleEnd());
     }
     public static void showModeTime () {
         System.out.println("(1) for " + MainMenue.getTitleGameModeTime());

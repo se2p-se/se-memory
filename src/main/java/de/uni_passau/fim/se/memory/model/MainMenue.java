@@ -7,6 +7,7 @@ public class MainMenue {
     private static String titleActivateHelp = "Activate Help";
     private static String titleGameModeTime = "Play against Time" ;
     private static String titleGameModeBot = "Play against Computer";
+    private static String titleEnd = "Quit";
     private boolean isGameModeBot = false ;
     private boolean isGameModeTime = true ;
     private boolean isActivateHelp = false ;
@@ -33,6 +34,9 @@ public class MainMenue {
 
     public static String getTitleStartGame() {
         return titleStartGame;
+    }
+    public static String getTitleEnd () {
+        return titleEnd;
     }
 
     public void setGameModeTime(boolean gameModeTime) {
