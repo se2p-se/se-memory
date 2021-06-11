@@ -4,7 +4,7 @@ import de.uni_passau.fim.se.memory.model.MainMenue;
 
 public class OutputStreamMainMenue {
     public static void showMainMenue () {
-        System.out.println("You are in the Main Menue! Choose an Option");
+        System.out.println("You are in the Main Menue! Choose an Option!");
         System.out.println("(1) for " + MainMenue.getTitleStartGame());
         System.out.println("(2) for " + MainMenue.getTitleGameMode());
         System.out.println("(3) for " + MainMenue.getTitleGameBoardSize());
