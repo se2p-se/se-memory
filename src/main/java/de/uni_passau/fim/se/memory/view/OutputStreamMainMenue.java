@@ -10,17 +10,16 @@ public class OutputStreamMainMenue {
         System.out.println("(3) for " + MainMenue.getTitleGameBoardSize());
         System.out.println("(4) for " + MainMenue.getTitleActivateHelp());
     }
-    public static void showModeBot () {
+    public static void showModeTime () {
         System.out.println("(1) for " + MainMenue.getTitleGameModeTime());
     }
-    public static void showModeTime () {
+    public static void showModeBot () {
         System.out.println("(2) for " + MainMenue.getTitleGameModeBot());
     }
     public static void showActivateHelpSetFalse () {
-            System.out.println("You just disabled help");
+            System.out.println("You just disabled help!");
         }
-
     public static void showActivateHelpSetTrue () {
-        System.out.println("You just enabled help");
+        System.out.println("You just enabled help!");
     }
 }
