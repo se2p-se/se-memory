@@ -56,4 +56,12 @@ public class MainMenue {
     public boolean getActivateHelp () {
         return isActivateHelp;
     }
+    public void setTitleActivateHelp () {
+        if (isActivateHelp) {
+            titleActivateHelp = "Deactivate Help";
+        }
+        else {
+            titleActivateHelp = "Activate Help" ;
+        }
+    }
 }

@@ -17,9 +17,15 @@ public class OutputStreamMainMenue {
         System.out.println("(2) for " + MainMenue.getTitleGameModeBot());
     }
     public static void showActivateHelpSetFalse () {
-            System.out.println("You just disabled help!");
+            System.out.println("You just disabled Help!");
         }
     public static void showActivateHelpSetTrue () {
-        System.out.println("You just enabled help!");
+        System.out.println("You just enabled Help!");
+    }
+    public static void showPleaseInsertGameBoardSizeX () {
+        System.out.println("How many Cols do you want to have?");
+    }
+    public static void showPleaseInsertGameBoardSizeY () {
+        System.out.println("How many Rows do you want to have?");
     }
 }

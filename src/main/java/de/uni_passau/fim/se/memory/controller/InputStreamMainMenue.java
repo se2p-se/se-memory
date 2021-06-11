@@ -13,7 +13,6 @@ public class InputStreamMainMenue {
     MainMenue mainMenue = new MainMenue() ;
     InputStreamPlayer player = new InputStreamPlayer() ;
     Game game = new Game ();
-    OutputStreamMainMenue outputStreamMainMenue= new OutputStreamMainMenue() ;
 
     /**
      * user can pick an option
@@ -25,32 +24,37 @@ public class InputStreamMainMenue {
                 player.gameLoop();
                 break ;
             case 2 :
-                outputStreamMainMenue.showModeTime();
-                outputStreamMainMenue.showModeBot();
+                OutputStreamMainMenue.showModeTime();
+                OutputStreamMainMenue.showModeBot();
                 int modeOption = modeScanner.nextInt();
                 switch (modeOption) {
                     case 1:
                         mainMenue.setGameModeTime(true);
+                        mainMenue.setGameModeBot(false);
                         break ;
                     case 2 :
                         mainMenue.setGameModeBot(true);
+                        mainMenue.setGameModeTime(false);
                         break ;
                 }
                 break;
             case 3 :
+                OutputStreamMainMenue.showPleaseInsertGameBoardSizeX();
                 int x = setGameBoardSize.nextInt();
+                OutputStreamMainMenue.showPleaseInsertGameBoardSizeY();
                 int y = setGameBoardSize.nextInt();
                 game.setGameBoardSize(x, y);
                 break ;
             case 4 :
                 if (mainMenue.getActivateHelp() == true) {
                     mainMenue.setActivateHelp(false);
-                    outputStreamMainMenue.showActivateHelpSetFalse();
+                    OutputStreamMainMenue.showActivateHelpSetFalse();
                 }
                 else {
                     mainMenue.setActivateHelp(true);
-                    outputStreamMainMenue.showActivateHelpSetTrue();
+                    OutputStreamMainMenue.showActivateHelpSetTrue();
                 }
+                mainMenue.setTitleActivateHelp();
                 break ;
         }
         OutputStreamMainMenue.showMainMenue();
