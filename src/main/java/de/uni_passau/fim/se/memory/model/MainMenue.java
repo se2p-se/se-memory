@@ -1,37 +1,37 @@
 package de.uni_passau.fim.se.memory.model;
 
 public class MainMenue {
-    private String titleGameMode = "Select Mode";
-    private String titleStartGame = "Start Game";
-    private String titleGameBoardSize = "Adapt Game-Board-Size";
-    private String titleActivateHelp = "Activate Help";
-    private String titleGameModeTime = "Play against Time" ;
-    private String titleGameModeBot = "Play against Computer";
+    private static String titleGameMode = "Select Mode";
+    private static String titleStartGame = "Start Game";
+    private static String titleGameBoardSize = "Adapt Game-Board-Size";
+    private static String titleActivateHelp = "Activate Help";
+    private static String titleGameModeTime = "Play against Time" ;
+    private static String titleGameModeBot = "Play against Computer";
     private boolean isGameModeBot = false ;
     private boolean isGameModeTime = true ;
     private boolean isActivateHelp = false ;
 
-    public String getTitleActivateHelp() {
+    public static String getTitleActivateHelp() {
         return titleActivateHelp;
     }
 
-    public String getTitleGameBoardSize() {
+    public static String getTitleGameBoardSize() {
         return titleGameBoardSize;
     }
 
-    public String getTitleGameMode() {
+    public static String getTitleGameMode() {
         return titleGameMode;
     }
 
-    public String getTitleGameModeBot() {
+    public static String getTitleGameModeBot() {
         return titleGameModeBot;
     }
 
-    public String getTitleGameModeTime() {
+    public static String getTitleGameModeTime() {
         return titleGameModeTime;
     }
 
-    public String getTitleStartGame() {
+    public static String getTitleStartGame() {
         return titleStartGame;
     }
 
