@@ -25,6 +25,6 @@ public final class Main {
         OutputStream.printIntro();
         OutputStreamMainMenue.showMainMenue();
         InputStreamMainMenue mainMenue = new InputStreamMainMenue();
-        mainMenue.pickMainMenueOptioin();
+        mainMenue.pickMainMenueOption();
     }
 }
