@@ -17,7 +17,7 @@ public class InputStreamMainMenue {
     /**
      * user can pick an option
      */
-    public void pickMainMenueOptioin () {
+    public void pickMainMenueOption () {
         int option = menueScanner.nextInt() ;
         if (option == 5) {
         }
@@ -60,7 +60,7 @@ public class InputStreamMainMenue {
                     break;
             }
             OutputStreamMainMenue.showMainMenue();
-            pickMainMenueOptioin();
+            pickMainMenueOption();
         }
     }
 }
