@@ -29,6 +29,7 @@ public class InputStreamMainMenue {
                 case 2:
                     OutputStreamMainMenue.showModeTime();
                     OutputStreamMainMenue.showModeBot();
+                    OutputStreamMainMenue.showBackButton();
                     int modeOption = modeScanner.nextInt();
                     switch (modeOption) {
                         case 1:
@@ -46,8 +47,21 @@ public class InputStreamMainMenue {
                     int x = setGameBoardSize.nextInt();
                     OutputStreamMainMenue.showPleaseInsertGameBoardSizeY();
                     int y = setGameBoardSize.nextInt();
-                    game.setGameBoardSize(x, y);
+                    while (x*y > 20 || (x*y) % 2 != 0)  {
+                        OutputStreamMainMenue.showSizetoBig();
+                        OutputStreamMainMenue.showPleaseInsertGameBoardSizeX();
+                        x = setGameBoardSize.nextInt();
+                        OutputStreamMainMenue.showPleaseInsertGameBoardSizeY();
+                        y = setGameBoardSize.nextInt();
+                    }
+                    if (x<=0 || y<= 0) {
+                        game.setGameBoardSize(3,3);
+                    }
+                    else {
+                        game.setGameBoardSize(x, y);
+                    }
                     break;
+
                 case 4:
                     if (mainMenue.getActivateHelp() == true) {
                         mainMenue.setActivateHelp(false);
