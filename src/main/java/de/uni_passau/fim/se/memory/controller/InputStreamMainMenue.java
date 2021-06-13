@@ -47,19 +47,14 @@ public class InputStreamMainMenue {
                     int x = setGameBoardSize.nextInt();
                     OutputStreamMainMenue.showPleaseInsertGameBoardSizeY();
                     int y = setGameBoardSize.nextInt();
-                    while (x*y > 20 || (x*y) % 2 != 0)  {
-                        OutputStreamMainMenue.showSizetoBig();
+                    while (x*y > 20 || (x*y) % 2 != 0 || x<=0 || y<= 0)  {
+                        OutputStreamMainMenue.showSizeNotPossible();
                         OutputStreamMainMenue.showPleaseInsertGameBoardSizeX();
                         x = setGameBoardSize.nextInt();
                         OutputStreamMainMenue.showPleaseInsertGameBoardSizeY();
                         y = setGameBoardSize.nextInt();
                     }
-                    if (x<=0 || y<= 0) {
-                        game.setGameBoardSize(3,3);
-                    }
-                    else {
                         game.setGameBoardSize(x, y);
-                    }
                     break;
 
                 case 4:
