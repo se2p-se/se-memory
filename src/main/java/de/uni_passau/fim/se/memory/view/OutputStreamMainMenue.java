@@ -29,4 +29,10 @@ public class OutputStreamMainMenue {
     public static void showPleaseInsertGameBoardSizeY () {
         System.out.println("How many Rows do you want to have?");
     }
+    public static void showBackButton () {
+        System.out.println("(An other Int) for Back");
+    }
+    public static void showSizetoBig () {
+        System.out.println("To Big! Please choose a field-size with max. 10 Pairs!");
+    }
 }
