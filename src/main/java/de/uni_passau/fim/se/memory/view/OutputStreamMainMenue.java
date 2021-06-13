@@ -32,7 +32,7 @@ public class OutputStreamMainMenue {
     public static void showBackButton () {
         System.out.println("(An other Int) for Back");
     }
-    public static void showSizetoBig () {
-        System.out.println("To Big! Please choose a field-size with max. 10 Pairs!");
+    public static void showSizeNotPossible () {
+        System.out.println("Not possible! Please choose a field-size with max. 10 and min. 2 Pairs!");
     }
 }
