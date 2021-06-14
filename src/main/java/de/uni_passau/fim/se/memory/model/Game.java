@@ -8,6 +8,15 @@ public class Game {
 	private ArrayList<Card> cards;
 	private int[] gameBoardSize;
 
+
+	public void setGameBoardSize(int x, int y) {
+		this.gameBoardSize = new int[]{x,y};
+	}
+
+	public int[] getGameBoardSize() {
+		return gameBoardSize;
+	}
+
 	/**
 	 * Getter for cards
 	 * @return ArrayList<Card> cards
