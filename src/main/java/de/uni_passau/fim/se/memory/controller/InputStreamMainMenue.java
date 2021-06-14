@@ -2,30 +2,41 @@ package de.uni_passau.fim.se.memory.controller;
 
 import de.uni_passau.fim.se.memory.model.Game;
 import de.uni_passau.fim.se.memory.model.MainMenue;
+import de.uni_passau.fim.se.memory.view.OutputStream;
 import de.uni_passau.fim.se.memory.view.OutputStreamMainMenue;
 
 import java.util.Scanner;
 
 public class InputStreamMainMenue {
-    Scanner menueScanner = new Scanner(System.in) ;
-    Scanner modeScanner = new Scanner(System.in) ;
-    Scanner setGameBoardSize = new Scanner (System.in) ;
-    MainMenue mainMenue = new MainMenue() ;
-    InputStreamPlayer player = new InputStreamPlayer() ;
-    Game game = new Game ();
+    Scanner menueScanner = new Scanner(System.in);
+    Scanner modeScanner = new Scanner(System.in);
+    Scanner setGameBoardSize = new Scanner(System.in);
+    MainMenue mainMenue = new MainMenue();
+    InputStreamPlayer player = new InputStreamPlayer();
+    Game game = new Game();
 
     /**
      * user can pick an option
      */
-    public void pickMainMenueOption () {
-        int option = menueScanner.nextInt() ;
+    public void pickMainMenueOption() {
+        int option = menueScanner.nextInt();
         if (option == 5) {
-        }
-        else {
+        } else {
             switch (option) {
                 case 1:
-                    player.gameLoop();
-                    break;
+
+                    if (MainMenue.getActivateHelp()) {
+                        OutputStream.printOpenBoard(game);
+                        game.timer(5000);
+                        OutputStream.printSigthBlockade();
+                        player.gameLoop();
+                        break;
+                    } else {
+                        player.gameLoop();
+                        break;
+                    }
+
+
                 case 2:
                     OutputStreamMainMenue.showModeTime();
                     OutputStreamMainMenue.showModeBot();
@@ -47,14 +58,14 @@ public class InputStreamMainMenue {
                     int x = setGameBoardSize.nextInt();
                     OutputStreamMainMenue.showPleaseInsertGameBoardSizeY();
                     int y = setGameBoardSize.nextInt();
-                    while (x*y > 20 || (x*y) % 2 != 0 || x<=0 || y<= 0)  {
+                    while (x * y > 20 || (x * y) % 2 != 0 || x <= 0 || y <= 0) {
                         OutputStreamMainMenue.showSizeNotPossible();
                         OutputStreamMainMenue.showPleaseInsertGameBoardSizeX();
                         x = setGameBoardSize.nextInt();
                         OutputStreamMainMenue.showPleaseInsertGameBoardSizeY();
                         y = setGameBoardSize.nextInt();
                     }
-                        game.setGameBoardSize(x, y);
+                    game.setGameBoardSize(x, y);
                     break;
 
                 case 4:

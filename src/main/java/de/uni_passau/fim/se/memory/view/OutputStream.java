@@ -9,6 +9,18 @@ public class OutputStream {
         System.out.println(board.toString());
     }
 
+    public static void printOpenBoard(Game board){
+        System.out.println(board.openBoardToString());
+    }
+
+    public static void printSigthBlockade(){
+       for (int i = 0; i < 60; i++) {
+           System.out.println("*");
+       }
+
+
+    }
+
         public static void printIntro () {
             System.out.println(
                     " /$$      /$$ /$$$$$$$$ /$$      /$$  /$$$$$$  /$$$$$$$  /$$     /$$\n"
