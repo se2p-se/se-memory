@@ -11,6 +11,13 @@ public class OutputStreamMainMenue {
         System.out.println("(4) for " + MainMenue.getTitleActivateHelp());
         System.out.println("(5) for " + MainMenue.getTitleEnd());
     }
+    public static void showGameBoardSizeSelectionMenu(){
+        System.out.println("Welche Spielfeldgröße wählst du ?");
+        System.out.println("1) Leicht (entsprechend einem 3x4 Feld)");
+        System.out.println("2) Mittel (entsprechend einem 4x4 Feld)");
+        System.out.println("3) Schwer (entsprechend einem 5x4 Feld)");
+        System.out.println("4) Benutzerdefiniert");
+    }
     public static void showModeTime () {
         System.out.println("(1) for " + MainMenue.getTitleGameModeTime());
     }
