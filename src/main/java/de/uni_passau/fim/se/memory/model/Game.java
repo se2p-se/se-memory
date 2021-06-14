@@ -95,6 +95,37 @@ public class Game {
 		return sb.toString();
 	}
 
+	public String openBoardToString() {
+		StringBuilder sb = new StringBuilder();
+		int element = 0;
+
+		for (int i = 0; i < (gameBoardSize[1] + 1) * (gameBoardSize[0] + 1); ++i) {
+
+			if (i <= gameBoardSize[0])			{
+				sb.append(i);
+			} else {
+				if (i % (gameBoardSize[0]+1) == 0) {
+					sb.append(i / (gameBoardSize[0] + 1));
+				} else {
+					sb.append(
+							cards.get(element) == null ? ' '
+									: cards.get(element).getValue() == null ? ' ' :
+											cards.get(element).getValue());
+					element++;
+				}
+			}
+
+			if ((i+1) % (gameBoardSize[0]+1) == 0 ||
+					i == (gameBoardSize[1]+1) * (gameBoardSize[0]+1) - 1) {
+				sb.append(System.lineSeparator());
+			} else {
+				sb.append(' ');
+			}
+		}
+
+		return sb.toString();
+	}
+
 	/**
 	 * Gets a card by its row and column.
 	 *
@@ -129,5 +160,12 @@ public class Game {
 	 */
 	public boolean isGameFinished() {
 		return cards.stream().allMatch((c) -> c.getValue() == null);
+	}
+
+	public void timer(int duration){
+		long endTime = System.currentTimeMillis() + duration;
+		while (System.currentTimeMillis() < endTime) {
+
+		}
 	}
 }
