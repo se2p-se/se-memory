@@ -1,6 +1,7 @@
 package de.uni_passau.fim.se.memory;
-import de.uni_passau.fim.se.memory.controller.InputStreamPlayer;
+import de.uni_passau.fim.se.memory.controller.InputStreamMainMenue;
 import de.uni_passau.fim.se.memory.view.OutputStream;
+import de.uni_passau.fim.se.memory.view.OutputStreamMainMenue;
 
 /**
  * Main class and main entry point. The program starts within this.
@@ -20,7 +21,8 @@ public final class Main {
      */
     public static void main(String[] args) {
         OutputStream.printIntro();
-        InputStreamPlayer player = new InputStreamPlayer();
-        player.gameLoop();
+        OutputStreamMainMenue.showMainMenue();
+        InputStreamMainMenue mainMenue = new InputStreamMainMenue();
+        mainMenue.pickMainMenueOption();
     }
 }
