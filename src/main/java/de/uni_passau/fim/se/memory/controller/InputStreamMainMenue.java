@@ -11,7 +11,6 @@ public class InputStreamMainMenue {
     Scanner modeScanner = new Scanner(System.in) ;
     Scanner setGameBoardSize = new Scanner (System.in) ;
     MainMenue mainMenue = new MainMenue() ;
-    InputStreamPlayer player = new InputStreamPlayer() ;
     Game game = new Game ();
 
     /**
@@ -24,7 +23,13 @@ public class InputStreamMainMenue {
         else {
             switch (option) {
                 case 1:
-                    player.gameLoop();
+                    if (mainMenue.getGameModeTime()) {
+                        InputStreamGameModeTime playerTime = new InputStreamGameModeTime();
+                        playerTime.gameLoop();
+                    } else {
+                        InputStreamPlayer player = new InputStreamPlayer() ;
+                        player.gameLoop();
+                    }
                     break;
                 case 2:
                     OutputStreamMainMenue.showModeTime();
@@ -58,7 +63,7 @@ public class InputStreamMainMenue {
                     break;
 
                 case 4:
-                    if (mainMenue.getActivateHelp() == true) {
+                    if (mainMenue.getActivateHelp()) {
                         mainMenue.setActivateHelp(false);
                         OutputStreamMainMenue.showActivateHelpSetFalse();
                     } else {
