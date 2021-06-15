@@ -3,6 +3,7 @@ package de.uni_passau.fim.se.memory.controller;
 import de.uni_passau.fim.se.memory.model.Game;
 import de.uni_passau.fim.se.memory.model.MainMenue;
 import de.uni_passau.fim.se.memory.view.OutputStreamMainMenue;
+import de.uni_passau.fim.se.memory.view.OutputStream;
 
 import java.util.Scanner;
 
@@ -24,8 +25,17 @@ public class InputStreamMainMenue {
         else {
             switch (option) {
                 case 1:
-                    player.gameLoop();
-                    break;
+
+                    if (MainMenue.getActivateHelp()) {
+                        OutputStream.printOpenBoard(game);
+                        game.timer(5000);
+                        OutputStream.printSigthBlockade();
+                        player.gameLoop();
+                        break;
+                    } else {
+                        player.gameLoop();
+                        break;
+                    }
                 case 2:
                     OutputStreamMainMenue.showModeTime();
                     OutputStreamMainMenue.showModeBot();
