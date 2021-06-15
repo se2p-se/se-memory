@@ -122,7 +122,7 @@ public class InputStreamGameModeTime extends InputStreamPlayer {
         OutputStream.printBoard(game);
 
         while (!game.isGameFinished()) {
-            if (game.getGameState() == GameState.TIMEGAMEEND) {
+            if (game.getGameState() != GameState.TIMEGAMESTART) {
                 break;
             }
             OutputStream.nextRound();
