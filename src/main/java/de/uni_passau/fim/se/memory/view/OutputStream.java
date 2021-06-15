@@ -9,6 +9,24 @@ public class OutputStream {
         System.out.println(board.toString());
     }
 
+    public static void printOpenBoard(Game board){
+        System.out.println(board.openBoardToString());
+    }
+
+    /**
+     * printSightBlockade is only a temporary method which should avoid the player from seeing the open field.
+     * This method is gonna be deleted and replaced by a proper GUI implementation.
+     */
+
+
+    public static void printSigthBlockade(){
+        for (int i = 0; i < 60; i++) {
+            System.out.println("*");
+        }
+
+
+    }
+
         public static void printIntro () {
             System.out.println(
                     " /$$      /$$ /$$$$$$$$ /$$      /$$  /$$$$$$  /$$$$$$$  /$$     /$$\n"
