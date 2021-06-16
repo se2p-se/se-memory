@@ -11,8 +11,16 @@ import java.util.Scanner;
 
 public class InputStreamGameModeTime extends InputStreamPlayer {
 
-    GameModeTime game = new GameModeTime();
     Scanner scanner = new Scanner(System.in);
+
+    public InputStreamGameModeTime() {
+        game = new GameModeTime();
+    }
+
+    @Override
+    public GameModeTime getGame() {
+        return (GameModeTime)game;
+    }
 
     @Override
     public void startRound() {
@@ -130,8 +138,8 @@ public class InputStreamGameModeTime extends InputStreamPlayer {
 
         }
         if (game.getGameState() == GameState.TIMEGAMEEND) {
-            game.stopCountingTime();
-            OutputStreamGameModeTime.printEndOfGameModeTime(game.getCurrentTime(game.getStart(), game.getEnd()));
+            getGame().stopCountingTime();
+            OutputStreamGameModeTime.printEndOfGameModeTime(getGame().getCurrentTime(getGame().getStart(), getGame().getEnd()));
         } else if (game.getGameState() == GameState.INITIALIZING_GAME) {
 
         }
