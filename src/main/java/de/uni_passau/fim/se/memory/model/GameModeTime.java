@@ -33,4 +33,12 @@ public class GameModeTime extends Game {
         currentTime = end - start;
         return currentTime;
     }
+
+    public static boolean compareWithSavedTime(long currentTime){
+        if(SavingStats.getSavingStats().statsReader() > currentTime) {
+            SavingStats.getSavingStats().statsWriter(currentTime);
+            return true;
+        }
+        return false;
+    }
 }
