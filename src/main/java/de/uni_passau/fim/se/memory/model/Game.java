@@ -43,6 +43,8 @@ public class Game {
 
 		generateCards();
 		mixCards();
+
+		this.setGameState(GameState.RUNNING);
 	}
 
 	/**
