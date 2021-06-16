@@ -13,7 +13,7 @@ public class InputStreamMainMenue {
     Scanner setGameBoardSize = new Scanner (System.in) ;
     MainMenue mainMenue = new MainMenue() ;
     InputStreamPlayer player = new InputStreamPlayer() ;
-    Game game = new Game ();
+
 
     /**
      * user can pick an option
@@ -27,8 +27,8 @@ public class InputStreamMainMenue {
                 case 1:
 
                     if (MainMenue.getActivateHelp()) {
-                        OutputStream.printOpenBoard(game);
-                        game.timer(5000);
+                        OutputStream.printOpenBoard(player.game);
+                        player.game.timer(5000);
                         OutputStream.printSigthBlockade();
                         player.gameLoop();
                         break;
@@ -64,7 +64,7 @@ public class InputStreamMainMenue {
                         OutputStreamMainMenue.showPleaseInsertGameBoardSizeY();
                         y = setGameBoardSize.nextInt();
                     }
-                        game.setGameBoardSize(x, y);
+                        player.game.setGameBoardSize(x, y);
                     break;
 
                 case 4:
