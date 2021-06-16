@@ -15,9 +15,16 @@ public class InputStreamPlayer {
      * Saving selected Cards
      */
 
-    Game game = new Game();
-
+    Game game;
     Scanner scanner = new Scanner(System.in);
+
+    public InputStreamPlayer() {
+        game = new Game();
+    }
+
+    public Game getGame() {
+        return game;
+    }
 
     /**
      * startRound() method for the controlling of the game
