@@ -1,6 +1,7 @@
 package de.uni_passau.fim.se.memory.controller;
 
 import de.uni_passau.fim.se.memory.model.MainMenue;
+import de.uni_passau.fim.se.memory.view.OutputStream;
 import de.uni_passau.fim.se.memory.view.OutputStreamMainMenue;
 import de.uni_passau.fim.se.memory.view.OutputStream;
 
@@ -54,18 +55,36 @@ public class InputStreamMainMenue {
                     }
                     break;
                 case 3:
-                    OutputStreamMainMenue.showPleaseInsertGameBoardSizeX();
-                    int x = setGameBoardSize.nextInt();
-                    OutputStreamMainMenue.showPleaseInsertGameBoardSizeY();
-                    int y = setGameBoardSize.nextInt();
-                    while (x*y > 20 || (x*y) % 2 != 0 || x<=0 || y<= 0)  {
-                        OutputStreamMainMenue.showSizeNotPossible();
-                        OutputStreamMainMenue.showPleaseInsertGameBoardSizeX();
-                        x = setGameBoardSize.nextInt();
-                        OutputStreamMainMenue.showPleaseInsertGameBoardSizeY();
-                        y = setGameBoardSize.nextInt();
+                    while (true) {
+                        OutputStreamMainMenue.showGameBoardSizeSelectionMenu();
+                        int difficulty = setGameBoardSize.nextInt();
+
+                        if (difficulty == 1) {
+                            player.game.setGameBoardSize(3, 4);
+                            break;
+                        } else if (difficulty == 2) {
+                            player.game.setGameBoardSize(4, 4);
+                            break;
+                        } else if (difficulty == 3) {
+                            player.game.setGameBoardSize(5, 4);
+                            break;
+                        } else if (difficulty == 4) {
+                            OutputStreamMainMenue.showPleaseInsertGameBoardSizeX();
+                            int x = setGameBoardSize.nextInt();
+                            OutputStreamMainMenue.showPleaseInsertGameBoardSizeY();
+                            int y = setGameBoardSize.nextInt();
+                            while (x * y > 20 || (x * y) % 2 != 0 || x <= 0 || y <= 0) {
+                                OutputStreamMainMenue.showSizeNotPossible();
+                                OutputStreamMainMenue.showPleaseInsertGameBoardSizeX();
+                                x = setGameBoardSize.nextInt();
+                                OutputStreamMainMenue.showPleaseInsertGameBoardSizeY();
+                                y = setGameBoardSize.nextInt();
+                            }
+                            player.game.setGameBoardSize(x, y);
+                            break;
+                        }
                     }
-                        player.game.setGameBoardSize(x, y);
+
                     break;
 
                 case 4:
