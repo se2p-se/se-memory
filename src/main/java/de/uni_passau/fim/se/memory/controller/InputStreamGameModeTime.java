@@ -1,39 +1,34 @@
 package de.uni_passau.fim.se.memory.controller;
 
-
 import de.uni_passau.fim.se.memory.model.Card;
-import de.uni_passau.fim.se.memory.model.Game;
+import de.uni_passau.fim.se.memory.model.GameModeTime;
 import de.uni_passau.fim.se.memory.model.GameState;
 import de.uni_passau.fim.se.memory.view.OutputStream;
+import de.uni_passau.fim.se.memory.view.OutputStreamGameModeTime;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class InputStreamPlayer {
+public class InputStreamGameModeTime extends InputStreamPlayer {
 
-    /**
-     * Saving selected Cards
-     */
-
-    Game game;
     Scanner scanner = new Scanner(System.in);
 
-    public InputStreamPlayer() {
-        game = new Game();
+    public InputStreamGameModeTime() {
+        game = new GameModeTime();
     }
 
-    public Game getGame() {
-        return game;
+    @Override
+    public GameModeTime getGame() {
+        return (GameModeTime)game;
     }
 
-    /**
-     * startRound() method for the controlling of the game
-     */
+    @Override
     public void startRound() {
 
         /**
          * printing the covered Board for the game start
          */
+
         Card card1;
         Card card2;
 
@@ -44,7 +39,7 @@ public class InputStreamPlayer {
         /**
          * Scanning the input of the players
          */
-        while (game.getGameState() == GameState.RUNNING) {
+        while (game.getGameState() == GameState.TIMEGAMESTART) {
 
             try {
 
@@ -107,13 +102,14 @@ public class InputStreamPlayer {
 
                 if (card1.compareWith(card2)) {
                     OutputStream.pairFound(card1);
-                    Game.removeCards(card1, card2);
+                    GameModeTime.removeCards(card1, card2);
                     if (game.isGameFinished()) {
-                        game.setGameState(GameState.END);
+                        game.setGameState(GameState.TIMEGAMEEND);
                     }
 
                 } else {
                     OutputStream.noPairFound();
+
                 }
 
                 OutputStream.printBoard(game);
@@ -129,28 +125,26 @@ public class InputStreamPlayer {
         }
     }
 
-
-    /**
-     * gameLoop gives out text and starts new round
-     */
+    @Override
     public void gameLoop() {
-
         OutputStream.printBoard(game);
-        game.setGameState(GameState.RUNNING);
 
         while (!game.isGameFinished()) {
-            if (game.getGameState() != GameState.RUNNING) {
+            if (game.getGameState() != GameState.TIMEGAMESTART) {
                 break;
             }
             OutputStream.nextRound();
             startRound();
 
         }
-        if (game.getGameState() == GameState.END) {
-            OutputStream.printEndOfGame();
+        if (game.getGameState() == GameState.TIMEGAMEEND) {
+            getGame().stopCountingTime();
+            OutputStreamGameModeTime.printEndOfGameModeTime(getGame().getCurrentTime(getGame().getStart(), getGame().getEnd()));
         } else if (game.getGameState() == GameState.INITIALIZING_GAME) {
 
         }
-    }
-}
 
+    }
+
+
+}

@@ -14,7 +14,7 @@ public class MainMenue {
     private static String titleCostumGameBoardSize = "Costum";
     private boolean isGameModeBot = false ;
     private boolean isGameModeTime = true ;
-    private boolean isActivateHelp = false ;
+    private static boolean isActivateHelp = false ;
 
     public static String getTitleActivateHelp() {
         return titleActivateHelp;
@@ -77,7 +77,7 @@ public class MainMenue {
         isActivateHelp = activateHelp;
     }
 
-    public boolean getActivateHelp () {
+    public static boolean getActivateHelp () {
         return isActivateHelp;
     }
     public void setTitleActivateHelp () {
