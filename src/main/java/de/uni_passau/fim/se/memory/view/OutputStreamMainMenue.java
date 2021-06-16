@@ -13,10 +13,10 @@ public class OutputStreamMainMenue {
     }
     public static void showGameBoardSizeSelectionMenu(){
         System.out.println("Which game board size do you want?");
-        System.out.println("1) Easy (like a 3x4 field)");
-        System.out.println("2) Medium (like a 4x4 field)");
-        System.out.println("3) Difficult (like a 5x4 field)");
-        System.out.println("4) Costum ");
+        System.out.println("(1) for " + MainMenue.getTitleEasyGameBoardSize());
+        System.out.println("(2) for " + MainMenue.getTitleMediumGameBoardSize());
+        System.out.println("(3) for " + MainMenue.getTitleDifficultGameBoardSize());
+        System.out.println("(4) for " + MainMenue.getTitleCostumGameBoardSize());
     }
     public static void showModeTime () {
         System.out.println("(1) for " + MainMenue.getTitleGameModeTime());
