@@ -1,8 +1,8 @@
 package de.uni_passau.fim.se.memory.controller;
 
-import de.uni_passau.fim.se.memory.model.Game;
 import de.uni_passau.fim.se.memory.model.MainMenue;
 import de.uni_passau.fim.se.memory.view.OutputStreamMainMenue;
+import de.uni_passau.fim.se.memory.view.OutputStream;
 
 import java.util.Scanner;
 
@@ -11,7 +11,7 @@ public class InputStreamMainMenue {
     Scanner modeScanner = new Scanner(System.in) ;
     Scanner setGameBoardSize = new Scanner (System.in) ;
     MainMenue mainMenue = new MainMenue() ;
-    Game game = new Game ();
+    InputStreamPlayer player = new InputStreamPlayer() ;
 
     /**
      * user can pick an option
@@ -24,12 +24,18 @@ public class InputStreamMainMenue {
             switch (option) {
                 case 1:
                     if (mainMenue.getGameModeTime()) {
-                        InputStreamGameModeTime playerTime = new InputStreamGameModeTime();
-                        playerTime.gameLoop();
+                        player = new InputStreamGameModeTime();
                     } else {
-                        InputStreamPlayer player = new InputStreamPlayer() ;
-                        player.gameLoop();
+                        player = new InputStreamPlayer();
                     }
+  
+                    if (MainMenue.getActivateHelp()) {
+                        OutputStream.printOpenBoard(player.game);
+                        player.game.timer(5000);
+                        OutputStream.printSigthBlockade();
+                    }
+
+                    player.gameLoop();
                     break;
                 case 2:
                     OutputStreamMainMenue.showModeTime();
@@ -59,7 +65,7 @@ public class InputStreamMainMenue {
                         OutputStreamMainMenue.showPleaseInsertGameBoardSizeY();
                         y = setGameBoardSize.nextInt();
                     }
-                        game.setGameBoardSize(x, y);
+                        player.game.setGameBoardSize(x, y);
                     break;
 
                 case 4:
