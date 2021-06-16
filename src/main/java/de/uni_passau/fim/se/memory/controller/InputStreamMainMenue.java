@@ -1,6 +1,5 @@
 package de.uni_passau.fim.se.memory.controller;
 
-import de.uni_passau.fim.se.memory.model.Game;
 import de.uni_passau.fim.se.memory.model.MainMenue;
 import de.uni_passau.fim.se.memory.view.OutputStreamMainMenue;
 import de.uni_passau.fim.se.memory.view.OutputStream;
