@@ -13,7 +13,6 @@ public class InputStreamMainMenue {
     MainMenue mainMenue = new MainMenue() ;
     InputStreamPlayer player = new InputStreamPlayer() ;
 
-
     /**
      * user can pick an option
      */
@@ -24,17 +23,20 @@ public class InputStreamMainMenue {
         else {
             switch (option) {
                 case 1:
-
+                    if (mainMenue.getGameModeTime()) {
+                        player = new InputStreamGameModeTime();
+                    } else {
+                        player = new InputStreamPlayer();
+                    }
+  
                     if (MainMenue.getActivateHelp()) {
                         OutputStream.printOpenBoard(player.game);
                         player.game.timer(5000);
                         OutputStream.printSigthBlockade();
-                        player.gameLoop();
-                        break;
-                    } else {
-                        player.gameLoop();
-                        break;
                     }
+
+                    player.gameLoop();
+                    break;
                 case 2:
                     OutputStreamMainMenue.showModeTime();
                     OutputStreamMainMenue.showModeBot();
@@ -67,7 +69,7 @@ public class InputStreamMainMenue {
                     break;
 
                 case 4:
-                    if (mainMenue.getActivateHelp() == true) {
+                    if (mainMenue.getActivateHelp()) {
                         mainMenue.setActivateHelp(false);
                         OutputStreamMainMenue.showActivateHelpSetFalse();
                     } else {

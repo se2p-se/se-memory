@@ -50,19 +50,19 @@ public class OutputStream {
         }
 
         public static void printSelectCol1 () {
-            System.out.println("Choose card 1 and write the corresponding col (Only chose Ints between 1 - 5) : ");
+            System.out.println("Choose card 1 and write the corresponding col (Only choose Ints between 1 - 5 or 0 to quit) : ");
         }
 
         public static void printSelectRow1 () {
-            System.out.println("Choose card 1 and write the corresponding row (Only chose Ints between 1 - 4) : ");
+            System.out.println("Choose card 1 and write the corresponding row (Only choose Ints between 1 - 4 or 0 to quit) : ");
         }
 
         public static void printSelectCol2 () {
-            System.out.println("Choose card 2 and write the corresponding col (Only chose Ints between 1 - 5) : ");
+            System.out.println("Choose card 2 and write the corresponding col (Only choose Ints between 1 - 5 or 0 to quit) : ");
         }
 
         public static void printSelectRow2 () {
-            System.out.println("Choose card 2 and write the corresponding row (Only chose Ints between 1 - 4) : ");
+            System.out.println("Choose card 2 and write the corresponding row (Only choose Ints between 1 - 4 or 0 to quit) : ");
         }
 
         public static void sameCardsChosen () {
