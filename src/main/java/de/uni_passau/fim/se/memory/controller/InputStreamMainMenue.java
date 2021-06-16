@@ -1,8 +1,8 @@
 package de.uni_passau.fim.se.memory.controller;
 
 import de.uni_passau.fim.se.memory.model.MainMenue;
-import de.uni_passau.fim.se.memory.view.OutputStreamMainMenue;
 import de.uni_passau.fim.se.memory.view.OutputStream;
+import de.uni_passau.fim.se.memory.view.OutputStreamMainMenue;
 
 import java.util.Scanner;
 
@@ -25,6 +25,8 @@ public class InputStreamMainMenue {
                 case 1:
                     if (mainMenue.getGameModeTime()) {
                         player = new InputStreamGameModeTime();
+                    } else if (mainMenue.getGameModeBot()) {
+                        player = new InputStreamGameModeBot();
                     } else {
                         player = new InputStreamPlayer();
                     }
