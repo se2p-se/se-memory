@@ -7,16 +7,6 @@ public class GameModeTime extends Game {
     private long start;
     private long end;
 
-    @Override
-    public ArrayList<Card> getCards() {
-        return super.getCards();
-    }
-
-    @Override
-    public boolean isGameFinished() {
-        return getCards().stream().allMatch((c) -> c.getValue() == null);
-    }
-
     public GameModeTime(){
         super();
         this.setGameState(GameState.TIMEGAMESTART);
