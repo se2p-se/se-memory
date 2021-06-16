@@ -7,6 +7,7 @@ public class Game {
 
 	private ArrayList<Card> cards;
 	private int[] gameBoardSize;
+	GameState gameState;
 
 
 	public void setGameBoardSize(int x, int y) {
@@ -15,6 +16,14 @@ public class Game {
 
 	public int[] getGameBoardSize() {
 		return gameBoardSize;
+	}
+
+	public void setGameState(GameState gameState) {
+		this.gameState = gameState;
+	}
+
+	public GameState getGameState() {
+		return gameState;
 	}
 
 	/**
@@ -34,6 +43,8 @@ public class Game {
 
 		generateCards();
 		mixCards();
+
+		this.setGameState(GameState.RUNNING);
 	}
 
 	/**
@@ -95,37 +106,6 @@ public class Game {
 		return sb.toString();
 	}
 
-	public String openBoardToString() {
-		StringBuilder sb = new StringBuilder();
-		int element = 0;
-
-		for (int i = 0; i < (gameBoardSize[1] + 1) * (gameBoardSize[0] + 1); ++i) {
-
-			if (i <= gameBoardSize[0])			{
-				sb.append(i);
-			} else {
-				if (i % (gameBoardSize[0]+1) == 0) {
-					sb.append(i / (gameBoardSize[0] + 1));
-				} else {
-					sb.append(
-							cards.get(element) == null ? ' '
-									: cards.get(element).getValue() == null ? ' ' :
-											cards.get(element).getValue());
-					element++;
-				}
-			}
-
-			if ((i+1) % (gameBoardSize[0]+1) == 0 ||
-					i == (gameBoardSize[1]+1) * (gameBoardSize[0]+1) - 1) {
-				sb.append(System.lineSeparator());
-			} else {
-				sb.append(' ');
-			}
-		}
-
-		return sb.toString();
-	}
-
 	/**
 	 * Gets a card by its row and column.
 	 *
@@ -167,5 +147,37 @@ public class Game {
 		while (System.currentTimeMillis() < endTime) {
 
 		}
+	}
+
+
+	public String openBoardToString() {
+		StringBuilder sb = new StringBuilder();
+		int element = 0;
+
+		for (int i = 0; i < (gameBoardSize[1] + 1) * (gameBoardSize[0] + 1); ++i) {
+
+			if (i <= gameBoardSize[0])			{
+				sb.append(i);
+			} else {
+				if (i % (gameBoardSize[0]+1) == 0) {
+					sb.append(i / (gameBoardSize[0] + 1));
+				} else {
+					sb.append(
+							cards.get(element) == null ? ' '
+									: cards.get(element).getValue() == null ? ' ' :
+									cards.get(element).getValue());
+					element++;
+				}
+			}
+
+			if ((i+1) % (gameBoardSize[0]+1) == 0 ||
+					i == (gameBoardSize[1]+1) * (gameBoardSize[0]+1) - 1) {
+				sb.append(System.lineSeparator());
+			} else {
+				sb.append(' ');
+			}
+		}
+
+		return sb.toString();
 	}
 }
