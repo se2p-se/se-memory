@@ -19,7 +19,7 @@ public class InputStreamGameModeTime extends InputStreamPlayer {
 
     @Override
     public GameModeTime getGame() {
-        return (GameModeTime)game;
+        return (GameModeTime) game;
     }
 
     @Override
@@ -62,7 +62,6 @@ public class InputStreamGameModeTime extends InputStreamPlayer {
                 card1 = game.selectCard(row1, col1);
 
 
-
                 if (card1.getValue() == null) {
                     OutputStream.chosenCard1IsNull();
                     return;
@@ -85,7 +84,6 @@ public class InputStreamGameModeTime extends InputStreamPlayer {
                 }
 
                 card2 = game.selectCard(row2, col2);
-
 
 
                 if (card2.getValue() == null) {
@@ -140,11 +138,17 @@ public class InputStreamGameModeTime extends InputStreamPlayer {
         if (game.getGameState() == GameState.TIMEGAMEEND) {
             getGame().stopCountingTime();
             OutputStreamGameModeTime.printEndOfGameModeTime(getGame().getCurrentTime(getGame().getStart(), getGame().getEnd()));
-        } else if (game.getGameState() == GameState.INITIALIZING_GAME) {
+
+            boolean gotRecord = GameModeTime.compareWithSavedTime(getGame().getCurrentTime(getGame().getStart(), getGame().getEnd()));
+            if (gotRecord) {
+                OutputStreamGameModeTime.printNewRecord();
+
+            } else if (game.getGameState() == GameState.INITIALIZING_GAME) {
+
+            }
 
         }
 
+
     }
-
-
 }
