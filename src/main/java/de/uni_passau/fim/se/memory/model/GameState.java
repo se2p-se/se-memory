@@ -13,6 +13,10 @@ public enum GameState {
      */
     PLAYER_SELECTING_CARDS,
     /**
+     * The game is running
+     */
+    RUNNING,
+    /**
      * The game is over
      */
     END
