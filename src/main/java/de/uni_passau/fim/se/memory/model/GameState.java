@@ -13,6 +13,14 @@ public enum GameState {
      */
     PLAYER_SELECTING_CARDS,
     /**
+     * time game has started
+     */
+    TIMEGAMESTART,
+    /**
+     * time game has ended
+     */
+    TIMEGAMEEND,
+    /**
      * The game is running
      */
     RUNNING,
