@@ -22,7 +22,7 @@ public class GameModeBot extends Game {
 		return null;
 	}
 
-	public void botMove() {
+	public Character botMove() {
 
 		Card c1 = null, c2 = null;
 		boolean hasMatch = false;
@@ -45,25 +45,30 @@ public class GameModeBot extends Game {
 		}
 
 		if (c1.getValue() == c2.getValue()) {
+			Character ret = c1.getValue();
 			c1.setValue(null);
 			c2.setValue(null);
-		} else {
-			hasMatch = false;
-			for (Card c : botKnownCards) {
-				if (c == c1) {
-					hasMatch = true;
-					break;
-				}
-			}
-			if (hasMatch == false) botKnownCards.add(c1);
-			hasMatch = false;
-			for (Card c : botKnownCards) {
-				if (c == c2) {
-					hasMatch = true;
-					break;
-				}
-			}
-			if (hasMatch == false) botKnownCards.add(c2);
+			return ret;
 		}
+
+		hasMatch = false;
+		for (Card c : botKnownCards) {
+			if (c == c1) {
+				hasMatch = true;
+				break;
+			}
+		}
+		if (hasMatch == false) botKnownCards.add(c1);
+		hasMatch = false;
+		for (Card c : botKnownCards) {
+			if (c == c2) {
+				hasMatch = true;
+				break;
+			}
+		}
+
+		if (hasMatch == false) botKnownCards.add(c2);
+
+		return null;
 	}
 }

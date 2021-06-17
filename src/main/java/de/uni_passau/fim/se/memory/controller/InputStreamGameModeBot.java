@@ -6,6 +6,7 @@ import de.uni_passau.fim.se.memory.model.Game;
 import de.uni_passau.fim.se.memory.model.GameModeBot;
 import de.uni_passau.fim.se.memory.model.GameState;
 import de.uni_passau.fim.se.memory.view.OutputStream;
+import de.uni_passau.fim.se.memory.view.OutputStreamGameModeBot;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -112,10 +113,14 @@ public class InputStreamGameModeBot extends InputStreamPlayer {
 					OutputStream.noPairFound();
 				}
 
-				getGame().botMove();
+				Character ch = getGame().botMove();
 				OutputStream.printBoard(game);
 				card1.flipCard();
 				card2.flipCard();
+				if (ch != null) {
+					OutputStreamGameModeBot.printBotPickedMatch(ch);
+				}
+				else OutputStreamGameModeBot.printBotFoundNoPair();
 
 			} catch (IllegalArgumentException x) {
 				OutputStream.wrongPick();
