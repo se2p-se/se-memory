@@ -61,12 +61,15 @@ public class InputStreamMainMenue {
 
                         if (difficulty == 1) {
                             player.game.setGameBoardSize(3, 4);
+                            player.gameLoop();
                             break;
                         } else if (difficulty == 2) {
                             player.game.setGameBoardSize(4, 4);
+                            player.gameLoop();
                             break;
                         } else if (difficulty == 3) {
                             player.game.setGameBoardSize(5, 4);
+                            player.gameLoop();
                             break;
                         } else if (difficulty == 4) {
                             OutputStreamMainMenue.showPleaseInsertGameBoardSizeX();
@@ -81,6 +84,7 @@ public class InputStreamMainMenue {
                                 y = setGameBoardSize.nextInt();
                             }
                             player.game.setGameBoardSize(x, y);
+                            player.gameLoop();
                             break;
                         }
                     }
