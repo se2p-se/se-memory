@@ -107,6 +107,7 @@ public class InputStreamGameModeBot extends InputStreamPlayer {
 					Game.removeCards(card1, card2);
 					if (game.isGameFinished()) {
 						game.setGameState(GameState.END);
+						return;
 					}
 
 				} else {
