@@ -18,7 +18,7 @@ public class InputStreamMainMenue {
      */
     public void pickMainMenueOption () {
         int option = menueScanner.nextInt() ;
-        if (option == 5) {
+        if (option == 6) {
         }
         else {
             switch (option) {
@@ -67,7 +67,7 @@ public class InputStreamMainMenue {
                         OutputStreamMainMenue.showPleaseInsertGameBoardSizeY();
                         y = setGameBoardSize.nextInt();
                     }
-                        player.game.setGameBoardSize(x, y);
+                    player.game.setGameBoardSize(x, y);
                     break;
 
                 case 4:
@@ -79,6 +79,12 @@ public class InputStreamMainMenue {
                         OutputStreamMainMenue.showActivateHelpSetTrue();
                     }
                     mainMenue.setTitleActivateHelp();
+                    break;
+                case 5:
+                    OutputStreamMainMenue.showBotDifficulty();
+                    int diffi = modeScanner.nextInt();
+                    if (diffi >= 1 && diffi <= 3)
+                        mainMenue.setBotDifficulty(diffi);
                     break;
             }
             OutputStreamMainMenue.showMainMenue();
