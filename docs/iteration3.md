@@ -7,15 +7,15 @@
 
 (2) Welches Gruppenmitglied welche User Stories / Tasks (GitHub-IDs) für Iteration 3 geplant hat.
 
-Killian Lichentauner:     
+Killian Lichentauner: 
 
-Sebastian Redinger:       
+Sebastian Redinger:  
 
 Valentin Damjantschitsch: 
 
-Alica Belz:               
+Alica Belz:            
 
-Michael Grantner:         
+Michael Grantner:0         
 
 
 
@@ -23,12 +23,12 @@ Michael Grantner:
 
 (3) Beteiligung der Gruppenmitglieder und Realisierung der Tasks
 
-Killian Lichentauner:   
+Killian Lichentauner: #150, #151, #152, #153, #154, #155, #156, #157, #158,  #170, #139, #175, #140, #136, #133, #135, #174, #176, #168, #169, #146, #148, #149, #183, #184, #185, #186, #187
 
-Sebastian Redinger:     
+Sebastian Redinger: #145, #159, #161, #162, #139, #175, #140, #136, #133, #135, #174, #176, #168, #169, #146, #148, #149
 
-Valentin Damjantschitsch:
+Valentin Damjantschitsch: #150, #151, #152, #153, #154, #155, #156, #157, #158, #170, #141, #142, #143, #144, #139, #175, #140, #136, #133, #135, #174, #176, #168, #169, #146, #148, #149
 
-Alica Belz:              
+Alica Belz: #170, #141, #142, #143, #144
 
-Michael Grantner:       
+Michael Grantner:  #150, #151, #152, #153, #154, #155, #156, #157, #158, #170, #141, #142, #143, #144, #139, #175, #140, #136, #133, #135, #174, #176      
