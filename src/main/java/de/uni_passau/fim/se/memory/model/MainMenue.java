@@ -7,14 +7,18 @@ public class MainMenue {
     private static String titleActivateHelp = "Activate Help";
     private static String titleGameModeTime = "Play against Time" ;
     private static String titleGameModeBot = "Play against Computer";
+    private static String titleComputerDifficulty = "Change Bot Difficulty";
     private static String titleEnd = "Quit";
     private boolean isGameModeBot = false ;
     private boolean isGameModeTime = true ;
     private static boolean isActivateHelp = false ;
+    private static int botDifficulty = 1;
 
     public static String getTitleActivateHelp() {
         return titleActivateHelp;
     }
+
+    public static String getTitleComputerDifficulty() { return titleComputerDifficulty; }
 
     public static String getTitleGameBoardSize() {
         return titleGameBoardSize;
@@ -67,5 +71,13 @@ public class MainMenue {
         else {
             titleActivateHelp = "Activate Help" ;
         }
+    }
+
+    public void setBotDifficulty(int diff) {
+        botDifficulty = diff;
+    }
+
+    public int getBotDifficulty() {
+        return botDifficulty;
     }
 }
