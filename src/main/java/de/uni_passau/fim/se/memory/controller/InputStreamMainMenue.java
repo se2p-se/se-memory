@@ -3,7 +3,6 @@ package de.uni_passau.fim.se.memory.controller;
 import de.uni_passau.fim.se.memory.model.MainMenue;
 import de.uni_passau.fim.se.memory.view.OutputStream;
 import de.uni_passau.fim.se.memory.view.OutputStreamMainMenue;
-import de.uni_passau.fim.se.memory.view.OutputStream;
 
 import java.util.Scanner;
 
@@ -13,6 +12,8 @@ public class InputStreamMainMenue {
     Scanner setGameBoardSize = new Scanner (System.in) ;
     MainMenue mainMenue = new MainMenue() ;
     InputStreamPlayer player = new InputStreamPlayer() ;
+
+    int[] gameBoardSize = new int[]{5, 4};
 
     /**
      * user can pick an option
@@ -29,7 +30,10 @@ public class InputStreamMainMenue {
                     } else {
                         player = new InputStreamPlayer();
                     }
-  
+
+                    player.game.setGameBoardSize(gameBoardSize[0],
+                            gameBoardSize[1]);
+
                     if (MainMenue.getActivateHelp()) {
                         OutputStream.printOpenBoard(player.game);
                         player.game.timer(5000);
@@ -60,16 +64,13 @@ public class InputStreamMainMenue {
                         int difficulty = setGameBoardSize.nextInt();
 
                         if (difficulty == 1) {
-                            player.game.setGameBoardSize(3, 4);
-                            player.gameLoop();
+                            gameBoardSize = new int[]{3, 4};
                             break;
                         } else if (difficulty == 2) {
-                            player.game.setGameBoardSize(4, 4);
-                            player.gameLoop();
+                            gameBoardSize = new int[]{4, 4};
                             break;
                         } else if (difficulty == 3) {
-                            player.game.setGameBoardSize(5, 4);
-                            player.gameLoop();
+                            gameBoardSize = new int[]{5, 4};
                             break;
                         } else if (difficulty == 4) {
                             OutputStreamMainMenue.showPleaseInsertGameBoardSizeX();
@@ -83,8 +84,7 @@ public class InputStreamMainMenue {
                                 OutputStreamMainMenue.showPleaseInsertGameBoardSizeY();
                                 y = setGameBoardSize.nextInt();
                             }
-                            player.game.setGameBoardSize(x, y);
-                            player.gameLoop();
+                            gameBoardSize = new int[]{x, y};
                             break;
                         }
                     }
