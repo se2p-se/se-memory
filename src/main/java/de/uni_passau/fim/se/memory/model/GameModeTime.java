@@ -1,5 +1,8 @@
 package de.uni_passau.fim.se.memory.model;
 
+import de.uni_passau.fim.se.memory.view.OutputStream;
+import de.uni_passau.fim.se.memory.view.OutputStreamGameModeTime;
+
 import java.util.ArrayList;
 
 public class GameModeTime extends Game {
@@ -32,5 +35,14 @@ public class GameModeTime extends Game {
     public long getCurrentTime(long start, long end) {
         currentTime = end - start;
         return currentTime;
+    }
+
+    public static boolean compareWithSavedTime(long currentTime){
+        if(SavingStats.getSavingStats().statsReader() > currentTime) {
+            SavingStats.getSavingStats().statsWriter(currentTime);
+            return true;
+        }
+        OutputStreamGameModeTime.printRecordNotBroken();
+        return false;
     }
 }
