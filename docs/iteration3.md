@@ -4,7 +4,7 @@
 
 
 
-(2) Welches Gruppenmitglied welche User Stories / Tasks (GitHub-IDs) für Iteration 3 geplant hat.
+(2) Welches Gruppenmitglied welche User Stories / Tasks (GitHub-IDs) für Iteration 4 geplant hat.
 
 Killian Lichentauner: 
 
@@ -14,7 +14,7 @@ Valentin Damjantschitsch:
 
 Alica Belz:            
 
-Michael Grantner:         
+Michael Grantner: #188, #189, #190, #191, #192, #193, #194, #195, #196, #197, #198          
 
 
 
