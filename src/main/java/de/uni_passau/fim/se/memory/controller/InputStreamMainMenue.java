@@ -7,11 +7,11 @@ import de.uni_passau.fim.se.memory.view.OutputStreamMainMenue;
 import java.util.Scanner;
 
 public class InputStreamMainMenue {
-    Scanner menueScanner = new Scanner(System.in) ;
-    Scanner modeScanner = new Scanner(System.in) ;
-    Scanner setGameBoardSize = new Scanner (System.in) ;
-    MainMenue mainMenue = new MainMenue() ;
-    InputStreamPlayer player = new InputStreamPlayer() ;
+    private Scanner menueScanner = new Scanner(System.in) ;
+    private Scanner modeScanner = new Scanner(System.in) ;
+    private Scanner setGameBoardSize = new Scanner (System.in) ;
+    private MainMenue mainMenue = new MainMenue() ;
+    private InputStreamPlayer player = new InputStreamPlayer() ;
 
     int[] gameBoardSize = new int[]{5, 4};
 
@@ -20,13 +20,15 @@ public class InputStreamMainMenue {
      */
     public void pickMainMenueOption () {
         int option = menueScanner.nextInt() ;
-        if (option == 5) {
+        if (option == 6) {
         }
         else {
             switch (option) {
                 case 1:
                     if (mainMenue.getGameModeTime()) {
                         player = new InputStreamGameModeTime();
+                    } else if (mainMenue.getGameModeBot()) {
+                        player = new InputStreamGameModeBot();
                     } else {
                         player = new InputStreamPlayer();
                     }
@@ -35,8 +37,8 @@ public class InputStreamMainMenue {
                             gameBoardSize[1]);
 
                     if (MainMenue.getActivateHelp()) {
-                        OutputStream.printOpenBoard(player.game);
-                        player.game.timer(5000);
+                        OutputStream.printOpenBoard(player.getGame());
+                        player.getGame().timer(5000);
                         OutputStream.printSigthBlockade();
                     }
 
@@ -88,7 +90,7 @@ public class InputStreamMainMenue {
                             break;
                         }
                     }
-
+                    player.getGame().setGameBoardSize(x, y);
                     break;
 
                 case 4:
@@ -100,6 +102,12 @@ public class InputStreamMainMenue {
                         OutputStreamMainMenue.showActivateHelpSetTrue();
                     }
                     mainMenue.setTitleActivateHelp();
+                    break;
+                case 5:
+                    OutputStreamMainMenue.showBotDifficulty();
+                    int diffi = modeScanner.nextInt();
+                    if (diffi >= 1 && diffi <= 3)
+                        mainMenue.setBotDifficulty(diffi);
                     break;
             }
             OutputStreamMainMenue.showMainMenue();

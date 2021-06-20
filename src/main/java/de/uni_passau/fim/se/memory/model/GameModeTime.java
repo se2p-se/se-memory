@@ -1,9 +1,6 @@
 package de.uni_passau.fim.se.memory.model;
 
-import de.uni_passau.fim.se.memory.view.OutputStream;
 import de.uni_passau.fim.se.memory.view.OutputStreamGameModeTime;
-
-import java.util.ArrayList;
 
 public class GameModeTime extends Game {
     private long currentTime;
