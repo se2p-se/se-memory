@@ -9,8 +9,8 @@ public class MainMenue {
     private static String titleGameModeBot = "Play against Computer";
     private static String titleComputerDifficulty = "Change Bot Difficulty";
     private static String titleEnd = "Quit";
-    private boolean isGameModeBot = false ;
-    private boolean isGameModeTime = true ;
+    private static boolean isGameModeBot = false ;
+    private static boolean isGameModeTime = true ;
     private static boolean isActivateHelp = false ;
     private static int botDifficulty = 1;
 
@@ -73,11 +73,11 @@ public class MainMenue {
         }
     }
 
-    public void setBotDifficulty(int diff) {
+    public static void setBotDifficulty(int diff) {
         botDifficulty = diff;
     }
 
-    public int getBotDifficulty() {
+    public static int getBotDifficulty() {
         return botDifficulty;
     }
 }

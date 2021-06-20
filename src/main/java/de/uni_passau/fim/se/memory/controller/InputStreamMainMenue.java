@@ -7,11 +7,11 @@ import de.uni_passau.fim.se.memory.view.OutputStreamMainMenue;
 import java.util.Scanner;
 
 public class InputStreamMainMenue {
-    Scanner menueScanner = new Scanner(System.in) ;
-    Scanner modeScanner = new Scanner(System.in) ;
-    Scanner setGameBoardSize = new Scanner (System.in) ;
-    MainMenue mainMenue = new MainMenue() ;
-    InputStreamPlayer player = new InputStreamPlayer() ;
+    private Scanner menueScanner = new Scanner(System.in) ;
+    private Scanner modeScanner = new Scanner(System.in) ;
+    private Scanner setGameBoardSize = new Scanner (System.in) ;
+    private MainMenue mainMenue = new MainMenue() ;
+    private InputStreamPlayer player = new InputStreamPlayer() ;
 
     /**
      * user can pick an option
@@ -32,8 +32,8 @@ public class InputStreamMainMenue {
                     }
   
                     if (MainMenue.getActivateHelp()) {
-                        OutputStream.printOpenBoard(player.game);
-                        player.game.timer(5000);
+                        OutputStream.printOpenBoard(player.getGame());
+                        player.getGame().timer(5000);
                         OutputStream.printSigthBlockade();
                     }
 
@@ -67,7 +67,7 @@ public class InputStreamMainMenue {
                         OutputStreamMainMenue.showPleaseInsertGameBoardSizeY();
                         y = setGameBoardSize.nextInt();
                     }
-                    player.game.setGameBoardSize(x, y);
+                    player.getGame().setGameBoardSize(x, y);
                     break;
 
                 case 4:

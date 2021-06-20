@@ -23,8 +23,6 @@ public class OutputStream {
         for (int i = 0; i < 60; i++) {
             System.out.println("*");
         }
-
-
     }
 
         public static void printIntro () {
@@ -43,10 +41,6 @@ public class OutputStream {
         public static void printEndOfGame () {
             System.out.println("Your game of Memory is over. You uncovered all pairs." +
                     " Hope you have had a lot of fun and come back soon");
-        }
-
-        public static void printInvalidInput () {
-            System.out.println("Your input was invalid. Please try again: ");
         }
 
         public static void printSelectCol1 () {

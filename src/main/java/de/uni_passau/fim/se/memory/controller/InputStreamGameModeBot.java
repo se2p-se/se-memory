@@ -112,16 +112,17 @@ public class InputStreamGameModeBot extends InputStreamPlayer {
 
 				} else {
 					OutputStream.noPairFound();
+					Character ch = getGame().botMove();
+					while (ch != null) {
+						OutputStreamGameModeBot.printBotPickedMatch(ch);
+						ch = getGame().botMove();
+					}
+					OutputStreamGameModeBot.printBotFoundNoPair();
 				}
 
-				Character ch = getGame().botMove();
 				OutputStream.printBoard(game);
 				card1.flipCard();
 				card2.flipCard();
-				if (ch != null) {
-					OutputStreamGameModeBot.printBotPickedMatch(ch);
-				}
-				else OutputStreamGameModeBot.printBotFoundNoPair();
 
 			} catch (IllegalArgumentException x) {
 				OutputStream.wrongPick();

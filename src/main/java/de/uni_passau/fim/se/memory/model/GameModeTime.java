@@ -1,7 +1,5 @@
 package de.uni_passau.fim.se.memory.model;
 
-import java.util.ArrayList;
-
 public class GameModeTime extends Game {
     private long currentTime;
     private long start;
