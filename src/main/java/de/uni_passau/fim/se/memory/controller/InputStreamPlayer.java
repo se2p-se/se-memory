@@ -15,8 +15,8 @@ public class InputStreamPlayer {
      * Saving selected Cards
      */
 
-    Game game;
-    Scanner scanner = new Scanner(System.in);
+    protected Game game;
+    protected Scanner scanner = new Scanner(System.in);
 
     public InputStreamPlayer() {
         game = new Game();

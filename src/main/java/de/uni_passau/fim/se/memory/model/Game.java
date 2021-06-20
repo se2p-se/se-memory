@@ -7,7 +7,7 @@ public class Game {
 
 	private ArrayList<Card> cards;
 	private int[] gameBoardSize;
-	GameState gameState;
+	private GameState gameState;
 
 
 	public void setGameBoardSize(int x, int y) {
