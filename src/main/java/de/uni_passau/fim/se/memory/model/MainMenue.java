@@ -9,8 +9,12 @@ public class MainMenue {
     private static String titleGameModeBot = "Play against Computer";
     private static String titleComputerDifficulty = "Change Bot Difficulty";
     private static String titleEnd = "Quit";
-    private static boolean isGameModeBot = false ;
-    private static boolean isGameModeTime = true ;
+    private static String titleEasyGameBoardSize = "Easy (like a 3x4 field)";
+    private static String titleMediumGameBoardSize = "Medium (like a 4x4 field)";
+    private static String titleDifficultGameBoardSize = "Difficult (like a 5x4 field)";
+    private static String titleCostumGameBoardSize = "Costum";
+    private boolean isGameModeBot = false ;
+    private boolean isGameModeTime = true ;
     private static boolean isActivateHelp = false ;
     private static int botDifficulty = 1;
 
@@ -41,6 +45,22 @@ public class MainMenue {
     }
     public static String getTitleEnd () {
         return titleEnd;
+    }
+
+    public static String getTitleEasyGameBoardSize() {
+        return titleEasyGameBoardSize;
+    }
+
+    public static String getTitleMediumGameBoardSize() {
+        return titleMediumGameBoardSize;
+    }
+
+    public static String getTitleDifficultGameBoardSize() {
+        return titleDifficultGameBoardSize;
+    }
+
+    public static String getTitleCostumGameBoardSize() {
+        return titleCostumGameBoardSize;
     }
 
     public void setGameModeTime(boolean gameModeTime) {
