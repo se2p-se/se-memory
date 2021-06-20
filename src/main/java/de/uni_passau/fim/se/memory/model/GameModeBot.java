@@ -12,13 +12,54 @@ public class GameModeBot extends Game {
 	}
 
 	private Card botPickPseudoRandomCard() {
+
+		int diff = MainMenue.getBotDifficulty();
 		Random r = new Random();
 		int cardsLeft = 0;
 		for (Card c : getCards()) cardsLeft += c.getValue() == null ? 0 : 1;
 		if (cardsLeft > 0) cardsLeft--; // arrays start at 0
-		int result = r.nextInt(cardsLeft);
-		for (Card c : getCards()) if (c.getValue() != null && result-- == 0)
-			return c;
+
+		switch (diff)
+		{
+			case 1:
+			default:
+			{
+				int result = r.nextInt(cardsLeft);
+				for (Card c : getCards()) if (c.getValue() != null && result-- == 0)
+					return c;
+			}
+			case 2:
+			case 3:
+			{
+				if (diff == 3)
+				{
+					boolean pickPair = r.nextInt(100) % 2 == 0;
+					if (pickPair)
+					{
+						for (Card c : getCards())
+						{
+							if (c.getValue() != null && botKnownCards.stream().anyMatch(
+									(p) -> p.getValue() == c.getValue() && p != c))
+							{
+								return c;
+							}
+						}
+					}
+				}
+
+				if (cardsLeft > botKnownCards.size())
+					cardsLeft -= botKnownCards.size();
+				int result = r.nextInt(cardsLeft);
+				for (Card c : getCards())
+					if (c.getValue() != null && botKnownCards.contains(c) == false
+							&& result-- == 0)
+						return c;
+			}
+
+		}
+
+
+
 		return null;
 	}
 

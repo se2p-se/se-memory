@@ -11,8 +11,6 @@ import java.util.Scanner;
 
 public class InputStreamGameModeTime extends InputStreamPlayer {
 
-    Scanner scanner = new Scanner(System.in);
-
     public InputStreamGameModeTime() {
         game = new GameModeTime();
     }
