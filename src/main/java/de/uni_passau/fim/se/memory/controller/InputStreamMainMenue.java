@@ -90,7 +90,6 @@ public class InputStreamMainMenue {
                             break;
                         }
                     }
-                    player.getGame().setGameBoardSize(x, y);
                     break;
 
                 case 4:
