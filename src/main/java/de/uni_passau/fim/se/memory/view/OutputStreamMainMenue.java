@@ -12,6 +12,13 @@ public class OutputStreamMainMenue {
         System.out.println("(5) for " + MainMenue.getTitleComputerDifficulty());
         System.out.println("(6) for " + MainMenue.getTitleEnd());
     }
+    public static void showGameBoardSizeSelectionMenu(){
+        System.out.println("Which game board size do you want?");
+        System.out.println("(1) for " + MainMenue.getTitleEasyGameBoardSize());
+        System.out.println("(2) for " + MainMenue.getTitleMediumGameBoardSize());
+        System.out.println("(3) for " + MainMenue.getTitleDifficultGameBoardSize());
+        System.out.println("(4) for " + MainMenue.getTitleCostumGameBoardSize());
+    }
     public static void showModeTime () {
         System.out.println("(1) for " + MainMenue.getTitleGameModeTime());
     }

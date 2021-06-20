@@ -13,6 +13,8 @@ public class InputStreamMainMenue {
     private MainMenue mainMenue = new MainMenue() ;
     private InputStreamPlayer player = new InputStreamPlayer() ;
 
+    int[] gameBoardSize = new int[]{5, 4};
+
     /**
      * user can pick an option
      */
@@ -30,7 +32,10 @@ public class InputStreamMainMenue {
                     } else {
                         player = new InputStreamPlayer();
                     }
-  
+
+                    player.game.setGameBoardSize(gameBoardSize[0],
+                            gameBoardSize[1]);
+
                     if (MainMenue.getActivateHelp()) {
                         OutputStream.printOpenBoard(player.getGame());
                         player.getGame().timer(5000);
@@ -56,16 +61,34 @@ public class InputStreamMainMenue {
                     }
                     break;
                 case 3:
-                    OutputStreamMainMenue.showPleaseInsertGameBoardSizeX();
-                    int x = setGameBoardSize.nextInt();
-                    OutputStreamMainMenue.showPleaseInsertGameBoardSizeY();
-                    int y = setGameBoardSize.nextInt();
-                    while (x*y > 20 || (x*y) % 2 != 0 || x<=0 || y<= 0)  {
-                        OutputStreamMainMenue.showSizeNotPossible();
-                        OutputStreamMainMenue.showPleaseInsertGameBoardSizeX();
-                        x = setGameBoardSize.nextInt();
-                        OutputStreamMainMenue.showPleaseInsertGameBoardSizeY();
-                        y = setGameBoardSize.nextInt();
+                    while (true) {
+                        OutputStreamMainMenue.showGameBoardSizeSelectionMenu();
+                        int difficulty = setGameBoardSize.nextInt();
+
+                        if (difficulty == 1) {
+                            gameBoardSize = new int[]{3, 4};
+                            break;
+                        } else if (difficulty == 2) {
+                            gameBoardSize = new int[]{4, 4};
+                            break;
+                        } else if (difficulty == 3) {
+                            gameBoardSize = new int[]{5, 4};
+                            break;
+                        } else if (difficulty == 4) {
+                            OutputStreamMainMenue.showPleaseInsertGameBoardSizeX();
+                            int x = setGameBoardSize.nextInt();
+                            OutputStreamMainMenue.showPleaseInsertGameBoardSizeY();
+                            int y = setGameBoardSize.nextInt();
+                            while (x * y > 20 || (x * y) % 2 != 0 || x <= 0 || y <= 0) {
+                                OutputStreamMainMenue.showSizeNotPossible();
+                                OutputStreamMainMenue.showPleaseInsertGameBoardSizeX();
+                                x = setGameBoardSize.nextInt();
+                                OutputStreamMainMenue.showPleaseInsertGameBoardSizeY();
+                                y = setGameBoardSize.nextInt();
+                            }
+                            gameBoardSize = new int[]{x, y};
+                            break;
+                        }
                     }
                     player.getGame().setGameBoardSize(x, y);
                     break;

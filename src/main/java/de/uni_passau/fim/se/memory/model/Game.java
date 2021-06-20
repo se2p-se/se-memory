@@ -12,6 +12,9 @@ public class Game {
 
 	public void setGameBoardSize(int x, int y) {
 		this.gameBoardSize = new int[]{x,y};
+		cards.clear();
+		generateCards();
+		mixCards();
 	}
 
 	public int[] getGameBoardSize() {
