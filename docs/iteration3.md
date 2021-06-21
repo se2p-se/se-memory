@@ -8,7 +8,7 @@
 
 Killian Lichentauner: #199, #200, #201, #202, #203, #204, #205, #206, #207, #208, #209, #210
 
-Sebastian Redinger:  
+Sebastian Redinger: #231, #232, #233, #234, #235, #236  
 
 Valentin Damjantschitsch: #211, #212, #213, #214, #215, #216, #217, #218, #219, #220, #221, #222, #223 
 
