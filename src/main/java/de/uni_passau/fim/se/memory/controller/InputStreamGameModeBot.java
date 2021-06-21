@@ -116,6 +116,10 @@ public class InputStreamGameModeBot extends InputStreamPlayer {
 					while (ch != null) {
 						OutputStreamGameModeBot.printBotPickedMatch(ch);
 						ch = getGame().botMove();
+						if (game.isGameFinished()) {
+							game.setGameState(GameState.END);
+							return;
+						}
 					}
 					OutputStreamGameModeBot.printBotFoundNoPair();
 				}

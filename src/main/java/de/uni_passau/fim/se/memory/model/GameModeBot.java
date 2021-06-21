@@ -17,7 +17,6 @@ public class GameModeBot extends Game {
 		Random r = new Random();
 		int cardsLeft = 0;
 		for (Card c : getCards()) cardsLeft += c.getValue() == null ? 0 : 1;
-		if (cardsLeft > 0) cardsLeft--; // arrays start at 0
 
 		switch (diff)
 		{
@@ -70,6 +69,9 @@ public class GameModeBot extends Game {
 
 		c1 = botPickPseudoRandomCard();
 
+		if (c1 == null)
+			return null;
+
 		for (Card c : botKnownCards) {
 			if (c.getValue() == c1.getValue() && c != c1) {
 				hasMatch = true;
@@ -78,14 +80,15 @@ public class GameModeBot extends Game {
 			}
 		}
 
+		int maxTries = 3;
 		if (botKnownCards.isEmpty() || hasMatch == false)
 		{
 			do {
 				c2 = botPickPseudoRandomCard();
-			} while (c1 == c2);
+			} while (c1 == c2 && maxTries-- > 0);
 		}
 
-		if (c1.getValue() == c2.getValue()) {
+		if (c1 != null && c2 != null && c1.getValue() == c2.getValue()) {
 			Character ret = c1.getValue();
 			c1.setValue(null);
 			c2.setValue(null);
@@ -99,7 +102,7 @@ public class GameModeBot extends Game {
 				break;
 			}
 		}
-		if (hasMatch == false) botKnownCards.add(c1);
+		if (hasMatch == false && c1 != null) botKnownCards.add(c1);
 		hasMatch = false;
 		for (Card c : botKnownCards) {
 			if (c == c2) {
@@ -107,8 +110,7 @@ public class GameModeBot extends Game {
 				break;
 			}
 		}
-
-		if (hasMatch == false) botKnownCards.add(c2);
+		if (hasMatch == false && c2 != null) botKnownCards.add(c2);
 
 		return null;
 	}
