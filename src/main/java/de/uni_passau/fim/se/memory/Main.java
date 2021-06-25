@@ -20,7 +20,7 @@ public final class Main {
      * @param args command line arguments passed to the program
      */
     public static void main(String[] args) {
-        OutputStream.printIntro();
+        System.out.println(OutputStream.printIntro());
         OutputStreamMainMenue.showMainMenue();
         InputStreamMainMenue mainMenue = new InputStreamMainMenue();
         mainMenue.pickMainMenueOption();
