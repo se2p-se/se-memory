@@ -1,4 +1,5 @@
 package de.uni_passau.fim.se.memory;
+
 import de.uni_passau.fim.se.memory.view.GUI;
 
 /**
@@ -18,6 +19,6 @@ public final class Main {
      * @param args command line arguments passed to the program
      */
     public static void main(String[] args) {
-        GUI.launch();
+        GUI.start_gui();
     }
 }
