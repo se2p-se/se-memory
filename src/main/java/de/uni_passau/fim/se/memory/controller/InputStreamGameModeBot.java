@@ -45,7 +45,7 @@ public class InputStreamGameModeBot extends InputStreamPlayer {
 
 			try {
 
-				OutputStream.printSelectCol1();
+				System.out.println(OutputStream.printSelectCol1());
 				col1 = scanner.nextInt();
 
 				if (col1 == 0) {
@@ -53,7 +53,7 @@ public class InputStreamGameModeBot extends InputStreamPlayer {
 					break;
 				}
 
-				OutputStream.printSelectRow1();
+				System.out.println(OutputStream.printSelectRow1());
 				row1 = scanner.nextInt();
 
 				if (row1 == 0) {
@@ -66,11 +66,11 @@ public class InputStreamGameModeBot extends InputStreamPlayer {
 
 
 				if (card1.getValue() == null) {
-					OutputStream.chosenCard1IsNull();
+					System.out.println(OutputStream.chosenCard1IsNull());
 					return;
 				}
 
-				OutputStream.printSelectCol2();
+				System.out.println(OutputStream.printSelectCol2());
 				col2 = scanner.nextInt();
 
 				if (col2 == 0) {
@@ -78,7 +78,7 @@ public class InputStreamGameModeBot extends InputStreamPlayer {
 					break;
 				}
 
-				OutputStream.printSelectRow2();
+				System.out.println(OutputStream.printSelectRow2());
 				row2 = scanner.nextInt();
 
 				if (row2 == 0) {
@@ -91,11 +91,11 @@ public class InputStreamGameModeBot extends InputStreamPlayer {
 
 
 				if (card2.getValue() == null) {
-					OutputStream.chosenCard2IsNull();
+					System.out.println(OutputStream.chosenCard2IsNull());
 				}
 
 				if (row1 == row2 && col1 == col2) {
-					OutputStream.sameCardsChosen();
+					System.out.println(OutputStream.sameCardsChosen());
 					return;
 				}
 
@@ -103,7 +103,7 @@ public class InputStreamGameModeBot extends InputStreamPlayer {
 				card2.flipCard();
 
 				if (card1.compareWith(card2)) {
-					OutputStream.pairFound(card1);
+					System.out.println(OutputStream.pairFound(card1));
 					Game.removeCards(card1, card2);
 					if (game.isGameFinished()) {
 						game.setGameState(GameState.END);
@@ -111,27 +111,27 @@ public class InputStreamGameModeBot extends InputStreamPlayer {
 					}
 
 				} else {
-					OutputStream.noPairFound();
+					System.out.println(OutputStream.noPairFound());
 					Character ch = getGame().botMove();
 					while (ch != null) {
-						OutputStreamGameModeBot.printBotPickedMatch(ch);
+						System.out.println(OutputStreamGameModeBot.printBotPickedMatch(ch));
 						ch = getGame().botMove();
 						if (game.isGameFinished()) {
 							game.setGameState(GameState.END);
 							return;
 						}
 					}
-					OutputStreamGameModeBot.printBotFoundNoPair();
+					System.out.println(OutputStreamGameModeBot.printBotFoundNoPair());
 				}
 
-				OutputStream.printBoard(game);
+				System.out.println(OutputStream.printBoard(game));
 				card1.flipCard();
 				card2.flipCard();
 
 			} catch (IllegalArgumentException x) {
-				OutputStream.wrongPick();
+				System.out.println(OutputStream.wrongPick());
 			} catch (InputMismatchException x) {
-				OutputStream.invalidInput();
+				System.out.println(OutputStream.invalidInput());
 				scanner = new Scanner(System.in);
 			}
 		}

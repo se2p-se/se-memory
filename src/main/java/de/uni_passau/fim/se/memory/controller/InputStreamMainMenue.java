@@ -37,7 +37,7 @@ public class InputStreamMainMenue {
                             gameBoardSize[1]);
 
                     if (MainMenue.getActivateHelp()) {
-                        OutputStream.printOpenBoard(player.getGame());
+                        System.out.println(OutputStream.printOpenBoard(player.getGame()));
                         player.getGame().timer(5000);
                         OutputStream.printSigthBlockade();
                     }
