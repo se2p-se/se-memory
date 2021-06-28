@@ -5,12 +5,12 @@ import de.uni_passau.fim.se.memory.model.Game;
 
 public class OutputStream {
 
-    public static void printBoard(Game board) {
-        System.out.println(board.toString());
+    public static String printBoard(Game board) {
+        return board.toString();
     }
 
-    public static void printOpenBoard(Game board){
-        System.out.println(board.openBoardToString());
+    public static String printOpenBoard(Game board){
+        return board.openBoardToString();
     }
 
     /**
@@ -25,8 +25,8 @@ public class OutputStream {
         }
     }
 
-        public static void printIntro () {
-            System.out.println(
+        public static String printIntro () {
+            return
                     " /$$      /$$ /$$$$$$$$ /$$      /$$  /$$$$$$  /$$$$$$$  /$$     /$$\n"
                             + "| $$$    /$$$| $$_____/| $$$    /$$$ /$$__  $$| $$__  $$|  $$   /$$/\n"
                             + "| $$$$  /$$$$| $$      | $$$$  /$$$$| $$  \\ $$| $$  \\ $$ \\  $$ /$$/ \n"
@@ -35,61 +35,61 @@ public class OutputStream {
                             + "| $$\\  $ | $$| $$      | $$\\  $ | $$| $$  | $$| $$  \\ $$    | $$    \n"
                             + "| $$ \\/  | $$| $$$$$$$$| $$ \\/  | $$|  $$$$$$/| $$  | $$    | $$    \n"
                             + "|__/     |__/|________/|__/     |__/ \\______/ |__/  |__/    |__/    \n"
-                            + "                                                                    \n");
+                            + "                                                                    \n";
         }
 
-        public static void printEndOfGame () {
-            System.out.println("Your game of Memory is over. You uncovered all pairs." +
-                    " Hope you have had a lot of fun and come back soon");
+        public static String printEndOfGame () {
+            return "Your game of Memory is over. You uncovered all pairs." +
+                    " Hope you have had a lot of fun and come back soon";
         }
 
-        public static void printSelectCol1 () {
-            System.out.println("Choose card 1 and write the corresponding col (Only choose Ints between 1 - 5 or 0 to quit) : ");
+        public static String printSelectCol1 () {
+            return "Choose card 1 and write the corresponding col (Only choose Ints between 1 - 5 or 0 to quit) : ";
         }
 
-        public static void printSelectRow1 () {
-            System.out.println("Choose card 1 and write the corresponding row (Only choose Ints between 1 - 4 or 0 to quit) : ");
+        public static String printSelectRow1 () {
+            return "Choose card 1 and write the corresponding row (Only choose Ints between 1 - 4 or 0 to quit) : ";
         }
 
-        public static void printSelectCol2 () {
-            System.out.println("Choose card 2 and write the corresponding col (Only choose Ints between 1 - 5 or 0 to quit) : ");
+        public static String printSelectCol2 () {
+            return "Choose card 2 and write the corresponding col (Only choose Ints between 1 - 5 or 0 to quit) : ";
         }
 
-        public static void printSelectRow2 () {
-            System.out.println("Choose card 2 and write the corresponding row (Only choose Ints between 1 - 4 or 0 to quit) : ");
+        public static String printSelectRow2 () {
+          return "Choose card 2 and write the corresponding row (Only choose Ints between 1 - 4 or 0 to quit) : ";
         }
 
-        public static void sameCardsChosen () {
-            System.out.println("You chose the same cards, pleas choose the second card again: ");
+        public static String sameCardsChosen () {
+            return "You chose the same cards, pleas choose the second card again: ";
         }
 
-        public static void chosenCard2IsNull () {
-            System.out.println("The second card you chose is invalid, please "
-                    + "select again:");
+        public static String chosenCard2IsNull () {
+          return "The second card you chose is invalid, please "
+                    + "select again:";
         }
 
-        public static void chosenCard1IsNull () {
-            System.out.println("The first card you chose is invalid, please "
-                    + "select again: ");
+        public static String chosenCard1IsNull () {
+            return "The first card you chose is invalid, please "
+                    + "select again: ";
         }
 
-        public static void pairFound (Card card){
-            System.out.println("Congrats you found a pair with the value " + card.getValue() + "!");
+        public static String pairFound (Card card){
+            return "Congrats you found a pair with the value " + card.getValue() + "!";
         }
 
-        public static void noPairFound () {
-            System.out.println("No pair found, try again.");
+        public static String noPairFound () {
+            return "No pair found, try again.";
         }
 
-        public static void nextRound () {
-            System.out.println("Starting next round.");
+        public static String nextRound () {
+            return "Starting next round.";
         }
 
-        public static void wrongPick () {
-        System.out.println ("Wrong column or row picked!") ;
+        public static String wrongPick () {
+        return "Wrong column or row picked!" ;
         }
 
-        public static void invalidInput () {
-        System.out.println ("Invalid input!") ;
+        public static String invalidInput () {
+        return "Invalid input!" ;
         }
     }
