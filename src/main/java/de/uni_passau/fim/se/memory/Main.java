@@ -1,6 +1,9 @@
 package de.uni_passau.fim.se.memory;
 
+import de.uni_passau.fim.se.memory.controller.InputStreamMainMenue;
 import de.uni_passau.fim.se.memory.view.GUI;
+import de.uni_passau.fim.se.memory.view.OutputStream;
+import de.uni_passau.fim.se.memory.view.OutputStreamMainMenue;
 
 /**
  * Main class and main entry point. The program starts within this.
@@ -19,10 +22,6 @@ public final class Main {
      * @param args command line arguments passed to the program
      */
     public static void main(String[] args) {
-        System.out.println(OutputStream.printIntro());
-        OutputStreamMainMenue.showMainMenue();
-        InputStreamMainMenue mainMenue = new InputStreamMainMenue();
-        mainMenue.pickMainMenueOption();
         GUI.start_gui();
     }
 }
