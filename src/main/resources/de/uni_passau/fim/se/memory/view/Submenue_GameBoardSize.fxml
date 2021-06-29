@@ -6,10 +6,10 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="227.0" prefWidth="436.0" style="-fx-background-color: FFffce96; -fx-border-style: line-cap round;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.uni_passau.fim.se.memory.controller.Controller">
     <children>
-        <Button fx:id="back" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#back" style="-fx-background-color: #ff0030#ff0030; -fx-font: #ff0000;" text="Back" textFill="#fff1f2" />
+        <Button fx:id="backBoard" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#back" style="-fx-background-color: #ff0030#ff0030; -fx-font: #ff0000;" text="Back" textFill="#fff1f2" />
         <Label fx:id="label" layoutX="61.0" layoutY="9.0" style="-fx-font-style: italic; -fx-font-size: 30;" text="Select Game-Board-Size" textFill="#ff0030" />
-        <Button fx:id="bot" layoutX="162.0" layoutY="114.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="113.0" style="-fx-background-color: #ff0030;" text="Medium" textFill="#fff1f2" />
-        <Button fx:id="bot1" layoutX="162.0" layoutY="151.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="113.0" style="-fx-background-color: #ff0030;" text="Difficult" textFill="#fff1f2" />
-        <Button fx:id="bot2" layoutX="162.0" layoutY="75.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="113.0" style="-fx-background-color: #ff0030;" text="Easy" textFill="#fff1f2" />
+        <Button fx:id="mediumButton" layoutX="162.0" layoutY="114.0" mnemonicParsing="false" onAction="#mediumBoard" prefHeight="26.0" prefWidth="113.0" style="-fx-background-color: #ff0030;" text="Medium" textFill="#fff1f2" />
+        <Button fx:id="difficultButton" layoutX="162.0" layoutY="151.0" mnemonicParsing="false" onAction="#difficultBoard" prefHeight="26.0" prefWidth="113.0" style="-fx-background-color: #ff0030;" text="Difficult" textFill="#fff1f2" />
+        <Button fx:id="easyButton" layoutX="162.0" layoutY="75.0" mnemonicParsing="false" onAction="#easyBoard" prefHeight="26.0" prefWidth="113.0" style="-fx-background-color: #ff0030;" text="Easy" textFill="#fff1f2" />
     </children>
 </AnchorPane>
