@@ -23,4 +23,3 @@ public final class Main {
         GUI.start_gui();
     }
 }
-// test
