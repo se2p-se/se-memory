@@ -6,11 +6,25 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.io.IOException;
+
 public class GUI extends Application {
+
+    static private Class ResourceDirectory = null;
+
+    static public Scene switchScene(Stage stage, String newScene) throws IOException {
+        Parent root = FXMLLoader.load(ResourceDirectory.getResource(newScene));
+        Scene scene = new Scene (root);
+        stage.setScene(scene);
+        stage.show();
+
+        return scene;
+    }
 
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("Submenue_GameMode.fxml"));
+        ResourceDirectory = getClass();
+        Parent root = FXMLLoader.load(ResourceDirectory.getResource("Submenue_GameMode.fxml"));
 
         Scene scene = new Scene(root);
 
