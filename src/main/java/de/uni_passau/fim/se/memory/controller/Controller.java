@@ -3,6 +3,7 @@ package de.uni_passau.fim.se.memory.controller;
 import de.uni_passau.fim.se.memory.model.Game;
 import de.uni_passau.fim.se.memory.model.MainMenue;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -20,7 +21,7 @@ public class Controller {
 
 
 
-    public void back(ActionEvent event) throws IOException {
+    @FXML public void back(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("MainMenueTest.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene (root);
@@ -28,7 +29,7 @@ public class Controller {
         stage.show();
     }
 
-    public void playAgainstTime(ActionEvent event) throws IOException{
+    @FXML public void playAgainstTime(ActionEvent event) throws IOException{
         mainMenue.setGameModeTime(true);
         mainMenue.setGameModeBot(false);
         Parent root = FXMLLoader.load(getClass().getResource("MainMenueTest.fxml"));
@@ -38,7 +39,7 @@ public class Controller {
         stage.show();
     }
 
-    public void playAgainstBot(ActionEvent event) throws IOException{
+    @FXML public void playAgainstBot(ActionEvent event) throws IOException{
         mainMenue.setGameModeBot(true);
         mainMenue.setGameModeTime(false);
         Parent root = FXMLLoader.load(getClass().getResource("MainMenueTest.fxml"));
@@ -48,7 +49,7 @@ public class Controller {
         stage.show();
     }
 
-    public void easyBoard(ActionEvent event) throws IOException{
+    @FXML public void easyBoard(ActionEvent event) throws IOException{
         game.setGameBoardSize(3,4);
         Parent root = FXMLLoader.load(getClass().getResource("MainMenueTest.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -57,7 +58,7 @@ public class Controller {
         stage.show();
     }
 
-    public void mediumBoard(ActionEvent event) throws IOException{
+    @FXML public void mediumBoard(ActionEvent event) throws IOException{
         game.setGameBoardSize(4,4);
         Parent root = FXMLLoader.load(getClass().getResource("MainMenueTest.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -66,7 +67,7 @@ public class Controller {
         stage.show();
     }
 
-    public void difficultBoard(ActionEvent event) throws IOException {
+    @FXML public void difficultBoard(ActionEvent event) throws IOException {
         game.setGameBoardSize(5,4);
         Parent root = FXMLLoader.load(getClass().getResource("MainMenueTest.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
