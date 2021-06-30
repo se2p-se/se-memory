@@ -3,47 +3,51 @@ package de.uni_passau.fim.se.memory.view;
 import de.uni_passau.fim.se.memory.model.MainMenue;
 
 public class OutputStreamMainMenue {
-    public static void showMainMenue () {
-        System.out.println("You are in the Main Menue! Choose an Option!");
-        System.out.println("(1) for " + MainMenue.getTitleStartGame());
-        System.out.println("(2) for " + MainMenue.getTitleGameMode());
-        System.out.println("(3) for " + MainMenue.getTitleGameBoardSize());
-        System.out.println("(4) for " + MainMenue.getTitleActivateHelp());
-        System.out.println("(5) for " + MainMenue.getTitleComputerDifficulty());
-        System.out.println("(6) for " + MainMenue.getTitleEnd());
+    public static String showMainMenue () {
+        StringBuilder sb = new StringBuilder();
+        sb.append("You are in the Main Menue! Choose an Option!\n");
+        sb.append("(1) for " + MainMenue.getTitleStartGame() + "\n");
+        sb.append("(2) for " + MainMenue.getTitleGameMode() + "\n");
+        sb.append("(3) for " + MainMenue.getTitleGameBoardSize() + "\n");
+        sb.append("(4) for " + MainMenue.getTitleActivateHelp() + "\n");
+        sb.append("(5) for " + MainMenue.getTitleComputerDifficulty() + "\n");
+        sb.append("(6) for " + MainMenue.getTitleEnd() + "\n");
+        return sb.toString();
     }
-    public static void showGameBoardSizeSelectionMenu(){
-        System.out.println("Which game board size do you want?");
-        System.out.println("(1) for " + MainMenue.getTitleEasyGameBoardSize());
-        System.out.println("(2) for " + MainMenue.getTitleMediumGameBoardSize());
-        System.out.println("(3) for " + MainMenue.getTitleDifficultGameBoardSize());
-        System.out.println("(4) for " + MainMenue.getTitleCostumGameBoardSize());
+    public static String showGameBoardSizeSelectionMenu(){
+        StringBuilder sb = new StringBuilder();
+        sb.append("Which game board size do you want?\n");
+        sb.append("(1) for " + MainMenue.getTitleEasyGameBoardSize() + "\n");
+        sb.append("(2) for " + MainMenue.getTitleMediumGameBoardSize() + "\n");
+        sb.append("(3) for " + MainMenue.getTitleDifficultGameBoardSize() + "\n");
+        sb.append("(4) for " + MainMenue.getTitleCostumGameBoardSize() + "\n");
+        return sb.toString();
     }
-    public static void showModeTime () {
-        System.out.println("(1) for " + MainMenue.getTitleGameModeTime());
+    public static String showModeTime () {
+        return "(1) for " + MainMenue.getTitleGameModeTime();
     }
-    public static void showModeBot () {
-        System.out.println("(2) for " + MainMenue.getTitleGameModeBot());
+    public static String showModeBot () {
+        return "(2) for " + MainMenue.getTitleGameModeBot();
     }
-    public static void showBotDifficulty () {
-        System.out.println("(1) for Easy\n(2) for Normal\n(3) for Hard");
+    public static String showBotDifficulty () {
+        return "(1) for Easy\n(2) for Normal\n(3) for Hard";
     }
-    public static void showActivateHelpSetFalse () {
-            System.out.println("You just disabled Help!");
+    public static String showActivateHelpSetFalse () {
+            return "You just disabled Help!";
         }
-    public static void showActivateHelpSetTrue () {
-        System.out.println("You just enabled Help!");
+    public static String showActivateHelpSetTrue () {
+        return "You just enabled Help!";
     }
-    public static void showPleaseInsertGameBoardSizeX () {
-        System.out.println("How many Cols do you want to have?");
+    public static String showPleaseInsertGameBoardSizeX () {
+        return "How many Cols do you want to have?";
     }
-    public static void showPleaseInsertGameBoardSizeY () {
-        System.out.println("How many Rows do you want to have?");
+    public static String showPleaseInsertGameBoardSizeY () {
+        return "How many Rows do you want to have?";
     }
-    public static void showBackButton () {
-        System.out.println("(An other Int) for Back");
+    public static String showBackButton () {
+        return "(An other Int) for Back";
     }
-    public static void showSizeNotPossible () {
-        System.out.println("Not possible! Please choose a field-size with max. 10 and min. 2 Pairs!");
+    public static String showSizeNotPossible () {
+        return "Not possible! Please choose a field-size with max. 10 and min. 2 Pairs!";
     }
 }

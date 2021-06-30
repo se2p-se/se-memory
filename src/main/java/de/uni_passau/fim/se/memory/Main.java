@@ -1,9 +1,7 @@
 package de.uni_passau.fim.se.memory;
 
-import de.uni_passau.fim.se.memory.controller.InputStreamMainMenue;
+
 import de.uni_passau.fim.se.memory.view.GUI;
-import de.uni_passau.fim.se.memory.view.OutputStream;
-import de.uni_passau.fim.se.memory.view.OutputStreamMainMenue;
 
 /**
  * Main class and main entry point. The program starts within this.
