@@ -4,6 +4,8 @@ import de.uni_passau.fim.se.memory.model.Card;
 import de.uni_passau.fim.se.memory.model.Game;
 import de.uni_passau.fim.se.memory.model.MainMenue;
 import de.uni_passau.fim.se.memory.view.GUI;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,12 +13,14 @@ import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -28,40 +32,14 @@ class ImageCharMapping {
 
 public class Controller {
     private Game game;
-
-    private ImageView[] imageViewCards;
-    private boolean initialize;
     private MainMenue mainMenue;
 
     @FXML
-    private AnchorPane anchorPane0;
-    @FXML
     private GridPane gridPane0;
-
-    @FXML
-    public ImageView Card_00;
-    public ImageView Card_01;
-    public ImageView Card_02;
-    public ImageView Card_03;
-    public ImageView Card_10;
-    public ImageView Card_11;
-    public ImageView Card_12;
-    public ImageView Card_13;
-    public ImageView Card_20;
-    public ImageView Card_21;
-    public ImageView Card_22;
-    public ImageView Card_23;
-    public ImageView Card_30;
-    public ImageView Card_31;
-    public ImageView Card_32;
-    public ImageView Card_33;
-    public ImageView Card_40;
-    public ImageView Card_41;
-    public ImageView Card_42;
-    public ImageView Card_43;
 
     ArrayList<ImageCharMapping> cardFront = new ArrayList<>();
     Image cardBack = new Image("de/uni_passau/fim/se/memory/view/images/CardBack.png");
+    ArrayList<ImageView> imageViews = new ArrayList<>();
 
     @FXML public void initialize() {
 
@@ -87,7 +65,7 @@ public class Controller {
             GridPane.setMargin(dynCard, new Insets(5));
             dynCard.setFitWidth(128);
             dynCard.setPreserveRatio(true);
-            dynCard.setOnMouseClicked(this::showImage);
+            dynCard.setOnMouseClicked(this::OnClickCard);
 
             gridPane0.add(dynCard, x, y);
 
@@ -101,7 +79,6 @@ public class Controller {
 
     public Controller() {
         game = new Game();
-        initialize = true;
         mainMenue = new MainMenue();
     }
 
@@ -156,16 +133,72 @@ public class Controller {
         stage.show();
     }
 
-    public void showImage(MouseEvent click){
+    public void OnClickCard(MouseEvent click){
 
         ImageView view = (ImageView)click.getTarget();
 
         Card selectedCard = game.selectCard(GridPane.getRowIndex(view) + 1,
                 GridPane.getColumnIndex(view) + 1);
 
-        selectedCard.flipCard();
+        if (selectedCard.getIsHidden())
+            selectedCard.flipCard();
 
-        view.setImage(selectedCard.getIsHidden() ? cardBack :
-                cardFront.get(selectedCard.getValue() - 'A').img);
+        updateCards();
+
+        ArrayList<Card> visibleCards = new ArrayList<>();
+
+        for (Card c : game.getCards()) {
+            if (!c.getIsHidden() && c.getValue() != null)
+                visibleCards.add(c);
+        }
+
+        if (visibleCards.size() == 2) {
+            Alert alert = new Alert( Alert.AlertType.INFORMATION );
+            alert.setTitle( "Memory" );
+            alert.setHeaderText( "Pair of cards" );
+            if (visibleCards.get(0).compareWith(visibleCards.get(1))) {
+                visibleCards.get(0).setValue(null);
+                visibleCards.get(1).setValue(null);
+                alert.setContentText("You found a pair!");
+            } else {
+                alert.setContentText("You found no pair. :-(");
+            }
+
+            Timeline idlestage =
+                    new Timeline( new KeyFrame( Duration.millis(2000),
+                            event -> {
+                                alert.setResult(ButtonType.OK);
+                                alert.hide();
+                                visibleCards.get(0).flipCard();
+                                visibleCards.get(1).flipCard();
+                                updateCards();
+                            }) );
+            idlestage.setCycleCount( 1 );
+            idlestage.play();
+            alert.show();
+        }
+
+
+
+        updateCards();
+    }
+
+    private void updateCards() {
+        for (var c : gridPane0.getChildren()) {
+            ImageView view = (ImageView)c;
+
+            Card selectedCard = game.selectCard(GridPane.getRowIndex(view) + 1,
+                    GridPane.getColumnIndex(view) + 1);
+
+            Character cardVal = selectedCard.getValue();
+
+            if (cardVal == null) {
+                view.setImage(null);
+                continue;
+            }
+
+            view.setImage(selectedCard.getIsHidden() ? cardBack :
+                    cardFront.get(cardVal - 'A').img);
+        }
     }
 }
