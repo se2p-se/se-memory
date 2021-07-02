@@ -10,11 +10,8 @@ import de.uni_passau.fim.se.memory.view.OutputStreamMainMenue;
 import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.image.Image;
@@ -25,7 +22,6 @@ import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import javafx.scene.control.Label;
-import javafx.util.Duration;
 
 
 import java.io.IOException;
@@ -37,8 +33,13 @@ class ImageCharMapping {
 }
 
 public class Controller {
-    MainMenue mainMenue = new MainMenue();
-    Game game = new Game();
+    private MainMenue mainMenue;
+    private Game game;
+
+    public Controller() {
+        this.mainMenue = new MainMenue();
+        this.game = new Game();
+    }
 
     @FXML
     private GridPane gridPane0;
@@ -48,6 +49,10 @@ public class Controller {
     ArrayList<ImageView> imageViews = new ArrayList<>();
 
     @FXML public void initialize() {
+
+        if (gridPane0 == null) {
+            return;
+        }
 
         // dynamically load card fronts and assign Characters
         for (int i = 1; i < 11; ++i) {
@@ -88,8 +93,6 @@ public class Controller {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         GUI.switchScene(stage, "mainMenue.fxml");
         makeFadeOut();
-
-
     }
 
 
@@ -133,10 +136,8 @@ public class Controller {
 
     @FXML
     public void startGameButton(ActionEvent event) throws IOException {
-        if (mainMenue.getGameModeBot()) {
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            GUI.switchScene(stage, "mainMenue.fxml");
-        }
+            GUI.switchScene(stage, "gameBoard_5x4.fxml");
     }
 
     @FXML
@@ -174,7 +175,6 @@ public class Controller {
         fadeTransition.setFromValue(1);
         fadeTransition.setToValue(0);
         fadeTransition.play();
-
     }
 
     @FXML
@@ -201,15 +201,8 @@ public class Controller {
 
     public void switchToGameBoard_5x4(ActionEvent event) throws IOException {
 
-        Parent root = FXMLLoader.load(getClass().getResource("/de/uni_passau/fim/se/memory/view/gameBoard_5x4.fxml"));
-
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        Scene scene = new Scene (root);
-        stage.setScene(scene);
-
-        scene.getStylesheets().add(getClass().getResource("/de/uni_passau/fim/se/memory/view/gameBoard.css").toExternalForm());
-
-        stage.show();
+        GUI.switchScene(stage, "gameBoard_5x4.fxml");
     }
 
     public void OnClickCard(MouseEvent click){
