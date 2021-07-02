@@ -6,6 +6,8 @@ import de.uni_passau.fim.se.memory.model.MainMenue;
 import de.uni_passau.fim.se.memory.view.GUI;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import de.uni_passau.fim.se.memory.view.OutputStreamMainMenue;
+import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -19,8 +21,11 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
+import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import javafx.scene.control.Label;
+
 
 import javax.sound.sampled.*;
 import javax.swing.*;
@@ -35,8 +40,14 @@ class ImageCharMapping {
 }
 
 public class Controller {
-    private Game game;
     private MainMenue mainMenue;
+    private Game game;
+
+    public Controller() {
+        this.mainMenue = new MainMenue();
+        this.game = new Game();
+        playSound("GameOST");
+    }
 
     @FXML
     private GridPane gridPane0;
@@ -46,6 +57,10 @@ public class Controller {
     ArrayList<ImageView> imageViews = new ArrayList<>();
 
     @FXML public void initialize() {
+
+        if (gridPane0 == null) {
+            return;
+        }
 
         // dynamically load card fronts and assign Characters
         for (int i = 1; i < 11; ++i) {
@@ -81,61 +96,121 @@ public class Controller {
         }
     }
 
-    public Controller() {
-        game = new Game();
-        mainMenue = new MainMenue();
-        playSound("GameOST");
+    @FXML
+    public void back(ActionEvent event) throws IOException {
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        GUI.switchScene(stage, "mainMenue.fxml");
+        makeFadeOut();
     }
 
-    @FXML public void back(ActionEvent event) throws IOException {
-        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        GUI.switchScene(stage, "MainMenueTest.fxml");
-    }
 
-    @FXML public void playAgainstTime(ActionEvent event) throws IOException{
+    @FXML
+    public void playAgainstTime(ActionEvent event) throws IOException {
         mainMenue.setGameModeTime(true);
         mainMenue.setGameModeBot(false);
-        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        GUI.switchScene(stage, "MainMenueTest.fxml");
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        GUI.switchScene(stage, "mainMenue.fxml");
+
     }
 
-    @FXML public void playAgainstBot(ActionEvent event) throws IOException{
+    @FXML
+    public void playAgainstBot(ActionEvent event) throws IOException {
         mainMenue.setGameModeBot(true);
         mainMenue.setGameModeTime(false);
-        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        GUI.switchScene(stage, "MainMenueTest.fxml");
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        GUI.switchScene(stage, "mainMenue.fxml");
     }
 
-    @FXML public void easyBoard(ActionEvent event) throws IOException{
-        game.setGameBoardSize(3,4);
-        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        GUI.switchScene(stage, "MainMenueTest.fxml");
+    @FXML
+    public void easyBoard(ActionEvent event) throws IOException {
+        game.setGameBoardSize(3, 4);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        GUI.switchScene(stage, "mainMenue.fxml");
     }
 
-    @FXML public void mediumBoard(ActionEvent event) throws IOException{
-        game.setGameBoardSize(4,4);
-        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        GUI.switchScene(stage, "MainMenueTest.fxml");
+    @FXML
+    public void mediumBoard(ActionEvent event) throws IOException {
+        game.setGameBoardSize(4, 4);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        GUI.switchScene(stage, "mainMenue.fxml");
     }
 
-    @FXML public void difficultBoard(ActionEvent event) throws IOException {
-        game.setGameBoardSize(5,4);
-        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        GUI.switchScene(stage, "MainMenueTest.fxml");
+    @FXML
+    public void difficultBoard(ActionEvent event) throws IOException {
+        game.setGameBoardSize(5, 4);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        GUI.switchScene(stage, "mainMenue.fxml");
+    }
+
+    @FXML
+    public void startGameButton(ActionEvent event) throws IOException {
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            GUI.switchScene(stage, "gameBoard_5x4.fxml");
+    }
+
+    @FXML
+    public void activateHelpButton() {
+        mainMenue.setActivateHelp(!MainMenue.getActivateHelp());
+        if(MainMenue.getActivateHelp()){
+            button.setText(OutputStreamMainMenue.showHelpActivated());
+        } else {
+            button.setText(OutputStreamMainMenue.showHelpDectivated());
+
+        }
+        makeFadeOut();
+
+    }
+
+    @FXML
+    public void selectGameModeButton(ActionEvent event) throws IOException {
+
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        GUI.switchScene(stage, "Submenue_GameMode.fxml");
+
+    }
+
+    @FXML
+    public void selectGameBoardSizeButton(ActionEvent event) throws IOException {
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        GUI.switchScene(stage, "Submenue_GameBoardSize.fxml");
+    }
+
+
+    public void makeFadeOut(){
+        FadeTransition fadeTransition = new FadeTransition();
+        fadeTransition.setDuration(Duration.millis(2000));
+        fadeTransition.setNode(label);
+        fadeTransition.setFromValue(1);
+        fadeTransition.setToValue(0);
+        fadeTransition.play();
+    }
+
+    @FXML
+    public void selectBotDifficulty(ActionEvent event) throws IOException {
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        GUI.switchScene(stage, "Submenue_GameBoardSize.fxml");
+        /**
+         * !!!!!!!!!FXML GEHÖRT NOCH ANGEPASST !!!!!!!!!
+         */
+    }
+
+    @FXML
+    private Label label;
+
+    @FXML
+    private Button button;
+
+
+
+    public void labelSetter(String text) {
+        label.setText(text);
     }
 
 
     public void switchToGameBoard_5x4(ActionEvent event) throws IOException {
 
-        Parent root = FXMLLoader.load(getClass().getResource("/de/uni_passau/fim/se/memory/view/gameBoard_5x4.fxml"));
-
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        Scene scene = new Scene (root);
-        stage.setScene(scene);
-
-        scene.getStylesheets().add(getClass().getResource("/de/uni_passau/fim/se/memory/view/gameBoard.css").toExternalForm());
-
-        stage.show();
+        GUI.switchScene(stage, "gameBoard_5x4.fxml");
     }
 
     public void OnClickCard(MouseEvent click){
@@ -233,4 +308,6 @@ public class Controller {
             e.printStackTrace();
         }
     }
+}
+
 }
