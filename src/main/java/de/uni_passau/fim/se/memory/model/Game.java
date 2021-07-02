@@ -1,5 +1,7 @@
 package de.uni_passau.fim.se.memory.model;
 
+import de.uni_passau.fim.se.memory.controller.Controller;
+
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -153,6 +155,8 @@ public class Game {
 	}
 
 
+
+
 	public String openBoardToString() {
 		StringBuilder sb = new StringBuilder();
 		int element = 0;
@@ -183,4 +187,5 @@ public class Game {
 
 		return sb.toString();
 	}
+
 }
