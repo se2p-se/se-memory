@@ -73,7 +73,7 @@ public class Controller {
     public void startGameButton(ActionEvent event) throws IOException {
         if (mainMenue.getGameModeBot()) {
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            GUI.switchScene(stage, "gui.fxml");
+            GUI.switchScene(stage, "mainMenue.fxml");
         }
     }
 
