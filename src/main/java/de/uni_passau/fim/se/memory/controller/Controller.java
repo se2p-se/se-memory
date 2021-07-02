@@ -42,11 +42,17 @@ class ImageCharMapping {
 public class Controller {
     private MainMenue mainMenue;
     private Game game;
+    private static boolean soundPlayed = false;
 
     public Controller() {
         this.mainMenue = new MainMenue();
         this.game = new Game();
-        playSound("GameOST");
+
+        if (!soundPlayed) {
+            playSound("GameOST");
+            soundPlayed = true;
+        }
+
     }
 
     @FXML
@@ -308,6 +314,4 @@ public class Controller {
             e.printStackTrace();
         }
     }
-}
-
 }
