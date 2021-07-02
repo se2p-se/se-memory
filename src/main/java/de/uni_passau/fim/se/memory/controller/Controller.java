@@ -3,10 +3,12 @@ package de.uni_passau.fim.se.memory.controller;
 import de.uni_passau.fim.se.memory.model.Game;
 import de.uni_passau.fim.se.memory.model.MainMenue;
 import de.uni_passau.fim.se.memory.view.GUI;
+import de.uni_passau.fim.se.memory.view.OutputStreamMainMenue;
 import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import javafx.scene.control.Label;
 import javafx.util.Duration;
@@ -77,9 +79,9 @@ public class Controller {
     public void activateHelpButton() {
         mainMenue.setActivateHelp(!MainMenue.getActivateHelp());
         if(MainMenue.getActivateHelp()){
-            label.setText("Help is now activated!");
+            button.setText(OutputStreamMainMenue.showHelpActivated());
         } else {
-            label.setText("Help is now deactivated!");
+            button.setText(OutputStreamMainMenue.showHelpDectivated());
 
         }
         makeFadeOut();
@@ -112,6 +114,7 @@ public class Controller {
 
     @FXML
     private Label label;
+    @FXML private Button button;
 
 
 
