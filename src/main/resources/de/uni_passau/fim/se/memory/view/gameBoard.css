@@ -1,0 +1,10 @@
+#Card_00 {
+      background-image: url("images/CardBack.png");
+      background-repeat: no-repeat;
+      background-position: 50% 50%;
+      /* put the height and width of your image here */
+      height: 50px;
+      width: 200px;
+      border: none;
+}
+
