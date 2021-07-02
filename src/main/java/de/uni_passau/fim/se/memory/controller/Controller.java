@@ -25,7 +25,8 @@ public class Controller {
     public void back(ActionEvent event) throws IOException {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         GUI.switchScene(stage, "mainMenue.fxml");
-        labelSetter("WBAKCKE");
+        makeFadeOut();
+
 
     }
 
@@ -36,6 +37,7 @@ public class Controller {
         mainMenue.setGameModeBot(false);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         GUI.switchScene(stage, "mainMenue.fxml");
+
     }
 
     @FXML
@@ -85,6 +87,7 @@ public class Controller {
 
         }
         makeFadeOut();
+
     }
 
     @FXML
@@ -113,13 +116,26 @@ public class Controller {
     }
 
     @FXML
+    public void selectBotDifficulty(ActionEvent event) throws IOException {
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        GUI.switchScene(stage, "Submenue_GameBoardSize.fxml");
+        /**
+         * !!!!!!!!!FXML GEHÖRT NOCH ANGEPASST !!!!!!!!!
+         */
+    }
+
+    @FXML
     private Label label;
-    @FXML private Button button;
+
+    @FXML
+    private Button button;
 
 
 
     public void labelSetter(String text) {
         label.setText(text);
     }
+
+    
 
 }
