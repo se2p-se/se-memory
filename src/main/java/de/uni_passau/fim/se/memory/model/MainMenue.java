@@ -100,4 +100,5 @@ public class MainMenue {
     public static int getBotDifficulty() {
         return botDifficulty;
     }
+
 }

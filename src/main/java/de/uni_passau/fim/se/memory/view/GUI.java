@@ -24,9 +24,7 @@ public class GUI extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         ResourceDirectory = getClass();
-        Parent root = FXMLLoader.load(ResourceDirectory.getResource(
-                "GameBoard_5x4"
-                + ".fxml"));
+        Parent root = FXMLLoader.load(ResourceDirectory.getResource("mainMenue.fxml"));
 
         Scene scene = new Scene(root);
 

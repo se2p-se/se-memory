@@ -50,4 +50,10 @@ public class OutputStreamMainMenue {
     public static String showSizeNotPossible () {
         return "Not possible! Please choose a field-size with max. 10 and min. 2 Pairs!";
     }
+    public static String showHelpActivated () {
+        return "Deactivate Help";
+    }
+    public static String showHelpDectivated () {
+        return "Activate Help";
+    }
 }
