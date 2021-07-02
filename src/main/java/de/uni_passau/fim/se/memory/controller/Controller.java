@@ -84,6 +84,7 @@ public class Controller {
     public Controller() {
         game = new Game();
         mainMenue = new MainMenue();
+        playSound("GameOST");
     }
 
     @FXML public void back(ActionEvent event) throws IOException {
@@ -217,6 +218,7 @@ public class Controller {
             url = switch (str) {
                 case "Pair" -> Controller.class.getClassLoader().getResource("de/uni_passau/fim/se/memory/view/Sounds/Pair.wav");
                 case "NoPair" -> Controller.class.getClassLoader().getResource("de/uni_passau/fim/se/memory/view/Sounds/NoPair.wav");
+                case "GameOST" -> Controller.class.getClassLoader().getResource("de/uni_passau/fim/se/memory/view/Sounds/GameOST.wav");
                 default -> Controller.class.getClassLoader().getResource("de/uni_passau/fim/se/memory/view/Sounds/Click.wav");
             };
 
