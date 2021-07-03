@@ -4,6 +4,8 @@ import de.uni_passau.fim.se.memory.model.Card;
 import de.uni_passau.fim.se.memory.model.Game;
 import de.uni_passau.fim.se.memory.model.MainMenue;
 import de.uni_passau.fim.se.memory.view.GUI;
+import de.uni_passau.fim.se.memory.view.OutputStreamGameModeBot;
+import de.uni_passau.fim.se.memory.view.OutputStreamGameModeTime;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import de.uni_passau.fim.se.memory.view.OutputStreamMainMenue;
@@ -106,46 +108,47 @@ public class Controller {
     public void back(ActionEvent event) throws IOException {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         GUI.switchScene(stage, "mainMenue.fxml");
-        makeFadeOut();
+        makeFadeOut(label);
     }
 
 
     @FXML
-    public void playAgainstTime(ActionEvent event) throws IOException {
+    public void playAgainstTime(ActionEvent event) {
         mainMenue.setGameModeTime(true);
         mainMenue.setGameModeBot(false);
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        GUI.switchScene(stage, "mainMenue.fxml");
+        labelGameMode.setText(OutputStreamGameModeTime.printAgainstTime());
+        makeFadeOut(labelGameMode);
 
     }
 
     @FXML
-    public void playAgainstBot(ActionEvent event) throws IOException {
+    public void playAgainstBot(ActionEvent event) {
         mainMenue.setGameModeBot(true);
         mainMenue.setGameModeTime(false);
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        GUI.switchScene(stage, "mainMenue.fxml");
+        labelGameMode.setText(OutputStreamGameModeBot.printAgainstBot());
+        makeFadeOut(labelGameMode);
     }
 
     @FXML
-    public void easyBoard(ActionEvent event) throws IOException {
+    public void easyBoard(ActionEvent event){
         game.setGameBoardSize(3, 4);
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        GUI.switchScene(stage, "mainMenue.fxml");
+        labelBoardSize.setText(OutputStreamMainMenue.printEasySize());
+        makeFadeOut(labelBoardSize);
+
     }
 
     @FXML
-    public void mediumBoard(ActionEvent event) throws IOException {
+    public void mediumBoard(ActionEvent event) {
         game.setGameBoardSize(4, 4);
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        GUI.switchScene(stage, "mainMenue.fxml");
+        labelBoardSize.setText(OutputStreamMainMenue.printMediumSize());
+        makeFadeOut(labelBoardSize);
     }
 
     @FXML
-    public void difficultBoard(ActionEvent event) throws IOException {
+    public void difficultBoard(ActionEvent event) {
         game.setGameBoardSize(5, 4);
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        GUI.switchScene(stage, "mainMenue.fxml");
+        labelBoardSize.setText(OutputStreamMainMenue.printDifficultSize());
+        makeFadeOut(labelBoardSize);
     }
 
     @FXML
@@ -163,7 +166,7 @@ public class Controller {
             button.setText(OutputStreamMainMenue.showHelpDectivated());
 
         }
-        makeFadeOut();
+        makeFadeOut(label);
 
     }
 
@@ -182,7 +185,7 @@ public class Controller {
     }
 
 
-    public void makeFadeOut(){
+    public void makeFadeOut(Node label){
         FadeTransition fadeTransition = new FadeTransition();
         fadeTransition.setDuration(Duration.millis(2000));
         fadeTransition.setNode(label);
@@ -202,6 +205,12 @@ public class Controller {
 
     @FXML
     private Label label;
+
+    @FXML
+    private Label labelBoardSize;
+
+    @FXML
+    private Label labelGameMode;
 
     @FXML
     private Button button;
@@ -313,5 +322,10 @@ public class Controller {
         } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
             e.printStackTrace();
         }
+    }
+
+    public void endMenueButton(ActionEvent event){
+        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        stage.close();
     }
 }
