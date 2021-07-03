@@ -16,4 +16,9 @@ public class OutputStreamGameModeTime {
         StringBuilder stringBuilder = new StringBuilder();
         return "You did not break your record of: " + (SavingStats.getSavingStats().statsReader()/1000) + " seconds";
     }
+
+    public static String printAgainstTime(){
+        return "You are now playing against the time";
+    }
+
 }
