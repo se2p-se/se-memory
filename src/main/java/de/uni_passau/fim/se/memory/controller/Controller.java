@@ -161,7 +161,7 @@ public class Controller {
     @FXML
     public void easyBot(ActionEvent event){
         MainMenue.setBotDifficulty(1);
-        labelBotDifficulty.setText("Easy bot");
+        labelBotDifficulty.setText(OutputStreamMainMenue.printEasyBot());
         makeFadeOut(labelBotDifficulty);
 
     }
@@ -169,14 +169,14 @@ public class Controller {
     @FXML
     public void mediumBot(ActionEvent event) {
         MainMenue.setBotDifficulty(2);
-        labelBotDifficulty.setText("Medium bot");
+        labelBotDifficulty.setText(OutputStreamMainMenue.printMediumBot());
         makeFadeOut(labelBotDifficulty);
     }
 
     @FXML
     public void difficultBot(ActionEvent event) {
         MainMenue.setBotDifficulty(3);
-        labelBotDifficulty.setText("Difficult bot");
+        labelBotDifficulty.setText(OutputStreamMainMenue.printDifficultBot());
         makeFadeOut(labelBotDifficulty);
     }
 

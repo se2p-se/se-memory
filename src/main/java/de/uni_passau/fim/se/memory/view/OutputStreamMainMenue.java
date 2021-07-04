@@ -32,6 +32,9 @@ public class OutputStreamMainMenue {
     public static String showBotDifficulty () {
         return "(1) for Easy\n(2) for Normal\n(3) for Hard";
     }
+
+
+
     public static String showActivateHelpSetFalse () {
             return "You just disabled Help!";
         }
@@ -67,5 +70,17 @@ public class OutputStreamMainMenue {
 
     public static String printEasySize(){
         return "You switched to easy sized gameboard";
+    }
+
+    public static String printDifficultBot(){
+        return "You switched to a difficult bot";
+    }
+
+    public static String printMediumBot(){
+        return "You switched to a medium bot";
+    }
+
+    public static String printEasyBot(){
+        return "You switched to an easy bot";
     }
 }
