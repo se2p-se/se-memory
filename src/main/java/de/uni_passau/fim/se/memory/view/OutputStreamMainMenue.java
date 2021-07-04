@@ -56,4 +56,16 @@ public class OutputStreamMainMenue {
     public static String showHelpDectivated () {
         return "Activate Help";
     }
+
+    public static String printDifficultSize(){
+        return "You switched to difficult sized gameboard";
+    }
+
+    public static String printMediumSize(){
+        return "You switched to medium sized gameboard";
+    }
+
+    public static String printEasySize(){
+        return "You switched to easy sized gameboard";
+    }
 }
