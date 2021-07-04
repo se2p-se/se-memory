@@ -350,6 +350,10 @@ public class Controller {
             Clip clip = AudioSystem.getClip();
             // Open audio clip and load samples from the audio input stream.
             clip.open(audioIn);
+            FloatControl volume = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+            float range = volume.getMaximum() - volume.getMinimum();
+            float gain = (range * 0.4f) + volume.getMinimum();
+            volume.setValue(gain);
             if (str == "GameOST")
                 clip.loop(999);
         } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
