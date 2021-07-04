@@ -37,14 +37,11 @@ class ImageCharMapping {
 }
 
 public class Controller {
-    private MainMenue mainMenue;
-    private Game game;
+    private static MainMenue mainMenue = new MainMenue();
+    private static Game game = new Game();
     private static boolean soundPlayed = false;
 
     public Controller() {
-        this.mainMenue = new MainMenue();
-        this.game = new Game();
-
         if (!soundPlayed) {
             playSound("GameOST");
             soundPlayed = true;
@@ -57,7 +54,6 @@ public class Controller {
 
     ArrayList<ImageCharMapping> cardFront = new ArrayList<>();
     Image cardBack = new Image("de/uni_passau/fim/se/memory/view/images/CardBack.png");
-    ArrayList<ImageView> imageViews = new ArrayList<>();
 
     @FXML public void initialize() {
 
@@ -92,10 +88,25 @@ public class Controller {
             gridPane0.add(dynCard, x, y);
 
             x++;
-            if (x >= 5) { // max columns
+            if (x >= game.getGameBoardSize()[0]) { // max columns
                 x = 0;
                 y++;
             }
+        }
+
+        if (mainMenue.getActivateHelp()) {
+
+            for (Card c : game.getCards()) c.flipCard();
+            updateCards();
+
+            Timeline idlestage =
+                    new Timeline( new KeyFrame( Duration.millis(2000),
+                            event -> {
+                                for (Card c : game.getCards()) c.flipCard();
+                                updateCards();
+                            }) );
+            idlestage.setCycleCount( 1 );
+            idlestage.play();
         }
     }
 
@@ -148,8 +159,8 @@ public class Controller {
 
     @FXML
     public void startGameButton(ActionEvent event) throws IOException {
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            GUI.switchScene(stage, "gameBoard_5x4.fxml");
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        GUI.switchScene(stage, "gameBoard_5x4.fxml");
     }
 
     @FXML
@@ -238,19 +249,26 @@ public class Controller {
         Card selectedCard = game.selectCard(GridPane.getRowIndex(view) + 1,
                 GridPane.getColumnIndex(view) + 1);
 
-        if (selectedCard.getIsHidden())
-            selectedCard.flipCard();
-
-        updateCards();
-
         ArrayList<Card> visibleCards = new ArrayList<>();
-
         for (Card c : game.getCards()) {
             if (!c.getIsHidden() && c.getValue() != null)
                 visibleCards.add(c);
         }
 
-        if (visibleCards.size() == 2) {
+        if (visibleCards.size() >= 2) return;
+
+        if (selectedCard.getIsHidden())
+            selectedCard.flipCard();
+
+        updateCards();
+
+        visibleCards.clear();
+        for (Card c : game.getCards()) {
+            if (!c.getIsHidden() && c.getValue() != null)
+                visibleCards.add(c);
+        }
+
+        if (visibleCards.size() >= 2) {
             Alert alert = new Alert( Alert.AlertType.INFORMATION );
             alert.setTitle( "Memory" );
             alert.setHeaderText( "Pair of cards" );
@@ -278,6 +296,19 @@ public class Controller {
             alert.show();
         }
 
+        if (game.isGameFinished()) {
+            Alert alert = new Alert( Alert.AlertType.INFORMATION );
+            alert.setTitle( "Memory" );
+            alert.setHeaderText( "Game is finished!" );
+            alert.setContentText("You won!");
+            alert.showAndWait();
+
+            Stage stage =
+                    (Stage) ((Node) click.getSource()).getScene().getWindow();
+            try {
+                GUI.switchScene(stage, "mainMenue.fxml");
+            } catch (IOException e) {  }
+        }
 
 
         updateCards();
@@ -319,7 +350,8 @@ public class Controller {
             Clip clip = AudioSystem.getClip();
             // Open audio clip and load samples from the audio input stream.
             clip.open(audioIn);
-            clip.start();
+            if (str == "GameOST")
+                clip.loop(999);
         } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
             e.printStackTrace();
         }
