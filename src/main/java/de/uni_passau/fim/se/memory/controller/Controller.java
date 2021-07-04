@@ -12,11 +12,8 @@ import de.uni_passau.fim.se.memory.view.OutputStreamMainMenue;
 import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.image.Image;
@@ -30,9 +27,7 @@ import javafx.scene.control.Label;
 
 
 import javax.sound.sampled.*;
-import javax.swing.*;
 import java.io.IOException;
-import java.lang.reflect.Method;
 import java.net.URL;
 import java.util.ArrayList;
 
@@ -155,6 +150,12 @@ public class Controller {
     public void startGameButton(ActionEvent event) throws IOException {
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             GUI.switchScene(stage, "gameBoard_5x4.fxml");
+    }
+
+    @FXML
+    public void backToMenue(ActionEvent event) throws IOException {
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        GUI.switchScene(stage, "mainMenue.fxml");
     }
 
     @FXML
