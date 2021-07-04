@@ -35,7 +35,7 @@
                   <Insets bottom="5.0" left="30.0" right="5.0" top="5.0" />
                </VBox.margin>
             </Button>
-            <Button mnemonicParsing="false" style="-fx-background-color: red;" text="Bot Difficulty" textAlignment="CENTER" textFill="WHITE">
+            <Button mnemonicParsing="false" onAction="#selectBotDifficulty" style="-fx-background-color: red;" text="Bot Difficulty" textAlignment="CENTER" textFill="WHITE">
                <VBox.margin>
                   <Insets bottom="5.0" left="30.0" right="5.0" top="5.0" />
                </VBox.margin></Button>
