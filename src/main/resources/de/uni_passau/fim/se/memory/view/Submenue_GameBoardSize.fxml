@@ -10,6 +10,6 @@
         <Button fx:id="mediumButton" layoutX="162.0" layoutY="114.0" mnemonicParsing="false" onAction="#mediumBoard" prefHeight="26.0" prefWidth="113.0" style="-fx-background-color: #ff0030;" text="Medium" textFill="#fff1f2" />
         <Button fx:id="difficultButton" layoutX="162.0" layoutY="151.0" mnemonicParsing="false" onAction="#difficultBoard" prefHeight="26.0" prefWidth="113.0" style="-fx-background-color: #ff0030;" text="Difficult" textFill="#fff1f2" />
         <Button fx:id="easyButton" layoutX="162.0" layoutY="75.0" mnemonicParsing="false" onAction="#easyBoard" prefHeight="26.0" prefWidth="113.0" style="-fx-background-color: #ff0030;" text="Easy" textFill="#fff1f2" />
-      <Label fx:id="labelBoardSize" layoutX="68.0" layoutY="196.0" prefHeight="17.0" prefWidth="284.0" text="Text text text" />
+      <Label fx:id="labelBoardSize" layoutX="68.0" layoutY="196.0" prefHeight="17.0" prefWidth="284.0" text="" />
     </children>
 </AnchorPane>
