@@ -1,5 +1,6 @@
 package de.uni_passau.fim.se.memory.controller;
 
+import de.uni_passau.fim.se.memory.Main;
 import de.uni_passau.fim.se.memory.model.Card;
 import de.uni_passau.fim.se.memory.model.Game;
 import de.uni_passau.fim.se.memory.model.MainMenue;
@@ -158,6 +159,28 @@ public class Controller {
     }
 
     @FXML
+    public void easyBot(ActionEvent event){
+        MainMenue.setBotDifficulty(1);
+        labelBotDifficulty.setText("Easy bot");
+        makeFadeOut(labelBotDifficulty);
+
+    }
+
+    @FXML
+    public void mediumBot(ActionEvent event) {
+        MainMenue.setBotDifficulty(2);
+        labelBotDifficulty.setText("Medium bot");
+        makeFadeOut(labelBotDifficulty);
+    }
+
+    @FXML
+    public void difficultBot(ActionEvent event) {
+        MainMenue.setBotDifficulty(3);
+        labelBotDifficulty.setText("Difficult bot");
+        makeFadeOut(labelBotDifficulty);
+    }
+
+    @FXML
     public void startGameButton(ActionEvent event) throws IOException {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         GUI.switchScene(stage, "gameBoard_5x4.fxml");
@@ -209,10 +232,7 @@ public class Controller {
     @FXML
     public void selectBotDifficulty(ActionEvent event) throws IOException {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        GUI.switchScene(stage, "Submenue_GameBoardSize.fxml");
-        /**
-         * !!!!!!!!!FXML GEHÖRT NOCH ANGEPASST !!!!!!!!!
-         */
+        GUI.switchScene(stage, "Submenue_BotDifficulty.fxml");
     }
 
     @FXML
@@ -223,6 +243,9 @@ public class Controller {
 
     @FXML
     private Label labelGameMode;
+
+    @FXML
+    private Label labelBotDifficulty;
 
     @FXML
     private Button button;
