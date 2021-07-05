@@ -1,4 +1,4 @@
-(1) [Iteration 3 Klassendiagramm](https://user-images.githubusercontent.com/70104805/124257268-8026c300-db2c-11eb-8916-c524ddcc0672.png)
+(1) [Iteration 4 Klassendiagramm](https://user-images.githubusercontent.com/70104805/124257268-8026c300-db2c-11eb-8916-c524ddcc0672.png)
 
 
 
@@ -6,7 +6,7 @@
 
 (2) Welches Gruppenmitglied welche User Stories / Tasks (GitHub-IDs) für Iteration 5 geplant hat.
 
-Killian Lichentauner: #273, #274, #275, #266, #277, #278, #279, #280
+Kilian Lichtenauer: #273, #274, #275, #266, #277, #278, #279, #280
 
 Sebastian Redinger: #319, #320, #321, #322, #323, #324, #325, #326, #327, #328, #329, #330
 
