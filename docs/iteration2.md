@@ -8,7 +8,7 @@
 
 (2) Welches Gruppenmitglied welche User Stories / Tasks (GitHub-IDs) für Iteration 3 geplant hat.
 
-Killian Lichentauner:     #146 #147 #148 #149
+Kilian Lichtenauer:     #146 #147 #148 #149
 
 Michael Grantner:         #150 #151 #152 #153 #154 #155 #156 #157 #158
 
