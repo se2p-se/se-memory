@@ -6,7 +6,7 @@
 
 (2) Welches Gruppenmitglied welche User Stories / Tasks (GitHub-IDs) für Iteration 4 geplant hat.
 
-Killian Lichentauner: #199, #200, #201, #202, #203, #204, #205, #206, #207, #208, #209, #210
+Kilian Lichtenauer: #199, #200, #201, #202, #203, #204, #205, #206, #207, #208, #209, #210
 
 Sebastian Redinger: #231, #232, #233, #234, #235, #236  
 
