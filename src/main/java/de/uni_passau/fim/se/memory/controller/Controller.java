@@ -377,8 +377,11 @@ public class Controller {
             float range = volume.getMaximum() - volume.getMinimum();
             float gain = (range * 0.4f) + volume.getMinimum();
             volume.setValue(gain);
-            if (str == "GameOST")
+            if (str.equals("GameOST")) {
                 clip.loop(999);
+            } else {
+                clip.start();
+            }
         } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
             e.printStackTrace();
         }
