@@ -4,6 +4,8 @@ import de.uni_passau.fim.se.memory.Main;
 import de.uni_passau.fim.se.memory.model.Card;
 import de.uni_passau.fim.se.memory.model.Game;
 import de.uni_passau.fim.se.memory.model.MainMenue;
+import de.uni_passau.fim.se.memory.model.SavingStats;
+import de.uni_passau.fim.se.memory.view.*;
 import de.uni_passau.fim.se.memory.view.GUI;
 import de.uni_passau.fim.se.memory.view.OutputStreamGameModeBot;
 import de.uni_passau.fim.se.memory.view.OutputStreamGameModeTime;
@@ -40,12 +42,22 @@ public class Controller {
     private static MainMenue mainMenue = new MainMenue();
     private static Game game = new Game();
     private static SoundPlayer soundPlayer = new SoundPlayer();
+    private static boolean soundPlayed = false;
+    private static long startTime;
+    private static long endTime;
 
     /**
      * Initialize Controller and play sound if needed
      */
     public Controller() {
         soundPlayer.playSound("GameOST");
+        if (!soundPlayed) {
+            playSound("GameOST");
+            soundPlayed = true;
+        }
+
+        startTime = 0;
+
     }
 
     @FXML
@@ -119,6 +131,21 @@ public class Controller {
                 x = 0;
                 y++;
             }
+        }
+
+        if (mainMenue.getActivateHelp()) {
+
+            for (Card c : game.getCards()) c.flipCard();
+            updateCards();
+
+            Timeline idlestage =
+                    new Timeline( new KeyFrame( Duration.millis(2000),
+                            event -> {
+                                for (Card c : game.getCards()) c.flipCard();
+                                updateCards();
+                            }) );
+            idlestage.setCycleCount( 1 );
+            idlestage.play();
         }
     }
 
@@ -235,6 +262,7 @@ public class Controller {
     public void startGameButton(ActionEvent event) throws IOException {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         GUI.switchScene(stage, "gameBoard_5x4.fxml");
+        startTime = System.currentTimeMillis();
     }
 
     /**
@@ -405,10 +433,19 @@ public class Controller {
         }
 
         if (game.isGameFinished()) {
+            endTime = System.currentTimeMillis();
+            String endOfGameOutput;
+            if(endTime - startTime < savingStats.statsReader()){
+                endOfGameOutput = OutputStreamGameModeTime.printNewRecord();
+                savingStats.statsWriter(endTime - startTime); //saving new record
+            }
+            else {
+                endOfGameOutput = OutputStreamGameModeTime.printRecordNotBroken();
+            }
             Alert alert = new Alert( Alert.AlertType.INFORMATION );
             alert.setTitle( "Memory" );
             alert.setHeaderText( "Game is finished!" );
-            alert.setContentText("You won!");
+            alert.setContentText("You won!" + endOfGameOutput);
             alert.showAndWait();
 
             Stage stage =
@@ -444,8 +481,33 @@ public class Controller {
         }
     }
 
+    public static void playSound(String str) {
+        URL url;
 
+        try {
+            url = switch (str) {
+                case "Pair" -> Controller.class.getClassLoader().getResource("de/uni_passau/fim/se/memory/view/Sounds/Pair.wav");
+                case "NoPair" -> Controller.class.getClassLoader().getResource("de/uni_passau/fim/se/memory/view/Sounds/NoPair.wav");
+                case "GameOST" -> Controller.class.getClassLoader().getResource("de/uni_passau/fim/se/memory/view/Sounds/GameOST.wav");
+                default -> Controller.class.getClassLoader().getResource("de/uni_passau/fim/se/memory/view/Sounds/Click.wav");
+            };
 
+            assert url != null;
+            AudioInputStream audioIn = AudioSystem.getAudioInputStream(url);
+            // Get a sound clip resource.
+            Clip clip = AudioSystem.getClip();
+            // Open audio clip and load samples from the audio input stream.
+            clip.open(audioIn);
+            FloatControl volume = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+            float range = volume.getMaximum() - volume.getMinimum();
+            float gain = (range * 0.4f) + volume.getMinimum();
+            volume.setValue(gain);
+            if (str == "GameOST")
+                clip.loop(999);
+        } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
+            e.printStackTrace();
+        }
+    }
 
     /**
      * Close the application
@@ -455,4 +517,8 @@ public class Controller {
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         stage.close();
     }
+
+    SavingStats savingStats = SavingStats.getSavingStats();
+
+
 }
