@@ -21,7 +21,7 @@
                   </Button>
                </children>
             </VBox>
-              <Label fx:id="label" style="-fx-font-style: italic; -fx-font-size: 30;" text="Select Game-Board-Size" textFill="#f1f2da">
+              <Label fx:id="label" style="-fx-font-size: 30;" text="Select Game-Board-Size" textFill="#f1f2da">
                <font>
                   <Font name="Bauhaus 93" size="12.0" />
                </font>

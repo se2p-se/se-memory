@@ -3,6 +3,7 @@ package de.uni_passau.fim.se.memory.controller;
 import de.uni_passau.fim.se.memory.model.Card;
 import de.uni_passau.fim.se.memory.model.GameModeTime;
 import de.uni_passau.fim.se.memory.model.GameState;
+import de.uni_passau.fim.se.memory.model.SavingStats;
 import de.uni_passau.fim.se.memory.view.OutputStream;
 import de.uni_passau.fim.se.memory.view.OutputStreamGameModeTime;
 
@@ -137,7 +138,7 @@ public class InputStreamGameModeTime extends InputStreamPlayer {
             getGame().stopCountingTime();
             OutputStreamGameModeTime.printEndOfGameModeTime(getGame().getCurrentTime(getGame().getStart(), getGame().getEnd()));
 
-            boolean gotRecord = GameModeTime.compareWithSavedTime(getGame().getCurrentTime(getGame().getStart(), getGame().getEnd()));
+            boolean gotRecord = gameModeTime.compareWithSavedTime(getGame().getCurrentTime(getGame().getStart(), getGame().getEnd()));
             if (gotRecord) {
                 OutputStreamGameModeTime.printNewRecord();
 
@@ -149,4 +150,7 @@ public class InputStreamGameModeTime extends InputStreamPlayer {
 
 
     }
+
+    GameModeTime gameModeTime = new GameModeTime();
+    SavingStats savingStats = SavingStats.getSavingStats();
 }
