@@ -31,6 +31,7 @@ import javax.sound.sampled.*;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Main controller for fxml scenes and models
@@ -50,7 +51,7 @@ public class Controller {
     @FXML
     private GridPane gridPane0;
 
-    ArrayList<ImageCharMapping> cardFront = new ArrayList<>();
+    List<ImageCharMapping> cardFront = new ArrayList<>();
     Image cardBack = new Image("de/uni_passau/fim/se/memory/view/images/CardBack.png");
 
     /**
