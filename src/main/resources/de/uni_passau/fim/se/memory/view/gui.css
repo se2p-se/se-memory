@@ -1,12 +1,21 @@
 @font-face {
-    font-family: Bauhaus 93;
-    src: url("/Fonts/BAUHS93.ttf") format('truetype');
+    font-family: 'Bauhaus 93';
+    src: url("/Fonts/BAUHS93.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Bauhaus 93";
+    src: url("/Fonts/BAUHS93.eot");
+    src:
+            url("/Fonts/BAUHS93.woff") format("woff"),
+            url("/Fonts/BAUHS93.otf") format("opentype"),
+            url("/Fonts/BAUHS93.svg#filename") format("svg");
 }
 
 #mainMenuTitle {
-      -fx-font-family: Bauhaus 93;
+      -fx-font-family: "Bauhaus 93";
 }
 
 #subMenuBotDifficultyTitle {
-    -fx-font-family: Bauhaus 93;
+    -fx-font-family: "Bauhaus 93";
 }
