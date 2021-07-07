@@ -30,5 +30,5 @@
             </VBox.margin>
         </Button>
     </VBox>
-   <Button mnemonicParsing="false" onAction="#back" style="-fx-background-color: ff7777;" text="Back" textAlignment="CENTER" textFill="#f1f2da" VBox.vgrow="ALWAYS" />
+   <Button layoutX="5.0" layoutY="5.0" mnemonicParsing="false" onAction="#back" style="-fx-background-color: ff7777;" text="Back" textAlignment="CENTER" textFill="#f1f2da" VBox.vgrow="ALWAYS" />
 </AnchorPane>
