@@ -4,12 +4,13 @@ import de.uni_passau.fim.se.memory.Main;
 import de.uni_passau.fim.se.memory.model.Card;
 import de.uni_passau.fim.se.memory.model.Game;
 import de.uni_passau.fim.se.memory.model.MainMenue;
+import de.uni_passau.fim.se.memory.model.SavingStats;
+import de.uni_passau.fim.se.memory.view.*;
 import de.uni_passau.fim.se.memory.view.GUI;
 import de.uni_passau.fim.se.memory.view.OutputStreamGameModeBot;
 import de.uni_passau.fim.se.memory.view.OutputStreamGameModeTime;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import de.uni_passau.fim.se.memory.view.OutputStreamMainMenue;
 import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -41,12 +42,16 @@ public class Controller {
     private static MainMenue mainMenue = new MainMenue();
     private static Game game = new Game();
     private static boolean soundPlayed = false;
+    private static long startTime;
+    private static long endTime;
 
     public Controller() {
         if (!soundPlayed) {
             playSound("GameOST");
             soundPlayed = true;
         }
+
+        startTime = 0;
 
     }
 
@@ -57,6 +62,8 @@ public class Controller {
     Image cardBack = new Image("de/uni_passau/fim/se/memory/view/images/CardBack.png");
 
     @FXML public void initialize() {
+
+        //label.setText("Your current record is: " + savingStats.statsReader()/1000 + " seconds");
 
         if (gridPane0 == null) {
             return;
@@ -184,6 +191,7 @@ public class Controller {
     public void startGameButton(ActionEvent event) throws IOException {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         GUI.switchScene(stage, "gameBoard_5x4.fxml");
+        startTime = System.currentTimeMillis();
     }
 
     @FXML
@@ -320,10 +328,19 @@ public class Controller {
         }
 
         if (game.isGameFinished()) {
+            endTime = System.currentTimeMillis();
+            String endOfGameOutput;
+            if(endTime - startTime < savingStats.statsReader()){
+                endOfGameOutput = OutputStreamGameModeTime.printNewRecord();
+                savingStats.statsWriter(endTime - startTime); //saving new record
+            }
+            else {
+                endOfGameOutput = OutputStreamGameModeTime.printRecordNotBroken();
+            }
             Alert alert = new Alert( Alert.AlertType.INFORMATION );
             alert.setTitle( "Memory" );
             alert.setHeaderText( "Game is finished!" );
-            alert.setContentText("You won!");
+            alert.setContentText("You won!" + endOfGameOutput);
             alert.showAndWait();
 
             Stage stage =
@@ -388,4 +405,8 @@ public class Controller {
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         stage.close();
     }
+
+    SavingStats savingStats = SavingStats.getSavingStats();
+
+
 }
