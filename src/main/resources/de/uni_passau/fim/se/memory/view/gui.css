@@ -1,9 +1,4 @@
 @font-face {
-    font-family: 'Bauhaus 93';
-    src: url("/Fonts/BAUHS93.ttf") format("truetype");
-}
-
-@font-face {
     font-family: "Bauhaus 93";
     src: url("/Fonts/BAUHS93.eot");
     src:
