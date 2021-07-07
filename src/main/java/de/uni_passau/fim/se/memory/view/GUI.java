@@ -27,6 +27,7 @@ public class GUI extends Application {
         Parent root = FXMLLoader.load(ResourceDirectory.getResource("mainMenue.fxml"));
 
         Scene scene = new Scene(root);
+        scene.getStylesheets().add(getClass().getResource("gui.css").toExternalForm());
 
         stage.setTitle("Memory");
         stage.setScene(scene);
