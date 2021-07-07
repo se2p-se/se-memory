@@ -31,31 +31,36 @@ import javax.sound.sampled.*;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.List;
 
-class ImageCharMapping {
-    Character ch;
-    Image img;
-}
-
+/**
+ * Main controller for fxml scenes and models
+ */
 public class Controller {
     private static MainMenue mainMenue = new MainMenue();
     private static Game game = new Game();
-    private static boolean soundPlayed = false;
+    private static SoundPlayer soundPlayer = new SoundPlayer();
 
+    /**
+     * Initialize Controller and play sound if needed
+     */
     public Controller() {
-        if (!soundPlayed) {
-            playSound("GameOST");
-            soundPlayed = true;
-        }
-
+        soundPlayer.playSound("GameOST");
     }
 
     @FXML
     private GridPane gridPane0;
 
-    ArrayList<ImageCharMapping> cardFront = new ArrayList<>();
+    List<ImageCharMapping> cardFront = new ArrayList<>();
     Image cardBack = new Image("de/uni_passau/fim/se/memory/view/images/CardBack.png");
 
+    /**
+     * Initialize controller
+     *
+     * 1. Load card fronts with Characters and add to cardFront
+     * 2. Generate GUI-Cards
+     * 3. Activate help on GUI-Cards if requested (see mainMenue.getActivateHelp)
+     */
     @FXML public void initialize() {
 
         if (gridPane0 == null) {
@@ -75,7 +80,28 @@ public class Controller {
             cardFront.add(chmp);
         }
 
-        // create cards
+        createCards();
+
+        if (mainMenue.getActivateHelp()) {
+
+            for (Card c : game.getCards()) c.flipCard();
+            updateCards();
+
+            Timeline idlestage =
+                    new Timeline( new KeyFrame( Duration.millis(2000),
+                            event -> {
+                                for (Card c : game.getCards()) c.flipCard();
+                                updateCards();
+                            }) );
+            idlestage.setCycleCount( 1 );
+            idlestage.play();
+        }
+    }
+
+    /**
+     * Generate GUI-Cards
+     */
+    private void createCards() {
         int x = 0, y = 0;
         for (Card c : game.getCards()) {
 
@@ -94,23 +120,13 @@ public class Controller {
                 y++;
             }
         }
-
-        if (mainMenue.getActivateHelp()) {
-
-            for (Card c : game.getCards()) c.flipCard();
-            updateCards();
-
-            Timeline idlestage =
-                    new Timeline( new KeyFrame( Duration.millis(2000),
-                            event -> {
-                                for (Card c : game.getCards()) c.flipCard();
-                                updateCards();
-                            }) );
-            idlestage.setCycleCount( 1 );
-            idlestage.play();
-        }
     }
 
+    /**
+     * Switch to main menu and notify user of the change
+     * @param event
+     * @throws IOException
+     */
     @FXML
     public void back(ActionEvent event) throws IOException {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -118,7 +134,10 @@ public class Controller {
         makeFadeOut(label);
     }
 
-
+    /**
+     * Set GameMode to be against time notify user of the change
+     * @param event
+     */
     @FXML
     public void playAgainstTime(ActionEvent event) {
         mainMenue.setGameModeTime(true);
@@ -127,7 +146,10 @@ public class Controller {
         makeFadeOut(labelGameMode);
 
     }
-
+    /**
+     * Set GameMode to be against bot notify user of the change
+     * @param event
+     */
     @FXML
     public void playAgainstBot(ActionEvent event) {
         mainMenue.setGameModeBot(true);
@@ -136,6 +158,10 @@ public class Controller {
         makeFadeOut(labelGameMode);
     }
 
+    /**
+     * Set game board size to (3,4) and notify user of the change
+     * @param event
+     */
     @FXML
     public void easyBoard(ActionEvent event){
         game.setGameBoardSize(3, 4);
@@ -144,6 +170,10 @@ public class Controller {
 
     }
 
+    /**
+     * Set game board size to (4,4) and notify user of the change
+     * @param event
+     */
     @FXML
     public void mediumBoard(ActionEvent event) {
         game.setGameBoardSize(4, 4);
@@ -151,6 +181,10 @@ public class Controller {
         makeFadeOut(labelBoardSize);
     }
 
+    /**
+     * Set game board size to (5,4) and notify user of the change
+     * @param event
+     */
     @FXML
     public void difficultBoard(ActionEvent event) {
         game.setGameBoardSize(5, 4);
@@ -158,6 +192,10 @@ public class Controller {
         makeFadeOut(labelBoardSize);
     }
 
+    /**
+     * Set bot difficulty to 1 and notify user of the change
+     * @param event
+     */
     @FXML
     public void easyBot(ActionEvent event){
         MainMenue.setBotDifficulty(1);
@@ -166,6 +204,10 @@ public class Controller {
 
     }
 
+    /**
+     * Set bot difficulty to 2 and notify user of the change
+     * @param event
+     */
     @FXML
     public void mediumBot(ActionEvent event) {
         MainMenue.setBotDifficulty(2);
@@ -173,6 +215,10 @@ public class Controller {
         makeFadeOut(labelBotDifficulty);
     }
 
+    /**
+     * Set bot difficulty to 3 and notify user of the change
+     * @param event
+     */
     @FXML
     public void difficultBot(ActionEvent event) {
         MainMenue.setBotDifficulty(3);
@@ -180,18 +226,31 @@ public class Controller {
         makeFadeOut(labelBotDifficulty);
     }
 
+    /**
+     * Starts the actual game round
+     * @param event
+     * @throws IOException
+     */
     @FXML
     public void startGameButton(ActionEvent event) throws IOException {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         GUI.switchScene(stage, "gameBoard_5x4.fxml");
     }
 
+    /**
+     * Switch to main menu
+     * @param event
+     * @throws IOException
+     */
     @FXML
     public void backToMenue(ActionEvent event) throws IOException {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         GUI.switchScene(stage, "mainMenue.fxml");
     }
 
+    /**
+     * Invert if user should be helped during the game and notify user of the change
+     */
     @FXML
     public void activateHelpButton() {
         mainMenue.setActivateHelp(!MainMenue.getActivateHelp());
@@ -205,6 +264,11 @@ public class Controller {
 
     }
 
+    /**
+     * Switch to game mode submenu
+     * @param event
+     * @throws IOException
+     */
     @FXML
     public void selectGameModeButton(ActionEvent event) throws IOException {
 
@@ -213,6 +277,11 @@ public class Controller {
 
     }
 
+    /**
+     * Switch to game board submenu
+     * @param event
+     * @throws IOException
+     */
     @FXML
     public void selectGameBoardSizeButton(ActionEvent event) throws IOException {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -220,6 +289,10 @@ public class Controller {
     }
 
 
+    /**
+     * Adds transition effect to label, when a setting has been changed
+     * @param label, trasnsition effect to be appended to
+     */
     public void makeFadeOut(Node label){
         FadeTransition fadeTransition = new FadeTransition();
         fadeTransition.setDuration(Duration.millis(2000));
@@ -229,6 +302,11 @@ public class Controller {
         fadeTransition.play();
     }
 
+    /**
+     * Switch to game bit difficulty submenu
+     * @param event
+     * @throws IOException
+     */
     @FXML
     public void selectBotDifficulty(ActionEvent event) throws IOException {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -251,21 +329,28 @@ public class Controller {
     private Button button;
 
 
-
+    /**
+     * Sets text on label
+     * @param text
+     */
     public void labelSetter(String text) {
         label.setText(text);
     }
 
-
-    public void switchToGameBoard_5x4(ActionEvent event) throws IOException {
-
-        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        GUI.switchScene(stage, "gameBoard_5x4.fxml");
-    }
-
+    /**
+     * Handles the click on a card during the game
+     *
+     * If there are still cards left an information notification is issued
+     * If there are no cards left a win notification is issued
+     *
+     * After each click the visible cards get updated
+     *
+     * A sound is played on a click
+     * @param click
+     */
     public void OnClickCard(MouseEvent click){
 
-        playSound("OnClickCard");
+        soundPlayer.playSound("OnClickCard");
 
         ImageView view = (ImageView)click.getTarget();
 
@@ -298,10 +383,10 @@ public class Controller {
             if (visibleCards.get(0).compareWith(visibleCards.get(1))) {
                 visibleCards.get(0).setValue(null);
                 visibleCards.get(1).setValue(null);
-                playSound("Pair");
+                soundPlayer.playSound("Pair");
                 alert.setContentText("You found a pair!");
             } else {
-                playSound("NoPair");
+                soundPlayer.playSound("NoPair");
                 alert.setContentText("You found no pair. :-(");
             }
 
@@ -337,6 +422,9 @@ public class Controller {
         updateCards();
     }
 
+    /**
+     * Update card view to user
+     */
     private void updateCards() {
         for (var c : gridPane0.getChildren()) {
             ImageView view = (ImageView)c;
@@ -356,34 +444,13 @@ public class Controller {
         }
     }
 
-    public static void playSound(String str) {
-        URL url;
 
-        try {
-            url = switch (str) {
-                case "Pair" -> Controller.class.getClassLoader().getResource("de/uni_passau/fim/se/memory/view/Sounds/Pair.wav");
-                case "NoPair" -> Controller.class.getClassLoader().getResource("de/uni_passau/fim/se/memory/view/Sounds/NoPair.wav");
-                case "GameOST" -> Controller.class.getClassLoader().getResource("de/uni_passau/fim/se/memory/view/Sounds/GameOST.wav");
-                default -> Controller.class.getClassLoader().getResource("de/uni_passau/fim/se/memory/view/Sounds/Click.wav");
-            };
 
-            assert url != null;
-            AudioInputStream audioIn = AudioSystem.getAudioInputStream(url);
-            // Get a sound clip resource.
-            Clip clip = AudioSystem.getClip();
-            // Open audio clip and load samples from the audio input stream.
-            clip.open(audioIn);
-            FloatControl volume = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
-            float range = volume.getMaximum() - volume.getMinimum();
-            float gain = (range * 0.4f) + volume.getMinimum();
-            volume.setValue(gain);
-            if (str == "GameOST")
-                clip.loop(999);
-        } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
-            e.printStackTrace();
-        }
-    }
 
+    /**
+     * Close the application
+     * @param event
+     */
     public void endMenueButton(ActionEvent event){
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         stage.close();
