@@ -31,6 +31,13 @@ public class GUI extends Application {
     }
 
     /**
+     * Method is starting GUI
+     */
+    public static void start_gui() {
+        launch();
+    }
+
+    /**
      * Method to start first scene in GUI
      *
      * @param stage
@@ -47,12 +54,5 @@ public class GUI extends Application {
         stage.setTitle("Memory");
         stage.setScene(scene);
         stage.show();
-    }
-
-    /**
-     * Method is starting GUI
-     */
-    public static void start_gui() {
-        launch();
     }
 }
