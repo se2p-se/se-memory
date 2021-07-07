@@ -4,12 +4,12 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class Test1 {
-        private Test1 test;
+class TestView {
+        private TestView test;
 
         @BeforeEach
         void setUp () {
-            test = new Test1();
+            test = new TestView();
         }
 
         @Test
