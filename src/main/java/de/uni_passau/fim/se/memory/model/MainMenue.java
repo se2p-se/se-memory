@@ -5,7 +5,7 @@ public class MainMenue {
     private static String titleStartGame = "Start Game";
     private static String titleGameBoardSize = "Adapt Game-Board-Size";
     private static String titleActivateHelp = "Activate Help";
-    private static String titleGameModeTime = "Play against Time" ;
+    private static String titleGameModeTime = "Play against Time";
     private static String titleGameModeBot = "Play against Computer";
     private static String titleComputerDifficulty = "Change Bot Difficulty";
     private static String titleEnd = "Quit";
@@ -13,16 +13,18 @@ public class MainMenue {
     private static String titleMediumGameBoardSize = "Medium (like a 4x4 field)";
     private static String titleDifficultGameBoardSize = "Difficult (like a 5x4 field)";
     private static String titleCostumGameBoardSize = "Costum";
-    private boolean isGameModeBot = false ;
-    private boolean isGameModeTime = true ;
-    private static boolean isActivateHelp = false ;
+    private boolean isGameModeBot = false;
+    private boolean isGameModeTime = true;
+    private static boolean isActivateHelp = false;
     private static int botDifficulty = 1;
 
     public static String getTitleActivateHelp() {
         return titleActivateHelp;
     }
 
-    public static String getTitleComputerDifficulty() { return titleComputerDifficulty; }
+    public static String getTitleComputerDifficulty() {
+        return titleComputerDifficulty;
+    }
 
     public static String getTitleGameBoardSize() {
         return titleGameBoardSize;
@@ -43,7 +45,8 @@ public class MainMenue {
     public static String getTitleStartGame() {
         return titleStartGame;
     }
-    public static String getTitleEnd () {
+
+    public static String getTitleEnd() {
         return titleEnd;
     }
 
@@ -63,6 +66,10 @@ public class MainMenue {
         return titleCostumGameBoardSize;
     }
 
+    public static void setTitleGameMode(String name) {
+        titleGameMode = name;
+    }
+
     public void setGameModeTime(boolean gameModeTime) {
         isGameModeTime = gameModeTime;
     }
@@ -70,26 +77,28 @@ public class MainMenue {
     public void setGameModeBot(boolean gameModeBot) {
         isGameModeBot = gameModeBot;
     }
-    public boolean getGameModeTime () {
+
+    public boolean getGameModeTime() {
         return isGameModeTime;
     }
-    public boolean getGameModeBot () {
-        return isGameModeBot ;
+
+    public boolean getGameModeBot() {
+        return isGameModeBot;
     }
 
     public void setActivateHelp(boolean activateHelp) {
         isActivateHelp = activateHelp;
     }
 
-    public static boolean getActivateHelp () {
+    public static boolean getActivateHelp() {
         return isActivateHelp;
     }
-    public void setTitleActivateHelp () {
+
+    public void setTitleActivateHelp() {
         if (isActivateHelp) {
             titleActivateHelp = "Deactivate Help";
-        }
-        else {
-            titleActivateHelp = "Activate Help" ;
+        } else {
+            titleActivateHelp = "Activate Help";
         }
     }
 
