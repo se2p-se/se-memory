@@ -19,7 +19,7 @@ class TestView {
      */
     @Test
     void testMain() {
-        // !!!Main-Methode muss erst noch in GUI.java verschoben werden!!!
+        // ???Test für Main-Methode überhaupt sinnvoll???
     }
 
     /**
