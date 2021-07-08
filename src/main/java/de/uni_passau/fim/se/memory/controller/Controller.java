@@ -32,6 +32,11 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 
+class ImageCharMapping {
+    Character ch;
+    Image img;
+}
+
 public class Controller {
     private static MainMenue mainMenue = new MainMenue();
     private static Game game = new Game();
