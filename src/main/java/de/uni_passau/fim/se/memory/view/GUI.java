@@ -33,7 +33,7 @@ public class GUI extends Application {
     /**
      * Method is starting GUI
      */
-    public static void start_gui() {
+    public static void main (String[] args) {
         launch();
     }
 
