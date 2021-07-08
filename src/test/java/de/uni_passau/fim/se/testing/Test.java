@@ -1,6 +1,5 @@
 package de.uni_passau.fim.se.testing;
 
-import de.uni_passau.fim.se.memory.model.Card;
 import de.uni_passau.fim.se.memory.model.Game;
 import de.uni_passau.fim.se.memory.model.GameModeBot;
 import de.uni_passau.fim.se.memory.model.MainMenue;
