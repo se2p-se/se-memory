@@ -1,5 +1,6 @@
 package de.uni_passau.fim.se.testing;
 
+import de.uni_passau.fim.se.memory.model.Card;
 import de.uni_passau.fim.se.memory.model.Game;
 import de.uni_passau.fim.se.memory.model.GameModeBot;
 import de.uni_passau.fim.se.memory.model.MainMenue;
@@ -37,7 +38,7 @@ class TestView {
     @Test
     void testOutputStreamPrintOpenBoard() {
         Game game = new Game();
-        assertEquals(game.getCards().toString(), OutputStream.printOpenBoard(game)); // !!!Test wirft Fehler...WARUM?!!!
+        assertEquals(game.openBoardToString(), OutputStream.printOpenBoard(game));
     }
 
 
