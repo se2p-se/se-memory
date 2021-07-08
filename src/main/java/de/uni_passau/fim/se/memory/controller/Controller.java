@@ -4,6 +4,8 @@ import de.uni_passau.fim.se.memory.Main;
 import de.uni_passau.fim.se.memory.model.Card;
 import de.uni_passau.fim.se.memory.model.Game;
 import de.uni_passau.fim.se.memory.model.MainMenue;
+import de.uni_passau.fim.se.memory.model.SavingStats;
+import de.uni_passau.fim.se.memory.view.*;
 import de.uni_passau.fim.se.memory.view.GUI;
 import de.uni_passau.fim.se.memory.view.OutputStreamGameModeBot;
 import de.uni_passau.fim.se.memory.view.OutputStreamGameModeTime;
@@ -31,6 +33,8 @@ import javax.sound.sampled.*;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.List;
+
 
 class ImageCharMapping {
     Character ch;
@@ -41,6 +45,8 @@ public class Controller {
     private static MainMenue mainMenue = new MainMenue();
     private static Game game = new Game();
     private static boolean soundPlayed = false;
+    private static long startTime;
+    private static long endTime;
 
     public Controller() {
         if (!soundPlayed) {
@@ -184,6 +190,7 @@ public class Controller {
     public void startGameButton(ActionEvent event) throws IOException {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         GUI.switchScene(stage, "gameBoard_5x4.fxml");
+        startTime = System.currentTimeMillis();
     }
 
     @FXML
@@ -201,7 +208,6 @@ public class Controller {
             button.setText(OutputStreamMainMenue.showHelpDectivated());
 
         }
-        makeFadeOut(label);
 
     }
 
@@ -234,21 +240,6 @@ public class Controller {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         GUI.switchScene(stage, "Submenue_BotDifficulty.fxml");
     }
-
-    @FXML
-    private Label label;
-
-    @FXML
-    private Label labelBoardSize;
-
-    @FXML
-    private Label labelGameMode;
-
-    @FXML
-    private Label labelBotDifficulty;
-
-    @FXML
-    private Button button;
 
 
 
@@ -320,10 +311,41 @@ public class Controller {
         }
 
         if (game.isGameFinished()) {
+            endTime = System.currentTimeMillis();
+            String endOfGameOutput;
+            if (game.getGameBoardSize()[0] == 5) {
+                if (endTime - startTime < savingStats.statsReaderDifficult()) {
+                    endOfGameOutput = OutputStreamGameModeTime.printNewRecord();
+                    savingStats.statsWriterDifficult(endTime - startTime); //saving new record
+                }
+                else {
+                    endOfGameOutput = OutputStreamGameModeTime.printRecordNotBroken();
+                }
+            } else if (game.getGameBoardSize()[0] == 4) {
+                if (endTime - startTime < savingStats.statsReaderMedium()) {
+                    endOfGameOutput = OutputStreamGameModeTime.printNewRecord();
+                    savingStats.statsWriterMedium(endTime - startTime); //saving new record
+                }
+                else {
+                    endOfGameOutput = OutputStreamGameModeTime.printRecordNotBroken();
+                }
+            } else if (game.getGameBoardSize()[0] == 3) {
+                if (endTime - startTime < savingStats.statsReaderEasy()) {
+                    endOfGameOutput = OutputStreamGameModeTime.printNewRecord();
+                    savingStats.statsWriterEasy(endTime - startTime); //saving new record
+                }
+                else {
+                    endOfGameOutput = OutputStreamGameModeTime.printRecordNotBroken();
+                }
+            }
+            else {
+                endOfGameOutput = "";
+            }
+
             Alert alert = new Alert( Alert.AlertType.INFORMATION );
             alert.setTitle( "Memory" );
             alert.setHeaderText( "Game is finished!" );
-            alert.setContentText("You won!");
+            alert.setContentText("You won! " + endOfGameOutput);
             alert.showAndWait();
 
             Stage stage =
@@ -391,4 +413,38 @@ public class Controller {
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         stage.close();
     }
+
+    SavingStats savingStats = SavingStats.getSavingStats();
+
+    public void clickHighScore(ActionEvent event) throws IOException {
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        GUI.switchScene(stage, "Submenu_Records.fxml");
+        labelEasy.setText(savingStats.statsReaderEasy()/1000 + " seconds");
+        labelMedium1.setText(savingStats.statsReaderMedium()/1000 + " seconds");
+        labelDifficult.setText(savingStats.statsReaderDifficult()/1000 + " seconds");
+    }
+
+    @FXML
+    private Label label;
+
+    @FXML
+    private Label labelBoardSize;
+
+    @FXML
+    private Label labelGameMode;
+
+    @FXML
+    private Label labelBotDifficulty;
+
+    @FXML
+    private Button button;
+
+    @FXML
+    private Label labelEasy;
+
+    @FXML
+    private Label labelMedium1;
+
+    @FXML
+    private Label labelDifficult;
 }
