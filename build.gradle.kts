@@ -67,7 +67,7 @@ eclipse.classpath {
 }
 
 application {
-    mainClass.set("de.uni_passau.fim.se.memory.view.GUI")
+    mainClass.set("de.uni_passau.fim.se.memory.Main")
 }
 
 tasks.named<JavaExec>("run") {
