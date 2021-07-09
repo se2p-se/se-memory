@@ -1,15 +1,14 @@
 package de.uni_passau.fim.se.memory.controller;
 
-import de.uni_passau.fim.se.memory.Main;
 import de.uni_passau.fim.se.memory.model.Card;
 import de.uni_passau.fim.se.memory.model.Game;
 import de.uni_passau.fim.se.memory.model.MainMenue;
 import de.uni_passau.fim.se.memory.view.GUI;
 import de.uni_passau.fim.se.memory.view.OutputStreamGameModeBot;
 import de.uni_passau.fim.se.memory.view.OutputStreamGameModeTime;
+import de.uni_passau.fim.se.memory.view.OutputStreamMainMenu;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import de.uni_passau.fim.se.memory.view.OutputStreamMainMenue;
 import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -139,7 +138,7 @@ public class Controller {
     @FXML
     public void easyBoard(ActionEvent event){
         game.setGameBoardSize(3, 4);
-        labelBoardSize.setText(OutputStreamMainMenue.printEasySize());
+        labelBoardSize.setText(OutputStreamMainMenu.printEasySize());
         makeFadeOut(labelBoardSize);
 
     }
@@ -147,21 +146,21 @@ public class Controller {
     @FXML
     public void mediumBoard(ActionEvent event) {
         game.setGameBoardSize(4, 4);
-        labelBoardSize.setText(OutputStreamMainMenue.printMediumSize());
+        labelBoardSize.setText(OutputStreamMainMenu.printMediumSize());
         makeFadeOut(labelBoardSize);
     }
 
     @FXML
     public void difficultBoard(ActionEvent event) {
         game.setGameBoardSize(5, 4);
-        labelBoardSize.setText(OutputStreamMainMenue.printDifficultSize());
+        labelBoardSize.setText(OutputStreamMainMenu.printDifficultSize());
         makeFadeOut(labelBoardSize);
     }
 
     @FXML
     public void easyBot(ActionEvent event){
         MainMenue.setBotDifficulty(1);
-        labelBotDifficulty.setText(OutputStreamMainMenue.printEasyBot());
+        labelBotDifficulty.setText(OutputStreamMainMenu.printEasyBot());
         makeFadeOut(labelBotDifficulty);
 
     }
@@ -169,14 +168,14 @@ public class Controller {
     @FXML
     public void mediumBot(ActionEvent event) {
         MainMenue.setBotDifficulty(2);
-        labelBotDifficulty.setText(OutputStreamMainMenue.printMediumBot());
+        labelBotDifficulty.setText(OutputStreamMainMenu.printMediumBot());
         makeFadeOut(labelBotDifficulty);
     }
 
     @FXML
     public void difficultBot(ActionEvent event) {
         MainMenue.setBotDifficulty(3);
-        labelBotDifficulty.setText(OutputStreamMainMenue.printDifficultBot());
+        labelBotDifficulty.setText(OutputStreamMainMenu.printDifficultBot());
         makeFadeOut(labelBotDifficulty);
     }
 
@@ -196,9 +195,9 @@ public class Controller {
     public void activateHelpButton() {
         mainMenue.setActivateHelp(!MainMenue.getActivateHelp());
         if(MainMenue.getActivateHelp()){
-            button.setText(OutputStreamMainMenue.showHelpActivated());
+            button.setText(OutputStreamMainMenu.showHelpActivated());
         } else {
-            button.setText(OutputStreamMainMenue.showHelpDectivated());
+            button.setText(OutputStreamMainMenu.showHelpDectivated());
 
         }
         makeFadeOut(label);
