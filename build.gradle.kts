@@ -2,7 +2,7 @@ plugins {
     java
     idea
     eclipse
-	application
+    application
 }
 
 repositories {
