@@ -33,7 +33,11 @@ public class GUI extends Application {
     /**
      * Method is starting GUI
      */
+<<<<<<< HEAD
     public static void main(String[] args) {
+=======
+    public static void start_gui() {
+>>>>>>> parent of 96ec085... Main-Methode in GUI.java verschoben
         launch();
     }
 
