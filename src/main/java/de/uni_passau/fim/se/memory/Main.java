@@ -11,7 +11,8 @@ public final class Main {
     /**
      * Utility class constructor preventing instantiation.
      */
-    private Main() { }
+    private Main() {
+    }
 
     /**
      * Main sub. This is the entry point of this program to be executed by
