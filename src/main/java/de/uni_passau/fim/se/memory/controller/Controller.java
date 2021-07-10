@@ -83,7 +83,28 @@ public class Controller {
             cardFront.add(chmp);
         }
 
-        // create cards
+        createCards();
+
+        if (mainMenue.getActivateHelp()) {
+
+            for (Card c : game.getCards()) c.flipCard();
+            updateCards();
+
+            Timeline idlestage =
+                    new Timeline( new KeyFrame( Duration.millis(2000),
+                            event -> {
+                                for (Card c : game.getCards()) c.flipCard();
+                                updateCards();
+                            }) );
+            idlestage.setCycleCount( 1 );
+            idlestage.play();
+        }
+    }
+
+    /**
+     * Generate GUI-Cards
+     */
+    private void createCards() {
         int x = 0, y = 0;
         for (Card c : game.getCards()) {
 
@@ -101,21 +122,6 @@ public class Controller {
                 x = 0;
                 y++;
             }
-        }
-
-        if (mainMenue.getActivateHelp()) {
-
-            for (Card c : game.getCards()) c.flipCard();
-            updateCards();
-
-            Timeline idlestage =
-                    new Timeline( new KeyFrame( Duration.millis(2000),
-                            event -> {
-                                for (Card c : game.getCards()) c.flipCard();
-                                updateCards();
-                            }) );
-            idlestage.setCycleCount( 1 );
-            idlestage.play();
         }
     }
 
