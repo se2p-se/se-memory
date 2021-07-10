@@ -44,7 +44,7 @@ public class Controller {
      */
     public Controller() {
         if (!soundPlayed) {
-            playSound("GameOST");
+            SoundPlayer.playSound("GameOST");
             soundPlayed = true;
         }
 
@@ -354,7 +354,7 @@ public class Controller {
      */
     public void OnClickCard(MouseEvent click){
 
-        playSound("OnClickCard");
+        SoundPlayer.playSound("OnClickCard");
 
         ImageView view = (ImageView)click.getTarget();
 
@@ -387,10 +387,10 @@ public class Controller {
             if (visibleCards.get(0).compareWith(visibleCards.get(1))) {
                 visibleCards.get(0).setValue(null);
                 visibleCards.get(1).setValue(null);
-                playSound("Pair");
+                SoundPlayer.playSound("Pair");
                 alert.setContentText("You found a pair!");
             } else {
-                playSound("NoPair");
+                SoundPlayer.playSound("NoPair");
                 alert.setContentText("You found no pair. :-(");
             }
 
@@ -445,37 +445,6 @@ public class Controller {
 
             view.setImage(selectedCard.getIsHidden() ? cardBack :
                     cardFront.get(cardVal - 'A').img);
-        }
-    }
-
-    public static void playSound(String str) {
-        URL url;
-
-        try {
-            url = switch (str) {
-                case "Pair" -> Controller.class.getClassLoader().getResource("de/uni_passau/fim/se/memory/view/Sounds/Pair.wav");
-                case "NoPair" -> Controller.class.getClassLoader().getResource("de/uni_passau/fim/se/memory/view/Sounds/NoPair.wav");
-                case "GameOST" -> Controller.class.getClassLoader().getResource("de/uni_passau/fim/se/memory/view/Sounds/GameOST.wav");
-                default -> Controller.class.getClassLoader().getResource("de/uni_passau/fim/se/memory/view/Sounds/Click.wav");
-            };
-
-            assert url != null;
-            AudioInputStream audioIn = AudioSystem.getAudioInputStream(url);
-            // Get a sound clip resource.
-            Clip clip = AudioSystem.getClip();
-            // Open audio clip and load samples from the audio input stream.
-            clip.open(audioIn);
-            FloatControl volume = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
-            float range = volume.getMaximum() - volume.getMinimum();
-            float gain = (range * 0.4f) + volume.getMinimum();
-            volume.setValue(gain);
-            if (str.equals("GameOST")) {
-                clip.loop(999);
-            } else {
-                clip.start();
-            }
-        } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
-            e.printStackTrace();
         }
     }
 
