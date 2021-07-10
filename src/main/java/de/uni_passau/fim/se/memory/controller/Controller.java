@@ -31,11 +31,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 
-class ImageCharMapping {
-    Character ch;
-    Image img;
-}
-
 /**
  * Main controller for fxml scenes and models
  */
