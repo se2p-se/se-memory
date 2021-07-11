@@ -2,7 +2,7 @@ package de.uni_passau.fim.se.memory.controller;
 
 import de.uni_passau.fim.se.memory.model.Card;
 import de.uni_passau.fim.se.memory.model.Game;
-import de.uni_passau.fim.se.memory.model.MainMenue;
+import de.uni_passau.fim.se.memory.model.MainMenu;
 import de.uni_passau.fim.se.memory.view.GUI;
 import de.uni_passau.fim.se.memory.view.OutputStreamGameModeBot;
 import de.uni_passau.fim.se.memory.view.OutputStreamGameModeTime;
@@ -35,7 +35,7 @@ import java.util.ArrayList;
  * Main controller for fxml scenes and models
  */
 public class Controller {
-    private static MainMenue mainMenue = new MainMenue();
+    private static MainMenu mainMenu = new MainMenu();
     private static Game game = new Game();
     private static boolean soundPlayed = false;
 
@@ -102,7 +102,7 @@ public class Controller {
             }
         }
 
-        if (mainMenue.getActivateHelp()) {
+        if (mainMenu.getActivateHelp()) {
 
             for (Card c : game.getCards()) c.flipCard();
             updateCards();
@@ -126,7 +126,7 @@ public class Controller {
     @FXML
     public void back(ActionEvent event) throws IOException {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        GUI.switchScene(stage, "mainMenue.fxml");
+        GUI.switchScene(stage, "mainMenu.fxml");
         makeFadeOut(label);
     }
 
@@ -136,8 +136,8 @@ public class Controller {
      */
     @FXML
     public void playAgainstTime(ActionEvent event) {
-        mainMenue.setGameModeTime(true);
-        mainMenue.setGameModeBot(false);
+        mainMenu.setGameModeTime(true);
+        mainMenu.setGameModeBot(false);
         labelGameMode.setText(OutputStreamGameModeTime.printAgainstTime());
         makeFadeOut(labelGameMode);
 
@@ -149,8 +149,8 @@ public class Controller {
      */
     @FXML
     public void playAgainstBot(ActionEvent event) {
-        mainMenue.setGameModeBot(true);
-        mainMenue.setGameModeTime(false);
+        mainMenu.setGameModeBot(true);
+        mainMenu.setGameModeTime(false);
         labelGameMode.setText(OutputStreamGameModeBot.printAgainstBot());
         makeFadeOut(labelGameMode);
     }
@@ -195,7 +195,7 @@ public class Controller {
      */
     @FXML
     public void easyBot(ActionEvent event){
-        MainMenue.setBotDifficulty(1);
+        MainMenu.setBotDifficulty(1);
         labelBotDifficulty.setText(OutputStreamMainMenu.printEasyBot());
         makeFadeOut(labelBotDifficulty);
 
@@ -207,7 +207,7 @@ public class Controller {
      */
     @FXML
     public void mediumBot(ActionEvent event) {
-        MainMenue.setBotDifficulty(2);
+        MainMenu.setBotDifficulty(2);
         labelBotDifficulty.setText(OutputStreamMainMenu.printMediumBot());
         makeFadeOut(labelBotDifficulty);
     }
@@ -218,7 +218,7 @@ public class Controller {
      */
     @FXML
     public void difficultBot(ActionEvent event) {
-        MainMenue.setBotDifficulty(3);
+        MainMenu.setBotDifficulty(3);
         labelBotDifficulty.setText(OutputStreamMainMenu.printDifficultBot());
         makeFadeOut(labelBotDifficulty);
     }
@@ -242,7 +242,7 @@ public class Controller {
     @FXML
     public void backToMenue(ActionEvent event) throws IOException {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        GUI.switchScene(stage, "mainMenue.fxml");
+        GUI.switchScene(stage, "mainMenu.fxml");
     }
 
     /**
@@ -250,8 +250,8 @@ public class Controller {
      */
     @FXML
     public void activateHelpButton() {
-        mainMenue.setActivateHelp(!MainMenue.getActivateHelp());
-        if(MainMenue.getActivateHelp()){
+        mainMenu.setActivateHelp(!MainMenu.getActivateHelp());
+        if(MainMenu.getActivateHelp()){
             button.setText(OutputStreamMainMenu.showHelpActivated());
         } else {
             button.setText(OutputStreamMainMenu.showHelpDectivated());
@@ -418,7 +418,7 @@ public class Controller {
             Stage stage =
                     (Stage) ((Node) click.getSource()).getScene().getWindow();
             try {
-                GUI.switchScene(stage, "mainMenue.fxml");
+                GUI.switchScene(stage, "mainMenu.fxml");
             } catch (IOException e) {  }
         }
 
