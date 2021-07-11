@@ -1,9 +1,11 @@
 package de.uni_passau.fim.se.memory.model;
-
 import java.io.*;
 
+/**
+ * SavingStats takes care of saving a highscore file on the user's machine on path "user.home"
+ * Saved text file is called "statistics.txt"
+ */
 public class SavingStats {
-
 
     String directory = System.getProperty("user.home");
     String fileName = "statistics.txt";
@@ -12,15 +14,18 @@ public class SavingStats {
 
     private static SavingStats savingStats = new SavingStats();
 
-
     public static SavingStats getSavingStats() {
         return savingStats;
     }
 
-
     private SavingStats() {
     }
 
+    /**
+     * Creates a new entry in "statistics.txt" if the user accomplishes a new highscore
+     * Saves the time in milliseconds
+     * @param newRecord is the time the player needed to finish the game
+     */
     public void statsWriter(long newRecord) {
 
         try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(absolutePath))) {
@@ -32,6 +37,10 @@ public class SavingStats {
         }
     }
 
+    /**
+     * Accesses the "statistics.txt" file on the user's machine
+     * @return time of "statistics.txt" file
+     */
     public long statsReader() {
 
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(absolutePath))) {
@@ -44,6 +53,5 @@ public class SavingStats {
             System.out.println("IO EXCEPTION");
             return maxLong;
         }
-
     }
 }
