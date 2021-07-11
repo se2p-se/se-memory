@@ -13,7 +13,7 @@ public class GameModeBot extends Game {
 
 	private Card botPickPseudoRandomCard() {
 
-		int diff = MainMenue.getBotDifficulty();
+		int diff = MainMenu.getBotDifficulty();
 		Random r = new Random();
 		int cardsLeft = 0;
 		for (Card c : getCards()) cardsLeft += c.getValue() == null ? 0 : 1;
