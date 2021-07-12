@@ -63,6 +63,12 @@ public class Controller {
 
     @FXML public void initialize() {
 
+        if (labelEasy != null) {
+            labelEasy.setText(savingStats.statsReaderEasy()/1000 + " seconds");
+            labelMedium1.setText(savingStats.statsReaderMedium()/1000 + " seconds");
+            labelDifficult.setText(savingStats.statsReaderDifficult()/1000 + " seconds");
+        }
+
         if (gridPane0 == null) {
             return;
         }
@@ -414,9 +420,7 @@ public class Controller {
     public void clickHighScore(ActionEvent event) throws IOException {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         GUI.switchScene(stage, "Submenu_Records.fxml");
-        labelEasy.setText(savingStats.statsReaderEasy()/1000 + " seconds");
-        labelMedium1.setText(savingStats.statsReaderMedium()/1000 + " seconds");
-        labelDifficult.setText(savingStats.statsReaderDifficult()/1000 + " seconds");
+
     }
 
     @FXML
