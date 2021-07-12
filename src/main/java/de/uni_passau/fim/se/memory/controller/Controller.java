@@ -314,82 +314,72 @@ public class Controller {
         }
 
         if (visibleCards.size() >= 2) {
-            Alert alert = new Alert( Alert.AlertType.INFORMATION );
-            alert.setTitle( "Memory" );
-            alert.setHeaderText( "Pair of cards" );
-            if (visibleCards.get(0).compareWith(visibleCards.get(1))) {
-                visibleCards.get(0).setValue(null);
-                visibleCards.get(1).setValue(null);
-                SoundPlayer.playSound("Pair");
-                alert.setContentText("You found a pair!");
-            } else {
-                SoundPlayer.playSound("NoPair");
-                alert.setContentText("You found no pair. :-(");
-            }
-
-            Timeline idlestage =
-                    new Timeline( new KeyFrame( Duration.millis(2000),
-                            event -> {
-                                alert.setResult(ButtonType.OK);
-                                alert.hide();
-                                visibleCards.get(0).flipCard();
-                                visibleCards.get(1).flipCard();
-                                updateCards();
-                            }) );
-            idlestage.setCycleCount( 1 );
-            idlestage.play();
-            alert.show();
+            handleCardsAvailable(visibleCards);
         }
 
         if (game.isGameFinished()) {
-            endTime = System.currentTimeMillis();
-            String endOfGameOutput;
-            if (game.getGameBoardSize()[0] == 5) {
-                if (endTime - startTime < savingStats.statsReaderDifficult()) {
-                    endOfGameOutput = OutputStreamGameModeTime.printNewRecord();
-                    savingStats.statsWriterDifficult(endTime - startTime); //saving new record
-                }
-                else {
-                    endOfGameOutput = OutputStreamGameModeTime.printRecordNotBroken();
-                }
-            } else if (game.getGameBoardSize()[0] == 4) {
-                if (endTime - startTime < savingStats.statsReaderMedium()) {
-                    endOfGameOutput = OutputStreamGameModeTime.printNewRecord();
-                    savingStats.statsWriterMedium(endTime - startTime); //saving new record
-                }
-                else {
-                    endOfGameOutput = OutputStreamGameModeTime.printRecordNotBroken();
-                }
-            } else if (game.getGameBoardSize()[0] == 3) {
-                if (endTime - startTime < savingStats.statsReaderEasy()) {
-                    endOfGameOutput = OutputStreamGameModeTime.printNewRecord();
-                    savingStats.statsWriterEasy(endTime - startTime); //saving new record
-                }
-                else {
-                    endOfGameOutput = OutputStreamGameModeTime.printRecordNotBroken();
-                }
-            }
-            else {
-                endOfGameOutput = "";
-            }
-
-            Alert alert = new Alert( Alert.AlertType.INFORMATION );
-            alert.setTitle( "Memory" );
-            alert.setHeaderText( "Game is finished!" );
-            alert.setContentText("You won! " + endOfGameOutput);
-            alert.showAndWait();
-
-            Stage stage =
-                    (Stage) ((Node) click.getSource()).getScene().getWindow();
-            try {
-                GUI.switchScene(stage, "mainMenue.fxml");
-            } catch (IOException e) {  }
+            handleGameFinished(click);
         }
 
 
         updateCards();
     }
 
+    /**
+     * Handles click on a card if user choose second card
+     * User is notified if he choose successful a pair
+     * @param visibleCards
+     */
+    private void handleCardsAvailable(ArrayList<Card> visibleCards) {
+        Alert alert = new Alert( Alert.AlertType.INFORMATION );
+        alert.setTitle( "Memory" );
+        alert.setHeaderText( "Pair of cards" );
+        if (visibleCards.get(0).compareWith(visibleCards.get(1))) {
+            visibleCards.get(0).setValue(null);
+            visibleCards.get(1).setValue(null);
+            playSound("Pair");
+            alert.setContentText("You found a pair!");
+        } else {
+            playSound("NoPair");
+            alert.setContentText("You found no pair. :-(");
+        }
+
+        Timeline idlestage =
+                new Timeline( new KeyFrame( Duration.millis(2000),
+                        event -> {
+                            alert.setResult(ButtonType.OK);
+                            alert.hide();
+                            visibleCards.get(0).flipCard();
+                            visibleCards.get(1).flipCard();
+                            updateCards();
+                        }) );
+        idlestage.setCycleCount( 1 );
+        idlestage.play();
+        alert.show();
+    }
+
+    /**
+     * Handle if the game is finished
+     * Show information and redirect to main menu
+     * @param click
+     */
+    private void handleGameFinished(MouseEvent click) {
+        Alert alert = new Alert( Alert.AlertType.INFORMATION );
+        alert.setTitle( "Memory" );
+        alert.setHeaderText( "Game is finished!" );
+        alert.setContentText("You won!");
+        alert.showAndWait();
+
+        Stage stage =
+                (Stage) ((Node) click.getSource()).getScene().getWindow();
+        try {
+            GUI.switchScene(stage, "mainMenue.fxml");
+        } catch (IOException e) {  }
+    }
+
+    /**
+     * Update card view to user
+     */
     private void updateCards() {
         for (var c : gridPane0.getChildren()) {
             ImageView view = (ImageView)c;
