@@ -4,7 +4,6 @@ import de.uni_passau.fim.se.memory.model.Card;
 import de.uni_passau.fim.se.memory.model.Game;
 import de.uni_passau.fim.se.memory.model.MainMenu;
 import de.uni_passau.fim.se.memory.model.SavingStats;
-import de.uni_passau.fim.se.memory.view.*;
 import de.uni_passau.fim.se.memory.view.GUI;
 import de.uni_passau.fim.se.memory.view.OutputStreamGameModeBot;
 import de.uni_passau.fim.se.memory.view.OutputStreamGameModeTime;
@@ -17,7 +16,6 @@ import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -26,18 +24,9 @@ import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import javafx.scene.control.Label;
-
-
-import javax.sound.sampled.*;
 import java.io.IOException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
-
-class ImageCharMapping {
-    Character ch;
-    Image img;
-}
 
 /**
  * Main controller for fxml scenes and models
@@ -55,11 +44,11 @@ public class Controller {
     static final class CONSTANTS {
         public static final String CARDBACK = "de/uni_passau/fim/se/memory/view/images/CardBack.png";
         public static final String IMAGE_CARD = "de/uni_passau/fim/se/memory/view/images/Card";
-        public static final String MAIN_MENU = "mainMenue.fxml";
+        public static final String MAIN_MENU = "mainMenu.fxml";
         public static final String GAMEBOARD_54 = "gameBoard_5x4.fxml";
-        public static final String SUBMENU_GAMEMODE = "Submenue_GameMode.fxml";
-        public static final String SUBMENU_GAMEBOARDSIZE = "Submenue_GameBoardSize.fxml";
-        public static final String SUBMENU_BOTDIFFICULTY = "Submenue_BotDifficulty.fxml";
+        public static final String SUBMENU_GAMEMODE = "Submenu_GameMode.fxml";
+        public static final String SUBMENU_GAMEBOARDSIZE = "Submenu_GameBoardSize.fxml";
+        public static final String SUBMENU_BOTDIFFICULTY = "Submenu_BotDifficulty.fxml";
 
     }
 
@@ -113,20 +102,6 @@ public class Controller {
 
         createCards();
 
-        if (mainMenu.getActivateHelp()) {
-
-            for (Card c : game.getCards()) c.flipCard();
-            updateCards();
-
-            Timeline idlestage =
-                    new Timeline( new KeyFrame( Duration.millis(2000),
-                            event -> {
-                                for (Card c : game.getCards()) c.flipCard();
-                                updateCards();
-                            }) );
-            idlestage.setCycleCount( 1 );
-            idlestage.play();
-        }
     }
 
     /**
@@ -152,7 +127,7 @@ public class Controller {
             }
         }
 
-        if (mainMenu.getActivateHelp()) {
+        if (MainMenu.getActivateHelp()) {
 
             for (Card c : game.getCards()) c.flipCard();
             updateCards();
@@ -360,23 +335,6 @@ public class Controller {
         GUI.switchScene(stage, CONSTANTS.SUBMENU_BOTDIFFICULTY);
     }
 
-    @FXML
-    private Label label;
-
-    @FXML
-    private Label labelBoardSize;
-
-    @FXML
-    private Label labelGameMode;
-
-    @FXML
-    private Label labelBotDifficulty;
-
-    @FXML
-    private Button button;
-
-
-
     /**
      * Sets text on label
      * @param text
@@ -449,29 +407,23 @@ public class Controller {
      * @param visibleCards
      */
     private void handleCardsAvailable(ArrayList<Card> visibleCards) {
-        Alert alert = new Alert( Alert.AlertType.INFORMATION );
-        alert.setTitle( "Memory" );
-        alert.setHeaderText( "Pair of cards" );
         if (visibleCards.get(0).compareWith(visibleCards.get(1))) {
             visibleCards.get(0).setValue(null);
             visibleCards.get(1).setValue(null);
-            playSound("Pair");
+            SoundPlayer.playSound("Pair");
         } else {
-            playSound("NoPair");
+            SoundPlayer.playSound("NoPair");
         }
 
         Timeline idlestage =
                 new Timeline( new KeyFrame( Duration.millis(2000),
                         event -> {
-                            alert.setResult(ButtonType.OK);
-                            alert.hide();
                             visibleCards.get(0).flipCard();
                             visibleCards.get(1).flipCard();
                             updateCards();
                         }) );
         idlestage.setCycleCount( 1 );
         idlestage.play();
-        alert.show();
     }
 
     /**
@@ -480,11 +432,39 @@ public class Controller {
      * @param click
      */
     private void handleGameFinished(MouseEvent click) {
-        Alert alert = new Alert( Alert.AlertType.INFORMATION );
-        alert.setTitle( "Memory" );
-        alert.setHeaderText( "Game is finished!" );
-        alert.setContentText("You won!");
-        alert.showAndWait();
+
+            endTime = System.currentTimeMillis();
+            String endOfGameOutput;
+            if (game.getGameBoardSize()[0] == 5) {
+                if (endTime - startTime < savingStats.statsReaderDifficult()) {
+                    endOfGameOutput = OutputStreamGameModeTime.printNewRecord();
+                    savingStats.statsWriterDifficult(endTime - startTime); //saving new record
+                } else {
+                    endOfGameOutput = OutputStreamGameModeTime.printRecordNotBroken();
+                }
+            } else if (game.getGameBoardSize()[0] == 4) {
+                if (endTime - startTime < savingStats.statsReaderMedium()) {
+                    endOfGameOutput = OutputStreamGameModeTime.printNewRecord();
+                    savingStats.statsWriterMedium(endTime - startTime); //saving new record
+                } else {
+                    endOfGameOutput = OutputStreamGameModeTime.printRecordNotBroken();
+                }
+            } else if (game.getGameBoardSize()[0] == 3) {
+                if (endTime - startTime < savingStats.statsReaderEasy()) {
+                    endOfGameOutput = OutputStreamGameModeTime.printNewRecord();
+                    savingStats.statsWriterEasy(endTime - startTime); //saving new record
+                } else {
+                    endOfGameOutput = OutputStreamGameModeTime.printRecordNotBroken();
+                }
+            } else {
+                endOfGameOutput = "";
+            }
+
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Memory");
+            alert.setHeaderText("Game is finished!");
+            alert.setContentText("You won! " + endOfGameOutput);
+            alert.showAndWait();
 
             Stage stage =
                     (Stage) ((Node) click.getSource()).getScene().getWindow();
@@ -493,9 +473,6 @@ public class Controller {
             } catch (IOException e) {  }
         }
 
-
-        updateCards();
-    }
 
     /**
      * Update card view to user
