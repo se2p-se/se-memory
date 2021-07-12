@@ -64,9 +64,9 @@ public class Controller {
     @FXML public void initialize() {
 
         if (labelEasy != null) {
-            labelEasy.setText(savingStats.statsReaderEasy()/1000 + " seconds");
-            labelMedium1.setText(savingStats.statsReaderMedium()/1000 + " seconds");
-            labelDifficult.setText(savingStats.statsReaderDifficult()/1000 + " seconds");
+            labelEasy.setText("Record for boardsize easy: " + savingStats.statsReaderEasy()/1000 + " seconds");
+            labelMedium1.setText("Record for boardsize medium: " + savingStats.statsReaderMedium()/1000 + " seconds");
+            labelDifficult.setText("Record for boardsize difficult: "  + savingStats.statsReaderDifficult()/1000 + " seconds");
         }
 
         if (gridPane0 == null) {
