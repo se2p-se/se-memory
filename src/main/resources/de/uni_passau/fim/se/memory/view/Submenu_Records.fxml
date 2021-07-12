@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="280.0" prefWidth="437.0" style="-fx-background-color: #00303b; -fx-border-style: line-cap round;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.uni_passau.fim.se.memory.controller.Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="280.0" prefWidth="437.0" style="-fx-background-color: #00303b; -fx-border-style: line-cap round;" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.uni_passau.fim.se.memory.controller.Controller">
     <children>
       <VBox alignment="CENTER" prefHeight="220.0" prefWidth="437.0">
          <children>
@@ -34,26 +32,38 @@
                   <Insets top="5.0" />
                </VBox.margin>
             </Label>
-            <Label fx:id="labelEasy" alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="284.0" textAlignment="CENTER" textFill="#f1f2da">
+            <Label fx:id="labelEasy" alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="350.0" textAlignment="CENTER" textFill="#f1f2da">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
                <VBox.margin>
                   <Insets top="30.0" />
                </VBox.margin>
+               <font>
+                  <Font size="15.0" />
+               </font>
             </Label>
-            <Label fx:id="labelMedium1" alignment="CENTER" contentDisplay="CENTER" layoutX="86.0" layoutY="195.0" prefHeight="17.0" prefWidth="284.0" textAlignment="CENTER" textFill="#f1f2da">
+            <Label fx:id="labelMedium1" alignment="CENTER" contentDisplay="CENTER" layoutX="86.0" layoutY="195.0" prefHeight="21.0" prefWidth="350.0" textAlignment="CENTER" textFill="#f1f2da">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
                <VBox.margin>
-                  <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+                  <Insets left="30.0" right="30.0" top="30.0" />
                </VBox.margin>
+               <font>
+                  <Font size="15.0" />
+               </font>
             </Label>
-            <Label fx:id="labelDifficult" alignment="CENTER" contentDisplay="CENTER" layoutX="86.0" layoutY="195.0" prefHeight="38.0" prefWidth="284.0" textAlignment="CENTER" textFill="#f1f2da">
+            <Label fx:id="labelDifficult" alignment="CENTER" contentDisplay="CENTER" layoutX="86.0" layoutY="195.0" prefHeight="38.0" prefWidth="350.0" textAlignment="CENTER" textFill="#f1f2da">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
+               <VBox.margin>
+                  <Insets top="30.0" />
+               </VBox.margin>
+               <font>
+                  <Font size="15.0" />
+               </font>
             </Label>
          </children>
          <VBox.margin>
