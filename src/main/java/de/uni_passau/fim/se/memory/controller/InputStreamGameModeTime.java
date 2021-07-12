@@ -24,10 +24,10 @@ public class InputStreamGameModeTime extends InputStreamPlayer {
     @Override
     public void startRound() {
 
-        /**
-         * printing the covered Board for the game start
-         */
 
+        /**
+         * Saving the chosen cards card1 and card2 with the corresponding row's and col's
+         */
         Card card1;
         Card card2;
 
@@ -122,6 +122,9 @@ public class InputStreamGameModeTime extends InputStreamPlayer {
         }
     }
 
+    /**
+     * gameLoop gives out text and starts new round
+     */
     @Override
     public void gameLoop() {
         System.out.println(OutputStream.printBoard(game));
@@ -151,6 +154,9 @@ public class InputStreamGameModeTime extends InputStreamPlayer {
 
     }
 
+    /**
+     * Creating a new gameModeTime instance
+     */
     GameModeTime gameModeTime = new GameModeTime();
-    SavingStats savingStats = SavingStats.getSavingStats();
+
 }

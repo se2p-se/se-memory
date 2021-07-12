@@ -1,5 +1,6 @@
 package de.uni_passau.fim.se.memory.view;
 
+import de.uni_passau.fim.se.memory.model.SavingStats;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -33,6 +34,7 @@ public class GUI extends Application {
         stage.setScene(scene);
         stage.show();
     }
+
 
     public static void start_gui() {
         launch();

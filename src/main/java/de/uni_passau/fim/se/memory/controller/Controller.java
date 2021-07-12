@@ -64,6 +64,13 @@ public class Controller {
 
     @FXML public void initialize() {
 
+        if (labelEasy != null) {
+            labelEasy.setText("Record for boardsize easy: " + savingStats.statsReaderEasy()/1000 + " seconds");
+            labelMedium1.setText("Record for boardsize medium: " + savingStats.statsReaderMedium()/1000 + " seconds");
+            labelDifficult.setText("Record for boardsize difficult: "  + savingStats.statsReaderDifficult()/1000 + " seconds");
+        }
+
+
         if (gridPane0 == null) {
             return;
         }
@@ -80,6 +87,8 @@ public class Controller {
 
             cardFront.add(chmp);
         }
+
+
 
         // create cards
         int x = 0, y = 0;
@@ -417,11 +426,12 @@ public class Controller {
     SavingStats savingStats = SavingStats.getSavingStats();
 
     public void clickHighScore(ActionEvent event) throws IOException {
+        //this.labelEasy = new Label();
+        //this.labelMedium1 = new Label();
+        //this.labelDifficult = new Label();
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         GUI.switchScene(stage, "Submenu_Records.fxml");
-        labelEasy.setText(savingStats.statsReaderEasy()/1000 + " seconds");
-        labelMedium1.setText(savingStats.statsReaderMedium()/1000 + " seconds");
-        labelDifficult.setText(savingStats.statsReaderDifficult()/1000 + " seconds");
+
     }
 
     @FXML
@@ -447,4 +457,6 @@ public class Controller {
 
     @FXML
     private Label labelDifficult;
+
+
 }

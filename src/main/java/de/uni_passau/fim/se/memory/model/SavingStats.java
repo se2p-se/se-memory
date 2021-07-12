@@ -23,9 +23,19 @@ public class SavingStats {
 
 
     private SavingStats() {
-        statsWriterEasy(maxLong);
-        statsWriterDifficult(maxLong);
-        statsWriterMedium(maxLong);
+        try(BufferedReader bufferedReader = new BufferedReader(new FileReader(absolutePathMedium))){
+            String line = bufferedReader.readLine();
+            long k = statsReaderEasy();
+        }catch (FileNotFoundException e) {
+            System.out.println("FILE NOT FOUND");
+        } catch (IOException e) {
+            System.out.println("IO EXCEPTION");
+        } catch (NumberFormatException e) {
+            statsWriterEasy(maxLong);
+            statsWriterDifficult(maxLong);
+            statsWriterMedium(maxLong);
+        }
+
     }
 
     public void statsWriterEasy(long newRecord) {
