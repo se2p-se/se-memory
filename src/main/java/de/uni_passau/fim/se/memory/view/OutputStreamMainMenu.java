@@ -1,6 +1,6 @@
 package de.uni_passau.fim.se.memory.view;
 
-import de.uni_passau.fim.se.memory.model.MainMenue;
+import de.uni_passau.fim.se.memory.model.MainMenu;
 
 public class OutputStreamMainMenu {
 
@@ -11,13 +11,13 @@ public class OutputStreamMainMenu {
      */
     public static String showMainMenu() {
         StringBuilder sb = new StringBuilder();
-        sb.append("You are in the Main Menue! Choose an Option!\n");
-        sb.append("(1) for " + MainMenue.getTitleStartGame() + "\n");
-        sb.append("(2) for " + MainMenue.getTitleGameMode() + "\n");
-        sb.append("(3) for " + MainMenue.getTitleGameBoardSize() + "\n");
-        sb.append("(4) for " + MainMenue.getTitleActivateHelp() + "\n");
-        sb.append("(5) for " + MainMenue.getTitleComputerDifficulty() + "\n");
-        sb.append("(6) for " + MainMenue.getTitleEnd() + "\n");
+        sb.append("You are in the Main Menu! Choose an Option!\n");
+        sb.append("(1) for " + MainMenu.getTitleStartGame() + "\n");
+        sb.append("(2) for " + MainMenu.getTitleGameMode() + "\n");
+        sb.append("(3) for " + MainMenu.getTitleGameBoardSize() + "\n");
+        sb.append("(4) for " + MainMenu.getTitleActivateHelp() + "\n");
+        sb.append("(5) for " + MainMenu.getTitleComputerDifficulty() + "\n");
+        sb.append("(6) for " + MainMenu.getTitleEnd() + "\n");
         return sb.toString();
     }
 
@@ -29,10 +29,10 @@ public class OutputStreamMainMenu {
     public static String showSubmenuGameBoardSize() {
         StringBuilder sb = new StringBuilder();
         sb.append("Which game board size do you want?\n");
-        sb.append("(1) for " + MainMenue.getTitleEasyGameBoardSize() + "\n");
-        sb.append("(2) for " + MainMenue.getTitleMediumGameBoardSize() + "\n");
-        sb.append("(3) for " + MainMenue.getTitleDifficultGameBoardSize() + "\n");
-        sb.append("(4) for " + MainMenue.getTitleCostumGameBoardSize() + "\n");
+        sb.append("(1) for " + MainMenu.getTitleEasyGameBoardSize() + "\n");
+        sb.append("(2) for " + MainMenu.getTitleMediumGameBoardSize() + "\n");
+        sb.append("(3) for " + MainMenu.getTitleDifficultGameBoardSize() + "\n");
+        sb.append("(4) for " + MainMenu.getTitleCostumGameBoardSize() + "\n");
         return sb.toString();
     }
 
@@ -42,7 +42,7 @@ public class OutputStreamMainMenu {
      * @return Title of Mode against Time
      */
     public static String showModeTime() {
-        return "(1) for " + MainMenue.getTitleGameModeTime();
+        return "(1) for " + MainMenu.getTitleGameModeTime();
     }
 
     /**
@@ -51,7 +51,7 @@ public class OutputStreamMainMenu {
      * @return Title of Mode against Bot
      */
     public static String showModeBot() {
-        return "(2) for " + MainMenue.getTitleGameModeBot();
+        return "(2) for " + MainMenu.getTitleGameModeBot();
     }
 
     /**

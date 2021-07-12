@@ -2,7 +2,7 @@ package de.uni_passau.fim.se.testing;
 
 import de.uni_passau.fim.se.memory.model.Game;
 import de.uni_passau.fim.se.memory.model.GameModeBot;
-import de.uni_passau.fim.se.memory.model.MainMenue;
+import de.uni_passau.fim.se.memory.model.MainMenu;
 import de.uni_passau.fim.se.memory.view.OutputStream;
 import de.uni_passau.fim.se.memory.view.OutputStreamGameModeBot;
 import de.uni_passau.fim.se.memory.view.OutputStreamGameModeTime;
@@ -67,14 +67,14 @@ class TestView {
      */
     @Test
     void testOutputStreamMainMenu() {
-        MainMenue.setTitleGameMode("Modus");
+        MainMenu.setTitleGameMode("Modus");
         String expected = "You are in the Main Menue! Choose an Option!\n"
-                + "(1) for " + MainMenue.getTitleStartGame() + "\n"
+                + "(1) for " + MainMenu.getTitleStartGame() + "\n"
                 + "(2) for Modus\n" // oben veränderter String
-                + "(3) for " + MainMenue.getTitleGameBoardSize() + "\n"
-                + "(4) for " + MainMenue.getTitleActivateHelp() + "\n"
-                + "(5) for " + MainMenue.getTitleComputerDifficulty() + "\n"
-                + "(6) for " + MainMenue.getTitleEnd() + "\n";
+                + "(3) for " + MainMenu.getTitleGameBoardSize() + "\n"
+                + "(4) for " + MainMenu.getTitleActivateHelp() + "\n"
+                + "(5) for " + MainMenu.getTitleComputerDifficulty() + "\n"
+                + "(6) for " + MainMenu.getTitleEnd() + "\n";
         assertEquals(expected, OutputStreamMainMenu.showMainMenu());
     }
 
