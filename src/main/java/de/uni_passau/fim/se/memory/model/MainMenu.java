@@ -1,8 +1,5 @@
 package de.uni_passau.fim.se.memory.model;
 
-/**
- * Provides titles as strings for the game's main menu
- */
 public class MainMenue {
     private static String titleGameMode = "Select Mode";
     private static String titleStartGame = "Start Game";
@@ -15,7 +12,7 @@ public class MainMenue {
     private static String titleEasyGameBoardSize = "Easy (like a 3x4 field)";
     private static String titleMediumGameBoardSize = "Medium (like a 4x4 field)";
     private static String titleDifficultGameBoardSize = "Difficult (like a 5x4 field)";
-    private static String titleCostumGameBoardSize = "Costume";
+    private static String titleCostumGameBoardSize = "Costum";
     private boolean isGameModeBot = false;
     private boolean isGameModeTime = true;
     private static boolean isActivateHelp = false;
