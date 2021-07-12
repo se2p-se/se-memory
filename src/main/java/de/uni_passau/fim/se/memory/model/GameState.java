@@ -9,10 +9,6 @@ public enum GameState {
      */
     INITIALIZING_GAME,
     /**
-     * Player is selecting Cards
-     */
-    PLAYER_SELECTING_CARDS,
-    /**
      * time game has started
      */
     TIMEGAMESTART,
