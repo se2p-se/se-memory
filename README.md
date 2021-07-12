@@ -22,7 +22,7 @@ Selbst designte Karten
 
 ## **Probleme**
 
-Stand 07.07.21:
+Stand 12.07.21:
 
 Game-Mode "Bot" funktioniert noch nicht
 
