@@ -1,6 +1,5 @@
 package de.uni_passau.fim.se.memory.controller;
 
-import de.uni_passau.fim.se.memory.Main;
 import de.uni_passau.fim.se.memory.model.Card;
 import de.uni_passau.fim.se.memory.model.Game;
 import de.uni_passau.fim.se.memory.model.MainMenue;
@@ -9,9 +8,9 @@ import de.uni_passau.fim.se.memory.view.*;
 import de.uni_passau.fim.se.memory.view.GUI;
 import de.uni_passau.fim.se.memory.view.OutputStreamGameModeBot;
 import de.uni_passau.fim.se.memory.view.OutputStreamGameModeTime;
+import de.uni_passau.fim.se.memory.view.OutputStreamMainMenu;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import de.uni_passau.fim.se.memory.view.OutputStreamMainMenue;
 import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -50,7 +49,7 @@ public class Controller {
 
     public Controller() {
         if (!soundPlayed) {
-            playSound("GameOST");
+            SoundPlayer.playSound("GameOST");
             soundPlayed = true;
         }
 
@@ -134,6 +133,10 @@ public class Controller {
 
     }
 
+    /**
+     * Set GameMode to be against bot notify user of the change
+     * @param event
+     */
     @FXML
     public void playAgainstBot(ActionEvent event) {
         mainMenue.setGameModeBot(true);
@@ -145,7 +148,7 @@ public class Controller {
     @FXML
     public void easyBoard(ActionEvent event){
         game.setGameBoardSize(3, 4);
-        labelBoardSize.setText(OutputStreamMainMenue.printEasySize());
+        labelBoardSize.setText(OutputStreamMainMenu.printEasySize());
         makeFadeOut(labelBoardSize);
 
     }
@@ -153,21 +156,21 @@ public class Controller {
     @FXML
     public void mediumBoard(ActionEvent event) {
         game.setGameBoardSize(4, 4);
-        labelBoardSize.setText(OutputStreamMainMenue.printMediumSize());
+        labelBoardSize.setText(OutputStreamMainMenu.printMediumSize());
         makeFadeOut(labelBoardSize);
     }
 
     @FXML
     public void difficultBoard(ActionEvent event) {
         game.setGameBoardSize(5, 4);
-        labelBoardSize.setText(OutputStreamMainMenue.printDifficultSize());
+        labelBoardSize.setText(OutputStreamMainMenu.printDifficultSize());
         makeFadeOut(labelBoardSize);
     }
 
     @FXML
     public void easyBot(ActionEvent event){
         MainMenue.setBotDifficulty(1);
-        labelBotDifficulty.setText(OutputStreamMainMenue.printEasyBot());
+        labelBotDifficulty.setText(OutputStreamMainMenu.printEasyBot());
         makeFadeOut(labelBotDifficulty);
 
     }
@@ -175,14 +178,14 @@ public class Controller {
     @FXML
     public void mediumBot(ActionEvent event) {
         MainMenue.setBotDifficulty(2);
-        labelBotDifficulty.setText(OutputStreamMainMenue.printMediumBot());
+        labelBotDifficulty.setText(OutputStreamMainMenu.printMediumBot());
         makeFadeOut(labelBotDifficulty);
     }
 
     @FXML
     public void difficultBot(ActionEvent event) {
         MainMenue.setBotDifficulty(3);
-        labelBotDifficulty.setText(OutputStreamMainMenue.printDifficultBot());
+        labelBotDifficulty.setText(OutputStreamMainMenu.printDifficultBot());
         makeFadeOut(labelBotDifficulty);
     }
 
@@ -203,9 +206,9 @@ public class Controller {
     public void activateHelpButton() {
         mainMenue.setActivateHelp(!MainMenue.getActivateHelp());
         if(MainMenue.getActivateHelp()){
-            button.setText(OutputStreamMainMenue.showHelpActivated());
+            button.setText(OutputStreamMainMenu.showHelpActivated());
         } else {
-            button.setText(OutputStreamMainMenue.showHelpDectivated());
+            button.setText(OutputStreamMainMenu.showHelpDectivated());
 
         }
 
@@ -225,7 +228,10 @@ public class Controller {
         GUI.switchScene(stage, "Submenue_GameBoardSize.fxml");
     }
 
-
+    /**
+     * Adds transition effect to label, when a setting has been changed
+     * @param label, trasnsition effect to be appended to
+     */
     public void makeFadeOut(Node label){
         FadeTransition fadeTransition = new FadeTransition();
         fadeTransition.setDuration(Duration.millis(2000));
@@ -248,15 +254,35 @@ public class Controller {
     }
 
 
+    /**
+     * Sets text on label
+     * @param text
+     */
+    public void labelSetter(String text) {
+        label.setText(text);
+    }
+
+
     public void switchToGameBoard_5x4(ActionEvent event) throws IOException {
 
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         GUI.switchScene(stage, "gameBoard_5x4.fxml");
     }
 
+    /**
+     * Handles the click on a card during the game
+     *
+     * If there are still cards left an information notification is issued
+     * If there are no cards left a win notification is issued
+     *
+     * After each click the visible cards get updated
+     *
+     * A sound is played on a click
+     * @param click
+     */
     public void OnClickCard(MouseEvent click){
 
-        playSound("OnClickCard");
+        SoundPlayer.playSound("OnClickCard");
 
         ImageView view = (ImageView)click.getTarget();
 
@@ -289,10 +315,10 @@ public class Controller {
             if (visibleCards.get(0).compareWith(visibleCards.get(1))) {
                 visibleCards.get(0).setValue(null);
                 visibleCards.get(1).setValue(null);
-                playSound("Pair");
+                SoundPlayer.playSound("Pair");
                 alert.setContentText("You found a pair!");
             } else {
-                playSound("NoPair");
+                SoundPlayer.playSound("NoPair");
                 alert.setContentText("You found no pair. :-(");
             }
 
@@ -378,37 +404,10 @@ public class Controller {
         }
     }
 
-    public static void playSound(String str) {
-        URL url;
-
-        try {
-            url = switch (str) {
-                case "Pair" -> Controller.class.getClassLoader().getResource("de/uni_passau/fim/se/memory/view/Sounds/Pair.wav");
-                case "NoPair" -> Controller.class.getClassLoader().getResource("de/uni_passau/fim/se/memory/view/Sounds/NoPair.wav");
-                case "GameOST" -> Controller.class.getClassLoader().getResource("de/uni_passau/fim/se/memory/view/Sounds/GameOST.wav");
-                default -> Controller.class.getClassLoader().getResource("de/uni_passau/fim/se/memory/view/Sounds/Click.wav");
-            };
-
-            assert url != null;
-            AudioInputStream audioIn = AudioSystem.getAudioInputStream(url);
-            // Get a sound clip resource.
-            Clip clip = AudioSystem.getClip();
-            // Open audio clip and load samples from the audio input stream.
-            clip.open(audioIn);
-            FloatControl volume = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
-            float range = volume.getMaximum() - volume.getMinimum();
-            float gain = (range * 0.4f) + volume.getMinimum();
-            volume.setValue(gain);
-            if (str.equals("GameOST")) {
-                clip.loop(999);
-            } else {
-                clip.start();
-            }
-        } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
-            e.printStackTrace();
-        }
-    }
-
+    /**
+     * Close the application
+     * @param event
+     */
     public void endMenueButton(ActionEvent event){
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         stage.close();

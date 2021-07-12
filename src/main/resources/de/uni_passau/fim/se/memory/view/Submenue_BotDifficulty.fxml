@@ -31,6 +31,6 @@
             </VBox.margin>
         </Button>
     </VBox>
-   <Button layoutX="5.0" layoutY="5.0" mnemonicParsing="false" onAction="#back" style="-fx-background-color: ff7777;" text="Back" textAlignment="CENTER" textFill="#f1f2da" VBox.vgrow="ALWAYS" />
+   <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#back" style="-fx-background-color: ff7777;" text="Back" textAlignment="CENTER" textFill="#f1f2da" VBox.vgrow="ALWAYS" />
    <Label fx:id="labelBotDifficulty" alignment="CENTER" contentDisplay="CENTER" layoutX="105.0" layoutY="335.0" mnemonicParsing="false" prefHeight="15.0" prefWidth="200.0" textAlignment="CENTER" textFill="#f1f2da" VBox.vgrow="ALWAYS" />
 </AnchorPane>
