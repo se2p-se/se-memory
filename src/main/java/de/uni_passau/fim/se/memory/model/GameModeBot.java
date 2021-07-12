@@ -5,12 +5,23 @@ import java.util.Random;
 
 public class GameModeBot extends Game {
 
+	/**
+	 * The 'brain' of the bot. All known cards, used in the algo below.
+	 */
 	private ArrayList<Card> botKnownCards;
 
+	/**
+	 * Initializes the game mode bot.
+	 */
 	public GameModeBot() {
 		this.botKnownCards = new ArrayList<>();
 	}
 
+	/**
+	 * Picks a pseudo-random card based on the bot difficulty.
+	 *
+	 * @return A pseudo-random picked card.
+	 */
 	private Card botPickPseudoRandomCard() {
 
 		int diff = MainMenu.getBotDifficulty();
@@ -62,6 +73,11 @@ public class GameModeBot extends Game {
 		return null;
 	}
 
+	/**
+	 * Performs a bot move.
+	 *
+	 * @return Character if a matching pair was found.
+	 */
 	public Character botMove() {
 
 		Card c1 = null, c2 = null;
