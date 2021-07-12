@@ -255,6 +255,7 @@ public class Controller {
      */
     @FXML
     public void startGameButton(ActionEvent event) throws IOException {
+        game.regenerateCards();
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         GUI.switchScene(stage, CONSTANTS.GAMEBOARD_54);
         startTime = System.currentTimeMillis();
