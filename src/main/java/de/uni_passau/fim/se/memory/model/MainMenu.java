@@ -1,6 +1,6 @@
 package de.uni_passau.fim.se.memory.model;
 
-public class MainMenue {
+public class MainMenu {
     private static String titleGameMode = "Select Mode";
     private static String titleStartGame = "Start Game";
     private static String titleGameBoardSize = "Adapt Game-Board-Size";
@@ -12,7 +12,7 @@ public class MainMenue {
     private static String titleEasyGameBoardSize = "Easy (like a 3x4 field)";
     private static String titleMediumGameBoardSize = "Medium (like a 4x4 field)";
     private static String titleDifficultGameBoardSize = "Difficult (like a 5x4 field)";
-    private static String titleCostumGameBoardSize = "Costum";
+    private static String titleCustomGameBoardSize = "Custom";
     private boolean isGameModeBot = false;
     private boolean isGameModeTime = true;
     private static boolean isActivateHelp = false;
@@ -110,8 +110,8 @@ public class MainMenue {
      * Getter of titleCostumGameBoardSize
      * @return String of titleCostumGameBoardSize variable
      */
-    public static String getTitleCostumGameBoardSize() {
-        return titleCostumGameBoardSize;
+    public static String getTitleCustomGameBoardSize() {
+        return titleCustomGameBoardSize;
     }
 
     /**
