@@ -1,7 +1,5 @@
 package de.uni_passau.fim.se.memory.model;
 
-import de.uni_passau.fim.se.memory.controller.Controller;
-
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -46,6 +44,17 @@ public class Game {
 		this.cards = new ArrayList<>();
 		this.gameBoardSize = new int[]{5,4};
 
+		generateCards();
+		mixCards();
+
+		this.setGameState(GameState.RUNNING);
+	}
+
+	/**
+	 * Regenerates new cards in this instance.
+	 */
+	public void regenerateCards() {
+		cards.clear();
 		generateCards();
 		mixCards();
 
