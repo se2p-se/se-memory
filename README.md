@@ -24,8 +24,6 @@ Selbst designte Karten
 
 Stand 07.07.21:
 
-Starten eines neuen Games ohne Beendigung des Programms nicht möglich
-
 Game-Mode "Bot" funktioniert noch nicht
 
 Highscores werden derzeit nicht angezeigt
