@@ -32,7 +32,7 @@ public class OutputStreamMainMenu {
         sb.append("(1) for " + MainMenu.getTitleEasyGameBoardSize() + "\n");
         sb.append("(2) for " + MainMenu.getTitleMediumGameBoardSize() + "\n");
         sb.append("(3) for " + MainMenu.getTitleDifficultGameBoardSize() + "\n");
-        sb.append("(4) for " + MainMenu.getTitleCostumGameBoardSize() + "\n");
+        sb.append("(4) for " + MainMenu.getTitleCustomGameBoardSize() + "\n");
         return sb.toString();
     }
 
