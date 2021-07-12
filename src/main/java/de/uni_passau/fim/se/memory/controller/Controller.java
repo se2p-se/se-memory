@@ -249,10 +249,6 @@ public class Controller {
 
 
 
-    public void labelSetter(String text) {
-        label.setText(text);
-    }
-
 
     /**
      * Sets text on label
