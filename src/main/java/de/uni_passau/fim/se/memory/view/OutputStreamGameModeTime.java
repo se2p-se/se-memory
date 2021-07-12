@@ -28,8 +28,7 @@ public class OutputStreamGameModeTime {
      * @return notice, when record is not broken
      */
     public static String printRecordNotBroken() {
-        StringBuilder stringBuilder = new StringBuilder();
-        return "You did not break your record of: " + (SavingStats.getSavingStats().statsReader() / 1000) + " seconds";
+        return "You did not break your record. Try again! ";
     }
 
     /**

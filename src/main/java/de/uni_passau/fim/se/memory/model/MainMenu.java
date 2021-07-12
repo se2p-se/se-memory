@@ -1,6 +1,6 @@
 package de.uni_passau.fim.se.memory.model;
 
-public class MainMenue {
+public class MainMenu {
     private static String titleGameMode = "Select Mode";
     private static String titleStartGame = "Start Game";
     private static String titleGameBoardSize = "Adapt Game-Board-Size";

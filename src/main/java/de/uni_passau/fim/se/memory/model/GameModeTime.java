@@ -9,12 +9,13 @@ public class GameModeTime extends Game {
     private long start;
     private long end;
 
+
     /**
      * GameModeTime constructor
      * Creates a new instance of the class which is inherited by its super class
      * Also the gameState is properly set and time starts to be counted
      */
-    public GameModeTime(){
+    public GameModeTime() {
         super();
         this.setGameState(GameState.TIMEGAMESTART);
         countTime();
@@ -66,11 +67,22 @@ public class GameModeTime extends Game {
      * @param currentTime time of the last finished time game
      * @return True, when record was broken. False if not.
      */
-    public static boolean compareWithSavedTime(long currentTime){
-        if(SavingStats.getSavingStats().statsReader() > currentTime) {
-            SavingStats.getSavingStats().statsWriter(currentTime);
-            return true;
-        }
+    public boolean compareWithSavedTime(long currentTime) {
+        if (this.getGameBoardSize().length == 4)
+            if (SavingStats.getSavingStats().statsReaderMedium() > currentTime) {
+                SavingStats.getSavingStats().statsWriterMedium(currentTime);
+                return true;
+            } else if (this.getGameBoardSize().length == 5)
+                if (SavingStats.getSavingStats().statsReaderDifficult() > currentTime) {
+                    SavingStats.getSavingStats().statsWriterDifficult(currentTime);
+                    return true;
+                } else {
+                    if (SavingStats.getSavingStats().statsReaderEasy() > currentTime)
+                        SavingStats.getSavingStats().statsWriterEasy(currentTime);
+                    return true;
+
+                }
+
         OutputStreamGameModeTime.printRecordNotBroken();
         return false;
     }
