@@ -1,16 +1,16 @@
 package de.uni_passau.fim.se.memory.controller;
 
-import de.uni_passau.fim.se.memory.model.MainMenue;
+import de.uni_passau.fim.se.memory.model.MainMenu;
 import de.uni_passau.fim.se.memory.view.OutputStream;
 import de.uni_passau.fim.se.memory.view.OutputStreamMainMenu;
 
 import java.util.Scanner;
 
-public class InputStreamMainMenue {
+public class InputStreamMainMenu {
     private Scanner menueScanner = new Scanner(System.in) ;
     private Scanner modeScanner = new Scanner(System.in) ;
     private Scanner setGameBoardSize = new Scanner (System.in) ;
-    private MainMenue mainMenue = new MainMenue() ;
+    private MainMenu mainMenu = new MainMenu() ;
     private InputStreamPlayer player = new InputStreamPlayer() ;
 
     int[] gameBoardSize = new int[]{5, 4};
@@ -25,9 +25,9 @@ public class InputStreamMainMenue {
         else {
             switch (option) {
                 case 1:
-                    if (mainMenue.getGameModeTime()) {
+                    if (mainMenu.getGameModeTime()) {
                         player = new InputStreamGameModeTime();
-                    } else if (mainMenue.getGameModeBot()) {
+                    } else if (mainMenu.getGameModeBot()) {
                         player = new InputStreamGameModeBot();
                     } else {
                         player = new InputStreamPlayer();
@@ -36,7 +36,7 @@ public class InputStreamMainMenue {
                     player.game.setGameBoardSize(gameBoardSize[0],
                             gameBoardSize[1]);
 
-                    if (MainMenue.getActivateHelp()) {
+                    if (MainMenu.getActivateHelp()) {
                         System.out.println(OutputStream.printOpenBoard(player.getGame()));
                         player.getGame().timer(5000);
                         OutputStream.printSigthBlockade();
@@ -51,12 +51,12 @@ public class InputStreamMainMenue {
                     int modeOption = modeScanner.nextInt();
                     switch (modeOption) {
                         case 1:
-                            mainMenue.setGameModeTime(true);
-                            mainMenue.setGameModeBot(false);
+                            mainMenu.setGameModeTime(true);
+                            mainMenu.setGameModeBot(false);
                             break;
                         case 2:
-                            mainMenue.setGameModeBot(true);
-                            mainMenue.setGameModeTime(false);
+                            mainMenu.setGameModeBot(true);
+                            mainMenu.setGameModeTime(false);
                             break;
                     }
                     break;
@@ -93,20 +93,20 @@ public class InputStreamMainMenue {
                     break;
 
                 case 4:
-                    if (mainMenue.getActivateHelp()) {
-                        mainMenue.setActivateHelp(false);
+                    if (mainMenu.getActivateHelp()) {
+                        mainMenu.setActivateHelp(false);
                         OutputStreamMainMenu.showActivateHelpSetFalse();
                     } else {
-                        mainMenue.setActivateHelp(true);
+                        mainMenu.setActivateHelp(true);
                         OutputStreamMainMenu.showActivateHelpSetTrue();
                     }
-                    mainMenue.setTitleActivateHelp();
+                    mainMenu.setTitleActivateHelp();
                     break;
                 case 5:
                     OutputStreamMainMenu.showBotDifficulty();
                     int diffi = modeScanner.nextInt();
                     if (diffi >= 1 && diffi <= 3)
-                        mainMenue.setBotDifficulty(diffi);
+                        mainMenu.setBotDifficulty(diffi);
                     break;
             }
             OutputStreamMainMenu.showMainMenu();
