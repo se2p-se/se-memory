@@ -26,12 +26,12 @@ class GameModeTimeTest {
     @Test
     void testSavedTime() throws InterruptedException {
         GameModeTime game = new GameModeTime();
-        SavingStats.getSavingStats().statsWriter(1100);
+        SavingStats.getSavingStats().statsWriterEasy(1100);
         TimeUnit.MILLISECONDS.sleep(1100);
         game.stopCountingTime();
 
         assertEquals(((game.getCurrentTime(game.getStart(),game.getEnd()))/ 100) * 100,
-                (SavingStats.getSavingStats().statsReader() / 100) * 100,
+                (SavingStats.getSavingStats().statsReaderEasy() / 100) * 100,
                 "Wrong Record time is written into via the statsWriter");
     }
 }
