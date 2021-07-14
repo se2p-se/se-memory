@@ -1,16 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ButtonBar?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-<AnchorPane fx:id="anchorPane0" style="-fx-background-color: beige;" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.uni_passau.fim.se.memory.controller.Controller">
+<AnchorPane fx:id="anchorPane0" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #f1f2da;" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.uni_passau.fim.se.memory.controller.Controller">
    <ButtonBar prefHeight="40.0" prefWidth="68.0">
      <buttons>
-       <Button alignment="CENTER" mnemonicParsing="false" onAction="#backToMenue" text="Menu" style="-fx-background-color: red;" textAlignment="CENTER" textFill="WHITE" />
+       <Button alignment="CENTER" mnemonicParsing="false" onAction="#backToMenu" style="-fx-background-color: ff7777;" text="Menu" textAlignment="CENTER" textFill="WHITE" />
      </buttons>
    </ButtonBar>
     <GridPane fx:id="gridPane0" alignment="CENTER" layoutX="158.0" layoutY="38.0" prefHeight="562.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="38.0">

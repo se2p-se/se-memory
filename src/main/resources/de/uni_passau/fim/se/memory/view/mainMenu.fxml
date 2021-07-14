@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="324.0" prefWidth="412.0" style="-fx-background-color: #00303b;" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.uni_passau.fim.se.memory.controller.Controller">
+<AnchorPane prefHeight="325.0" prefWidth="415.0" style="-fx-background-color: #00303b;" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.uni_passau.fim.se.memory.controller.Controller">
       <VBox alignment="CENTER" layoutX="129.0" layoutY="7.0" prefHeight="324.0" prefWidth="412.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <Text id="mainMenuTitle" fill="#ffce96" smooth="false" stroke="#ee0404" strokeType="OUTSIDE" strokeWidth="0.0" text="Main Menu" textAlignment="CENTER" wrappingWidth="413.7734375">
                <font>
@@ -18,12 +18,12 @@
                   <Insets top="10.0" />
                </VBox.margin>
             </Button>
-            <Button mnemonicParsing="false" onAction="#selectGameModeButton" prefHeight="15.0" prefWidth="200.0" style="-fx-background-color: ff7777;" text="Select Mode" textAlignment="CENTER" textFill="#f1f2da">
+            <Button alignment="CENTER" mnemonicParsing="false" onAction="#selectGameModeButton" prefHeight="15.0" prefWidth="200.0" style="-fx-background-color: ff7777;" text="Select Mode" textAlignment="CENTER" textFill="#f1f2da">
                <VBox.margin>
                   <Insets top="10.0" />
                </VBox.margin>
             </Button>
-            <Button mnemonicParsing="false" onAction="#selectGameBoardSizeButton" prefHeight="15.0" prefWidth="200.0" style="-fx-background-color: ff7777;" text="Adapt Game-Board-Size" textAlignment="CENTER" textFill="#f1f2da">
+            <Button alignment="CENTER" mnemonicParsing="false" onAction="#selectGameBoardSizeButton" prefHeight="15.0" prefWidth="200.0" style="-fx-background-color: ff7777;" text="Adapt Game-Board-Size" textAlignment="CENTER" textFill="#f1f2da">
                <VBox.margin>
                   <Insets top="10.0" />
                </VBox.margin>
@@ -33,7 +33,7 @@
                   <Insets top="10.0" />
                </VBox.margin>
             </Button>
-            <Button mnemonicParsing="false" onAction="#selectBotDifficulty" prefHeight="15.0" prefWidth="200.0" style="-fx-background-color: ff7777;" text="Bot Difficulty" textAlignment="CENTER" textFill="#f1f2da">
+            <Button alignment="CENTER" mnemonicParsing="false" onAction="#selectBotDifficulty" prefHeight="15.0" prefWidth="200.0" style="-fx-background-color: ff7777;" text="Bot Difficulty" textAlignment="CENTER" textFill="#f1f2da">
                <VBox.margin>
                   <Insets top="10.0" />
                </VBox.margin></Button>
@@ -42,7 +42,7 @@
                   <Insets top="10.0" />
                </VBox.margin>
             </Button>
-            <Button layoutX="40.0" layoutY="120.0" mnemonicParsing="false" onAction="#endMenueButton" prefHeight="15.0" prefWidth="200.0" style="-fx-background-color: ff7777;" text="End" textAlignment="CENTER" textFill="#f1f2da">
+            <Button alignment="CENTER" contentDisplay="CENTER" layoutX="40.0" layoutY="120.0" mnemonicParsing="false" onAction="#endMenuButton" prefHeight="15.0" prefWidth="200.0" style="-fx-background-color: ff7777;" text="End" textAlignment="CENTER" textFill="#f1f2da">
                <VBox.margin>
                   <Insets top="10.0" />
                </VBox.margin></Button>

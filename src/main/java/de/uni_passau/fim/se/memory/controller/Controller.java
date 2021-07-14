@@ -74,7 +74,7 @@ public class Controller {
      *
      * 1. Load card fronts with Characters and add to cardFront
      * 2. Generate GUI-Cards
-     * 3. Activate help on GUI-Cards if requested (see mainMenue.getActivateHelp)
+     * 3. Activate help on GUI-Cards if requested (see mainMenu.getActivateHelp)
      */
     @FXML public void initialize() {
 
@@ -267,7 +267,7 @@ public class Controller {
      * @throws IOException
      */
     @FXML
-    public void backToMenue(ActionEvent event) throws IOException {
+    public void backToMenu(ActionEvent event) throws IOException {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         GUI.switchScene(stage, CONSTANTS.MAIN_MENU);
     }
@@ -501,7 +501,7 @@ public class Controller {
      * Close the application
      * @param event
      */
-    public void endMenueButton(ActionEvent event){
+    public void endMenuButton(ActionEvent event){
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         stage.close();
     }
