@@ -6,10 +6,11 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="280.0" prefWidth="437.0" style="-fx-background-color: #00303b; -fx-border-style: line-cap round;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.uni_passau.fim.se.memory.controller.Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="325.0" prefWidth="415.0" style="-fx-background-color: #00303b; -fx-border-style: line-cap round;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.uni_passau.fim.se.memory.controller.Controller">
 <children>
-    <VBox alignment="CENTER" prefHeight="202.0" prefWidth="436.0">
+    <VBox alignment="CENTER" prefHeight="222.0" prefWidth="415.0">
         <children>
             <VBox prefHeight="200.0" prefWidth="100.0">
                 <children>
@@ -23,17 +24,11 @@
                     </Button>
                 </children>
             </VBox>
-            <Label fx:id="label" style="-fx-font-size: 30;" text="Select Game-Mode" textFill="#f1f2da">
-                <font>
-                    <Font name="Bauhaus 93" size="12.0" />
-                </font>
-                <opaqueInsets>
-                    <Insets />
-                </opaqueInsets>
-                <VBox.margin>
-                    <Insets top="5.0" />
-                </VBox.margin>
-            </Label>
+            <Text id="subMenuBotDifficultyTitle" fx:id="titleSubmenuBotDifficulty" fill="#ffce96" smooth="false" stroke="#ee0404" strokeType="OUTSIDE" strokeWidth="0.0" text="Select Game-Mode" textAlignment="CENTER" wrappingWidth="413.7734375">
+               <font>
+                  <Font name="Bauhaus 93" size="27.0" />
+               </font>
+            </Text>
             <Button fx:id="time" alignment="CENTER" mnemonicParsing="false" onAction="#playAgainstTime" prefHeight="15.0" prefWidth="200.0" style="-fx-background-color: #ff7777;" text="Time" textFill="#f1f2da">
                 <opaqueInsets>
                     <Insets />
