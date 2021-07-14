@@ -73,3 +73,9 @@ application {
 tasks.named<JavaExec>("run") {
     standardInput = System.`in`
 }
+
+val jar by tasks.getting(Jar::class) {
+    manifest {
+        attributes["Main-Class"] = "de.uni_passau.fim.se.memory.Main"
+    }
+}
