@@ -354,21 +354,6 @@ public class Controller {
         GUI.switchScene(stage, CONSTANTS.SUBMENU_BOTDIFFICULTY);
     }
 
-    /**
-     * Sets text on label
-     *
-     * @param text
-     */
-    public void labelSetter(String text) {
-        label.setText(text);
-    }
-
-
-    public void switchToGameBoard(ActionEvent event) throws IOException {
-
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        GUI.switchScene(stage, CONSTANTS.GAMEBOARD);
-    }
 
     /**
      * Handles the click on a card during the game
