@@ -26,8 +26,6 @@ Stand 12.07.21:
 
 Game-Mode "Bot" funktioniert noch nicht
 
-Programm lässt sich als jar-Datei noch nicht ausführen
-
 CSS Font-Family aus gui.css wird nicht korrekt angewendet
 
 ## **Anwendungsprozess**
