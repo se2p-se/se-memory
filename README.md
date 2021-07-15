@@ -38,7 +38,7 @@ CSS Font-Family aus gui.css wird nicht korrekt angewendet
 Windows: 
 Doppelklick auf die "memory.bat" Datei
 
-Apple/Linux
+Apple/Linux:
 Doppelklick auf die "memory" Datei ohne Endung
 
 Anwendungsprozess bei gestarteten Programm ist selbsterklärend
