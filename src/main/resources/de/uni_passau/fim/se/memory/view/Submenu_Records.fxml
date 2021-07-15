@@ -14,7 +14,7 @@
          <children>
             <VBox prefHeight="200.0" prefWidth="100.0">
                <children>
-                    <Button fx:id="backBoard" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#back" style="-fx-background-color: #ff7777; -fx-font: #ff0000;" text="Back" textFill="#f1f2da">
+                    <Button fx:id="backBoard" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#back" style="-fx-background-color: #ff7777; -fx-font: #ff0000;" text="Back" textFill="#ffce96">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
