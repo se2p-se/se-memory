@@ -2,40 +2,13 @@ package de.uni_passau.fim.se.memory.model;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 public class Game {
 
-	private ArrayList<Card> cards;
+	private List<Card> cards;
 	private int[] gameBoardSize;
 	private GameState gameState;
-
-
-	public void setGameBoardSize(int x, int y) {
-		this.gameBoardSize = new int[]{x,y};
-		cards.clear();
-		generateCards();
-		mixCards();
-	}
-
-	public int[] getGameBoardSize() {
-		return gameBoardSize;
-	}
-
-	public void setGameState(GameState gameState) {
-		this.gameState = gameState;
-	}
-
-	public GameState getGameState() {
-		return gameState;
-	}
-
-	/**
-	 * Getter for cards
-	 * @return ArrayList<Card> cards
-	 */
-	public ArrayList<Card> getCards() {
-		return cards;
-	}
 
 	/**
 	 * Initializes a new game object.
@@ -48,6 +21,64 @@ public class Game {
 		mixCards();
 
 		this.setGameState(GameState.RUNNING);
+	}
+
+	/**
+	 * Initializes a new game object with another size.
+	 *
+	 * @param gameBoardSize The new size.
+	 */
+	public Game(int[] gameBoardSize) {
+		this();
+		setGameBoardSize(gameBoardSize[0], gameBoardSize[1]);
+	}
+
+	/**
+	 * Sets the gameboard size
+	 *
+	 * @param x Amount of columns.
+	 * @param y Amount of rows.
+	 */
+	public void setGameBoardSize(int x, int y) {
+		this.gameBoardSize = new int[]{x,y};
+		cards.clear();
+		generateCards();
+		mixCards();
+	}
+
+	/**
+	 * Gets the game board size.
+	 *
+	 * @return the size.
+	 */
+	public int[] getGameBoardSize() {
+		return gameBoardSize;
+	}
+
+	/**
+	 * Sets the game state.
+	 *
+	 * @param gameState The new game state.
+	 */
+	public void setGameState(GameState gameState) {
+		this.gameState = gameState;
+	}
+
+	/**
+	 * Gets the game state.
+	 *
+	 * @return The game state.
+	 */
+	public GameState getGameState() {
+		return gameState;
+	}
+
+	/**
+	 * Getter for cards
+	 * @return ArrayList<Card> cards
+	 */
+	public List<Card> getCards() {
+		return cards;
 	}
 
 	/**
@@ -103,7 +134,7 @@ public class Game {
 					sb.append(
 							cards.get(element) == null ? ' '
 							: cards.get(element).getValue() == null ? ' ' :
-							cards.get(element).getIsHidden() ? Card.hiddenValue :
+							cards.get(element).isHidden() ? Card.hiddenValue :
 							cards.get(element).getValue());
 					element++;
 				}
@@ -156,16 +187,11 @@ public class Game {
 		return cards.stream().allMatch((c) -> c.getValue() == null);
 	}
 
-	public void timer(int duration){
-		long endTime = System.currentTimeMillis() + duration;
-		while (System.currentTimeMillis() < endTime) {
-
-		}
-	}
-
-
-
-
+	/**
+	 * Gets the open board without hidden cards.
+	 *
+	 * @return The human-readable string representation of the board.
+	 */
 	public String openBoardToString() {
 		StringBuilder sb = new StringBuilder();
 		int element = 0;
