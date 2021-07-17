@@ -419,6 +419,10 @@ public class Controller {
         updateCards();
     }
 
+
+    /**
+     * performns asynchronous bot moves.
+     */
     private void performAsyncBotMoves() {
 
         blockInput = true;
