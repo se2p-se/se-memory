@@ -18,7 +18,7 @@ public class InputStreamMainMenu {
     /**
      * user can pick an option
      */
-    public void pickMainMenueOption () {
+    public void pickMainMenueOption () throws InterruptedException {
         int option = menueScanner.nextInt() ;
         if (option == 6) {
         }
@@ -38,7 +38,7 @@ public class InputStreamMainMenu {
 
                     if (MainMenu.getActivateHelp()) {
                         System.out.println(OutputStream.printOpenBoard(player.getGame()));
-                        player.getGame().timer(5000);
+                        Thread.sleep(5000);
                         OutputStream.printSigthBlockade();
                     }
 
