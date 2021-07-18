@@ -8,64 +8,74 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="325.0" prefWidth="415.0" style="-fx-background-color: #00303b; -fx-border-style: line-cap round;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.uni_passau.fim.se.memory.controller.Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="325.0"
+            prefWidth="415.0" style="-fx-background-color: #00303b; -fx-border-style: line-cap round;"
+            xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="de.uni_passau.fim.se.memory.controller.Controller">
     <children>
-      <VBox alignment="CENTER" prefHeight="248.0" prefWidth="415.0">
-         <children>
-            <VBox prefHeight="200.0" prefWidth="100.0">
-               <children>
-                    <Button fx:id="backBoard" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#back" style="-fx-background-color: #ff7777; -fx-font: #ff0000;" text="Back" textFill="#f1f2da">
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                     <VBox.margin>
-                        <Insets left="20.0" top="20.0" />
-                     </VBox.margin>
-                  </Button>
-               </children>
-            </VBox>
-            <Text id="subMenuBotDifficultyTitle" fx:id="titleSubmenuBotDifficulty" fill="#ffce96" smooth="false" stroke="#ee0404" strokeType="OUTSIDE" strokeWidth="0.0" text="Your personal records" textAlignment="CENTER" wrappingWidth="413.7734375">
-               <font>
-                  <Font name="Bauhaus 93" size="35.0" />
-               </font>
-            </Text>
-            <Label fx:id="labelEasy" alignment="CENTER" contentDisplay="CENTER" prefHeight="21.0" prefWidth="358.0" textAlignment="CENTER" textFill="#f1f2da">
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-               <VBox.margin>
-                  <Insets top="30.0" />
-               </VBox.margin>
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Label>
-            <Label fx:id="labelMedium1" alignment="CENTER" contentDisplay="CENTER" layoutX="86.0" layoutY="195.0" prefHeight="21.0" prefWidth="412.0" textAlignment="CENTER" textFill="#f1f2da">
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-               <VBox.margin>
-                  <Insets left="30.0" right="30.0" top="30.0" />
-               </VBox.margin>
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Label>
-            <Label fx:id="labelDifficult" alignment="CENTER" contentDisplay="CENTER" layoutX="86.0" layoutY="195.0" prefHeight="38.0" prefWidth="350.0" textAlignment="CENTER" textFill="#f1f2da">
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-               <VBox.margin>
-                  <Insets top="30.0" />
-               </VBox.margin>
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Label>
-         </children>
-         <VBox.margin>
-            <Insets top="30.0" />
-         </VBox.margin>
-      </VBox>
+        <VBox alignment="CENTER" prefHeight="248.0" prefWidth="415.0">
+            <children>
+                <VBox prefHeight="200.0" prefWidth="100.0">
+                    <children>
+                        <Button fx:id="backBoard" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#back"
+                                style="-fx-background-color: #ff7777; -fx-font: #ff0000;" text="Back"
+                                textFill="#f1f2da">
+                            <opaqueInsets>
+                                <Insets/>
+                            </opaqueInsets>
+                            <VBox.margin>
+                                <Insets left="20.0" top="20.0"/>
+                            </VBox.margin>
+                        </Button>
+                    </children>
+                </VBox>
+                <Text id="subMenuBotDifficultyTitle" fx:id="titleSubmenuBotDifficulty" fill="#ffce96" smooth="false"
+                      stroke="#ee0404" strokeType="OUTSIDE" strokeWidth="0.0" text="Your personal records"
+                      textAlignment="CENTER" wrappingWidth="413.7734375">
+                    <font>
+                        <Font name="Bauhaus 93" size="35.0"/>
+                    </font>
+                </Text>
+                <Label fx:id="labelEasy" alignment="CENTER" contentDisplay="CENTER" prefHeight="21.0" prefWidth="358.0"
+                       textAlignment="CENTER" textFill="#f1f2da">
+                    <opaqueInsets>
+                        <Insets/>
+                    </opaqueInsets>
+                    <VBox.margin>
+                        <Insets top="30.0"/>
+                    </VBox.margin>
+                    <font>
+                        <Font size="15.0"/>
+                    </font>
+                </Label>
+                <Label fx:id="labelMedium1" alignment="CENTER" contentDisplay="CENTER" layoutX="86.0" layoutY="195.0"
+                       prefHeight="21.0" prefWidth="412.0" textAlignment="CENTER" textFill="#f1f2da">
+                    <opaqueInsets>
+                        <Insets/>
+                    </opaqueInsets>
+                    <VBox.margin>
+                        <Insets left="30.0" right="30.0" top="30.0"/>
+                    </VBox.margin>
+                    <font>
+                        <Font size="15.0"/>
+                    </font>
+                </Label>
+                <Label fx:id="labelDifficult" alignment="CENTER" contentDisplay="CENTER" layoutX="86.0" layoutY="195.0"
+                       prefHeight="38.0" prefWidth="350.0" textAlignment="CENTER" textFill="#f1f2da">
+                    <opaqueInsets>
+                        <Insets/>
+                    </opaqueInsets>
+                    <VBox.margin>
+                        <Insets top="30.0"/>
+                    </VBox.margin>
+                    <font>
+                        <Font size="15.0"/>
+                    </font>
+                </Label>
+            </children>
+            <VBox.margin>
+                <Insets top="30.0"/>
+            </VBox.margin>
+        </VBox>
     </children>
 </AnchorPane>

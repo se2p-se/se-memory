@@ -13,7 +13,7 @@ class GameModeBotTest {
 
 		int tries = 0;
 		while (!game.isGameFinished() && tries < 1000000) {
-			game.botMove();
+			game.botMove(null);
 			tries++;
 		}
 

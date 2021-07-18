@@ -20,6 +20,7 @@ public class MainMenu {
 
     /**
      * Getter of titleActivateHelp
+     *
      * @return String of titleActivateHelp variable
      */
     public static String getTitleActivateHelp() {
@@ -28,6 +29,7 @@ public class MainMenu {
 
     /**
      * Getter of titleComputerDifficulty
+     *
      * @return String of titleComputerDifficulty variable
      */
     public static String getTitleComputerDifficulty() {
@@ -36,6 +38,7 @@ public class MainMenu {
 
     /**
      * Getter of titleGameBoardSize
+     *
      * @return String of titleGameBoardSize variable
      */
     public static String getTitleGameBoardSize() {
@@ -44,6 +47,7 @@ public class MainMenu {
 
     /**
      * Getter of titleGameMode
+     *
      * @return String of titleGameMode variable
      */
     public static String getTitleGameMode() {
@@ -52,6 +56,7 @@ public class MainMenu {
 
     /**
      * Getter of titleGameModeBot
+     *
      * @return String of titleGameModeBot variable
      */
     public static String getTitleGameModeBot() {
@@ -60,6 +65,7 @@ public class MainMenu {
 
     /**
      * Getter of titleGameModeTime
+     *
      * @return String of titleGameModeTime variable
      */
     public static String getTitleGameModeTime() {
@@ -68,6 +74,7 @@ public class MainMenu {
 
     /**
      * Getter of titleStartGame
+     *
      * @return String of titleStartGame variable
      */
     public static String getTitleStartGame() {
@@ -76,6 +83,7 @@ public class MainMenu {
 
     /**
      * Getter of titleEnd
+     *
      * @return String of titleEnd variable
      */
     public static String getTitleEnd() {
@@ -84,6 +92,7 @@ public class MainMenu {
 
     /**
      * Getter of titleEasyGameBoardSize
+     *
      * @return String of titleEasyGameBoardSize variable
      */
     public static String getTitleEasyGameBoardSize() {
@@ -92,6 +101,7 @@ public class MainMenu {
 
     /**
      * Getter of titleMediumGameBoardSize
+     *
      * @return String of titleMediumGameBoardSize variable
      */
     public static String getTitleMediumGameBoardSize() {
@@ -100,6 +110,7 @@ public class MainMenu {
 
     /**
      * Getter of titleDifficultGameBoardSize
+     *
      * @return String of titleDifficultGameBoardSize variable
      */
     public static String getTitleDifficultGameBoardSize() {
@@ -108,6 +119,7 @@ public class MainMenu {
 
     /**
      * Getter of titleCostumGameBoardSize
+     *
      * @return String of titleCostumGameBoardSize variable
      */
     public static String getTitleCustomGameBoardSize() {
@@ -116,6 +128,7 @@ public class MainMenu {
 
     /**
      * Setter of titleGameMode
+     *
      * @param name sets the title of the game mode
      */
     public static void setTitleGameMode(String name) {
@@ -124,6 +137,7 @@ public class MainMenu {
 
     /**
      * Setter of game mode time
+     *
      * @param gameModeTime sets the game mode time on (true) or off (false)
      */
     public void setGameModeTime(boolean gameModeTime) {
@@ -132,6 +146,7 @@ public class MainMenu {
 
     /**
      * Setter of game mode time
+     *
      * @param gameModeBot sets the game mode bot on (true) or off (false)
      */
     public void setGameModeBot(boolean gameModeBot) {
@@ -140,6 +155,7 @@ public class MainMenu {
 
     /**
      * Getter of game mode time boolean
+     *
      * @return true if game mode time is on, else false
      */
     public boolean getGameModeTime() {
@@ -148,6 +164,7 @@ public class MainMenu {
 
     /**
      * Getter of game mode bot boolean
+     *
      * @return true if game mode bot is on, else false
      */
     public boolean getGameModeBot() {
@@ -156,6 +173,7 @@ public class MainMenu {
 
     /**
      * Setter for activate help boolean
+     *
      * @param activateHelp set help mode on (true) or off (false)
      */
     public void setActivateHelp(boolean activateHelp) {
@@ -164,6 +182,7 @@ public class MainMenu {
 
     /**
      * Getter for activate help function
+     *
      * @return if help function is activated or not
      */
     public static boolean getActivateHelp() {
@@ -183,6 +202,7 @@ public class MainMenu {
 
     /**
      * Sets the difficulty of the bot in game mode bot
+     *
      * @param diff sets the difficulty - easy, medium or hard
      */
     public static void setBotDifficulty(int diff) {
@@ -191,6 +211,7 @@ public class MainMenu {
 
     /**
      * Getter of the difficulty of the bot in game mode bot
+     *
      * @return the current difficulty of the bot
      */
     public static int getBotDifficulty() {
