@@ -37,7 +37,7 @@ public class SoundPlayer {
             clip.open(audioIn);
             FloatControl volume = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
             float range = volume.getMaximum() - volume.getMinimum();
-            float gain = (range * 0.4f) + volume.getMinimum();
+            float gain = (range * 0.7f) + volume.getMinimum();
             volume.setValue(gain);
             if (str.equals("GameOST")) {
                 clip.loop(999);
