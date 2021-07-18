@@ -1,9 +1,6 @@
 package de.uni_passau.fim.se.memory.controller;
 
-import de.uni_passau.fim.se.memory.model.Card;
-import de.uni_passau.fim.se.memory.model.Game;
-import de.uni_passau.fim.se.memory.model.MainMenu;
-import de.uni_passau.fim.se.memory.model.SavingStats;
+import de.uni_passau.fim.se.memory.model.*;
 import de.uni_passau.fim.se.memory.view.GUI;
 import de.uni_passau.fim.se.memory.view.OutputStreamGameModeBot;
 import de.uni_passau.fim.se.memory.view.OutputStreamGameModeTime;
@@ -49,8 +46,41 @@ public class Controller {
         public static final String SUBMENU_GAMEMODE = "Submenu_GameMode.fxml";
         public static final String SUBMENU_GAMEBOARDSIZE = "Submenu_GameBoardSize.fxml";
         public static final String SUBMENU_BOTDIFFICULTY = "Submenu_BotDifficulty.fxml";
-
     }
+
+    List<ImageCharMapping> cardFront = new ArrayList<>();
+    Image cardBack = new Image(CONSTANTS.CARDBACK);
+
+    SavingStats savingStats = SavingStats.getSavingStats();
+
+    boolean blockInput = false;
+
+    @FXML
+    private Label label;
+
+    @FXML
+    private GridPane gridPane0;
+
+    @FXML
+    private Label labelBoardSize;
+
+    @FXML
+    private Label labelGameMode;
+
+    @FXML
+    private Label labelBotDifficulty;
+
+    @FXML
+    private Button button;
+
+    @FXML
+    private Label labelEasy;
+
+    @FXML
+    private Label labelMedium1;
+
+    @FXML
+    private Label labelDifficult;
 
     /**
      * Initialize Controller and play sound if needed
@@ -63,12 +93,6 @@ public class Controller {
 
     }
 
-    @FXML
-    private GridPane gridPane0;
-
-    List<ImageCharMapping> cardFront = new ArrayList<>();
-    Image cardBack = new Image(CONSTANTS.CARDBACK);
-
     /**
      * Initialize controller
      *
@@ -77,11 +101,18 @@ public class Controller {
      * 3. Activate help on GUI-Cards if requested (see mainMenu.getActivateHelp)
      */
     @FXML public void initialize() {
-
         if (labelEasy != null) {
             labelEasy.setText("Record for boardsize easy: " + savingStats.statsReaderEasy()/1000 + " seconds");
             labelMedium1.setText("Record for boardsize medium: " + savingStats.statsReaderMedium()/1000 + " seconds");
             labelDifficult.setText("Record for boardsize difficult: "  + savingStats.statsReaderDifficult()/1000 + " seconds");
+        }
+
+        if (button != null) {
+            if(MainMenu.getActivateHelp()){
+                button.setText(OutputStreamMainMenu.showHelpActivated());
+            } else {
+                button.setText(OutputStreamMainMenu.showHelpDectivated());
+            }
         }
 
         if (gridPane0 == null) {
@@ -101,7 +132,6 @@ public class Controller {
         }
 
         createCards();
-
     }
 
     /**
@@ -135,7 +165,9 @@ public class Controller {
             Timeline idlestage =
                     new Timeline( new KeyFrame( Duration.millis(2000),
                             event -> {
-                                for (Card c : game.getCards()) c.flipCard();
+                                for (Card c : game.getCards())
+                                    if (!c.isHidden())
+                                        c.flipCard();
                                 updateCards();
                             }) );
             idlestage.setCycleCount( 1 );
@@ -255,7 +287,9 @@ public class Controller {
      */
     @FXML
     public void startGameButton(ActionEvent event) throws IOException {
-        game.regenerateCards();
+        int[] GameBoardSize = game.getGameBoardSize();
+        game = mainMenu.getGameModeBot() ? new GameModeBot() : new Game();
+        game.setGameBoardSize(GameBoardSize[0], GameBoardSize[1]);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         GUI.switchScene(stage, CONSTANTS.GAMEBOARD_54);
         startTime = System.currentTimeMillis();
@@ -282,7 +316,6 @@ public class Controller {
             button.setText(OutputStreamMainMenu.showHelpActivated());
         } else {
             button.setText(OutputStreamMainMenu.showHelpDectivated());
-
         }
         makeFadeOut(label);
 
@@ -295,10 +328,8 @@ public class Controller {
      */
     @FXML
     public void selectGameModeButton(ActionEvent event) throws IOException {
-
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         GUI.switchScene(stage, CONSTANTS.SUBMENU_GAMEMODE);
-
     }
 
     /**
@@ -337,21 +368,6 @@ public class Controller {
     }
 
     /**
-     * Sets text on label
-     * @param text
-     */
-    public void labelSetter(String text) {
-        label.setText(text);
-    }
-
-
-    public void switchToGameBoard_5x4(ActionEvent event) throws IOException {
-
-        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        GUI.switchScene(stage, CONSTANTS.GAMEBOARD_54);
-    }
-
-    /**
      * Handles the click on a card during the game
      *
      * If there are still cards left an information notification is issued
@@ -362,31 +378,33 @@ public class Controller {
      * A sound is played on a click
      * @param click
      */
-    public void OnClickCard(MouseEvent click){
+    public void OnClickCard(MouseEvent click) {
+
+        if (blockInput) {
+            return;
+        }
 
         SoundPlayer.playSound("OnClickCard");
 
         ImageView view = (ImageView)click.getTarget();
-
         Card selectedCard = game.selectCard(GridPane.getRowIndex(view) + 1,
                 GridPane.getColumnIndex(view) + 1);
 
         ArrayList<Card> visibleCards = new ArrayList<>();
         for (Card c : game.getCards()) {
-            if (!c.getIsHidden() && c.getValue() != null)
+            if (!c.isHidden() && c.getValue() != null)
                 visibleCards.add(c);
         }
 
         if (visibleCards.size() >= 2) return;
-
-        if (selectedCard.getIsHidden())
+        if (selectedCard.isHidden())
             selectedCard.flipCard();
 
         updateCards();
 
         visibleCards.clear();
         for (Card c : game.getCards()) {
-            if (!c.getIsHidden() && c.getValue() != null)
+            if (!c.isHidden() && c.getValue() != null)
                 visibleCards.add(c);
         }
 
@@ -398,8 +416,63 @@ public class Controller {
             handleGameFinished(click);
         }
 
-
         updateCards();
+    }
+
+
+    /**
+     * performns asynchronous bot moves.
+     */
+    private void performAsyncBotMoves() {
+
+        blockInput = true;
+
+        Timeline idlestage =
+                new Timeline( new KeyFrame( Duration.millis(1000),
+                        event -> {
+
+                            if (game.isGameFinished()) {
+                                handleGameFinished(null);
+                            }
+
+                            Card ch = ((GameModeBot)game).botMove(null);
+                            ch.flipCard();
+                            updateCards();
+
+                            Card ch2 = ((GameModeBot)game).botMove(ch);
+                            ch2.flipCard();
+                            updateCards();
+
+                            if (ch.getValue() == ch2.getValue()) {
+                                Timeline idlestage2 =
+                                        new Timeline( new KeyFrame( Duration.millis(1000),
+                                                event2 -> {
+                                                    ch.setValue(null);
+                                                    ch2.setValue(null);
+                                                    updateCards();
+                                                }) );
+                                idlestage2.setCycleCount( 1 );
+                                idlestage2.play();
+
+                                performAsyncBotMoves();
+                            } else {
+                                Timeline idlestage2 =
+                                        new Timeline( new KeyFrame( Duration.millis(2000),
+                                                event2 -> {
+                                                    if (ch != null)
+                                                        ch.flipCard();
+                                                    if (ch2 != null)
+                                                        ch2.flipCard();
+                                                    updateCards();
+                                                    blockInput = false;
+                                                }) );
+                                idlestage2.setCycleCount( 1 );
+                                idlestage2.play();
+                            }
+
+                        }) );
+        idlestage.setCycleCount( 1 );
+        idlestage.play();
     }
 
     /**
@@ -408,20 +481,27 @@ public class Controller {
      * @param visibleCards
      */
     private void handleCardsAvailable(ArrayList<Card> visibleCards) {
+        boolean bIsPair = false;
         if (visibleCards.get(0).compareWith(visibleCards.get(1))) {
             visibleCards.get(0).setValue(null);
             visibleCards.get(1).setValue(null);
             SoundPlayer.playSound("Pair");
+            bIsPair = true;
         } else {
             SoundPlayer.playSound("NoPair");
         }
 
+        boolean finalBIsPair = bIsPair;
         Timeline idlestage =
                 new Timeline( new KeyFrame( Duration.millis(2000),
                         event -> {
                             visibleCards.get(0).flipCard();
                             visibleCards.get(1).flipCard();
                             updateCards();
+
+                            if (!finalBIsPair && mainMenu.getGameModeBot()) {
+                                performAsyncBotMoves();
+                            }
                         }) );
         idlestage.setCycleCount( 1 );
         idlestage.play();
@@ -464,7 +544,9 @@ public class Controller {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Memory");
             alert.setHeaderText("Game is finished!");
-            alert.setContentText("You won! " + endOfGameOutput);
+            if (!mainMenu.getGameModeBot()) {
+                alert.setContentText("You won! " + endOfGameOutput);
+            }
             alert.showAndWait();
 
             Stage stage =
@@ -492,7 +574,7 @@ public class Controller {
                 continue;
             }
 
-            view.setImage(selectedCard.getIsHidden() ? cardBack :
+            view.setImage(selectedCard.isHidden() ? cardBack :
                     cardFront.get(cardVal - 'A').img);
         }
     }
@@ -506,35 +588,13 @@ public class Controller {
         stage.close();
     }
 
-    SavingStats savingStats = SavingStats.getSavingStats();
-
+    /**
+     * Opens the high scores window.
+     *
+     * @param event
+     */
     public void clickHighScore(ActionEvent event) throws IOException {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         GUI.switchScene(stage, "Submenu_Records.fxml");
-
     }
-
-    @FXML
-    private Label label;
-
-    @FXML
-    private Label labelBoardSize;
-
-    @FXML
-    private Label labelGameMode;
-
-    @FXML
-    private Label labelBotDifficulty;
-
-    @FXML
-    private Button button;
-
-    @FXML
-    private Label labelEasy;
-
-    @FXML
-    private Label labelMedium1;
-
-    @FXML
-    private Label labelDifficult;
 }

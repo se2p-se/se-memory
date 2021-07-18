@@ -12,19 +12,19 @@ class CardTest {
 
     @Test
     void testCardNotHidden() {
-        assertTrue(card.getIsHidden(),"Card is hidden but should be not");
+        assertTrue(card.isHidden(),"Card is hidden but should be not");
     }
 
     @Test
     void testCardHidden() {
         card = game.getCards().get(0);
-        assertTrue(card.getIsHidden(),"Card is not hidden but it should be");
+        assertTrue(card.isHidden(),"Card is not hidden but it should be");
     }
 
     @Test
     void testCardFlipped(){
         card.flipCard();
-        assertFalse(card.getIsHidden(), "Card should be flipped");
+        assertFalse(card.isHidden(), "Card should be flipped");
     }
 
     @Test
