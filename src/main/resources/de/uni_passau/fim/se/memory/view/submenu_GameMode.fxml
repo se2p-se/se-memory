@@ -8,52 +8,63 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="325.0" prefWidth="415.0" style="-fx-background-color: #00303b; -fx-border-style: line-cap round;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.uni_passau.fim.se.memory.controller.Controller">
-<children>
-    <VBox alignment="CENTER" prefHeight="222.0" prefWidth="415.0">
-        <children>
-            <VBox prefHeight="200.0" prefWidth="100.0">
-                <children>
-                    <Button fx:id="backBoard" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#back" style="-fx-background-color: #ff7777; -fx-font: #ff0000;" text="Back" textFill="#f1f2da">
-                        <opaqueInsets>
-                            <Insets />
-                        </opaqueInsets>
-                        <VBox.margin>
-                            <Insets left="20.0" top="20.0" />
-                        </VBox.margin>
-                    </Button>
-                </children>
-            </VBox>
-            <Text id="subMenuBotDifficultyTitle" fx:id="titleSubmenuBotDifficulty" fill="#ffce96" smooth="false" stroke="#ee0404" strokeType="OUTSIDE" strokeWidth="0.0" text="Select Game-Mode" textAlignment="CENTER" wrappingWidth="413.7734375">
-               <font>
-                  <Font name="Bauhaus 93" size="27.0" />
-               </font>
-            </Text>
-            <Button fx:id="time" alignment="CENTER" mnemonicParsing="false" onAction="#playAgainstTime" prefHeight="15.0" prefWidth="200.0" style="-fx-background-color: #ff7777;" text="Time" textFill="#f1f2da">
-                <opaqueInsets>
-                    <Insets />
-                </opaqueInsets>
-                <VBox.margin>
-                    <Insets top="20.0" />
-                </VBox.margin>
-            </Button>
-            <Button fx:id="bot" mnemonicParsing="false" onAction="#playAgainstBot" prefHeight="15.0" prefWidth="200.0" style="-fx-background-color: #ff7777;" text="Bot" textFill="#f1f2da">
-                <opaqueInsets>
-                    <Insets />
-                </opaqueInsets>
-                <VBox.margin>
-                    <Insets top="20.0" />
-                </VBox.margin>
-            </Button>
-            <Label fx:id="labelGameMode" alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="284.0" text="" textAlignment="CENTER" textFill="#f1f2da">
-                <opaqueInsets>
-                    <Insets />
-                </opaqueInsets>
-                <VBox.margin>
-                    <Insets top="20.0" />
-                </VBox.margin>
-            </Label>
-        </children>
-    </VBox>
-</children>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="325.0"
+            prefWidth="415.0" style="-fx-background-color: #00303b; -fx-border-style: line-cap round;"
+            xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="de.uni_passau.fim.se.memory.controller.Controller">
+    <children>
+        <VBox alignment="CENTER" prefHeight="222.0" prefWidth="415.0">
+            <children>
+                <VBox prefHeight="200.0" prefWidth="100.0">
+                    <children>
+                        <Button fx:id="backBoard" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#back"
+                                style="-fx-background-color: #ff7777; -fx-font: #ff0000;" text="Back"
+                                textFill="#f1f2da">
+                            <opaqueInsets>
+                                <Insets/>
+                            </opaqueInsets>
+                            <VBox.margin>
+                                <Insets left="20.0" top="20.0"/>
+                            </VBox.margin>
+                        </Button>
+                    </children>
+                </VBox>
+                <Text id="subMenuBotDifficultyTitle" fx:id="titleSubmenuBotDifficulty" fill="#ffce96" smooth="false"
+                      stroke="#ee0404" strokeType="OUTSIDE" strokeWidth="0.0" text="Select Game-Mode"
+                      textAlignment="CENTER" wrappingWidth="413.7734375">
+                    <font>
+                        <Font name="Bauhaus 93" size="27.0"/>
+                    </font>
+                </Text>
+                <Button fx:id="time" alignment="CENTER" mnemonicParsing="false" onAction="#playAgainstTime"
+                        prefHeight="15.0" prefWidth="200.0" style="-fx-background-color: #ff7777;" text="Time"
+                        textFill="#f1f2da">
+                    <opaqueInsets>
+                        <Insets/>
+                    </opaqueInsets>
+                    <VBox.margin>
+                        <Insets top="20.0"/>
+                    </VBox.margin>
+                </Button>
+                <Button fx:id="bot" mnemonicParsing="false" onAction="#playAgainstBot" prefHeight="15.0"
+                        prefWidth="200.0" style="-fx-background-color: #ff7777;" text="Bot" textFill="#f1f2da">
+                    <opaqueInsets>
+                        <Insets/>
+                    </opaqueInsets>
+                    <VBox.margin>
+                        <Insets top="20.0"/>
+                    </VBox.margin>
+                </Button>
+                <Label fx:id="labelGameMode" alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0"
+                       prefWidth="284.0" text="" textAlignment="CENTER" textFill="#f1f2da">
+                    <opaqueInsets>
+                        <Insets/>
+                    </opaqueInsets>
+                    <VBox.margin>
+                        <Insets top="20.0"/>
+                    </VBox.margin>
+                </Label>
+            </children>
+        </VBox>
+    </children>
 </AnchorPane>

@@ -1,4 +1,5 @@
 package de.uni_passau.fim.se.memory.model;
+
 import java.io.*;
 
 /**
@@ -23,10 +24,10 @@ public class SavingStats {
     }
 
     private SavingStats() {
-        try(BufferedReader bufferedReader = new BufferedReader(new FileReader(absolutePathMedium))){
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(absolutePathMedium))) {
             String line = bufferedReader.readLine();
             long k = statsReaderEasy();
-        }catch (FileNotFoundException e) {
+        } catch (FileNotFoundException e) {
             System.out.println("FILE NOT FOUND");
         } catch (IOException e) {
             System.out.println("IO EXCEPTION");
@@ -40,6 +41,7 @@ public class SavingStats {
     /**
      * Creates a new entry in "statistics.txt" if the user accomplishes a new highscore
      * Saves the time in milliseconds
+     *
      * @param newRecord is the time the player needed to finish the game
      */
     public void statsWriterEasy(long newRecord) {
@@ -55,6 +57,7 @@ public class SavingStats {
 
     /**
      * Accesses the "statistics.txt" file on the user's machine
+     *
      * @return time of "statistics.txt" file
      */
     public void statsWriterMedium(long newRecord) {
@@ -93,6 +96,7 @@ public class SavingStats {
         }
 
     }
+
     public long statsReaderMedium() {
 
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(absolutePathMedium))) {

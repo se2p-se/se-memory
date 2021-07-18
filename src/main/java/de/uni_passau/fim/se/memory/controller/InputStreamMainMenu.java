@@ -7,22 +7,21 @@ import de.uni_passau.fim.se.memory.view.OutputStreamMainMenu;
 import java.util.Scanner;
 
 public class InputStreamMainMenu {
-    private Scanner menueScanner = new Scanner(System.in) ;
-    private Scanner modeScanner = new Scanner(System.in) ;
-    private Scanner setGameBoardSize = new Scanner (System.in) ;
-    private MainMenu mainMenu = new MainMenu() ;
-    private InputStreamPlayer player = new InputStreamPlayer() ;
+    private Scanner menueScanner = new Scanner(System.in);
+    private Scanner modeScanner = new Scanner(System.in);
+    private Scanner setGameBoardSize = new Scanner(System.in);
+    private MainMenu mainMenu = new MainMenu();
+    private InputStreamPlayer player = new InputStreamPlayer();
 
     int[] gameBoardSize = new int[]{5, 4};
 
     /**
      * user can pick an option
      */
-    public void pickMainMenueOption () throws InterruptedException {
-        int option = menueScanner.nextInt() ;
+    public void pickMainMenueOption() throws InterruptedException {
+        int option = menueScanner.nextInt();
         if (option == 6) {
-        }
-        else {
+        } else {
             switch (option) {
                 case 1:
                     if (mainMenu.getGameModeTime()) {
