@@ -111,7 +111,7 @@ public class Controller {
         }
 
         if (button != null) {
-            if(MainMenu.getActivateHelp()){
+            if (MainMenu.getActivateHelp()) {
                 button.setText(OutputStreamMainMenu.showHelpActivated());
             } else {
                 button.setText(OutputStreamMainMenu.showHelpDectivated());
@@ -404,7 +404,7 @@ public class Controller {
 
         SoundPlayer.playSound("OnClickCard");
 
-        ImageView view = (ImageView)click.getTarget();
+        ImageView view = (ImageView) click.getTarget();
         Card selectedCard = game.selectCard(GridPane.getRowIndex(view) + 1,
                 GridPane.getColumnIndex(view) + 1);
 
@@ -446,36 +446,36 @@ public class Controller {
         blockInput = true;
 
         Timeline idlestage =
-                new Timeline( new KeyFrame( Duration.millis(1000),
+                new Timeline(new KeyFrame(Duration.millis(1000),
                         event -> {
 
                             if (game.isGameFinished()) {
                                 handleGameFinished(null);
                             }
 
-                            Card ch = ((GameModeBot)game).botMove(null);
+                            Card ch = ((GameModeBot) game).botMove(null);
                             ch.flipCard();
                             updateCards();
 
-                            Card ch2 = ((GameModeBot)game).botMove(ch);
+                            Card ch2 = ((GameModeBot) game).botMove(ch);
                             ch2.flipCard();
                             updateCards();
 
                             if (ch.getValue() == ch2.getValue()) {
                                 Timeline idlestage2 =
-                                        new Timeline( new KeyFrame( Duration.millis(1000),
+                                        new Timeline(new KeyFrame(Duration.millis(1000),
                                                 event2 -> {
                                                     ch.setValue(null);
                                                     ch2.setValue(null);
                                                     updateCards();
-                                                }) );
-                                idlestage2.setCycleCount( 1 );
+                                                }));
+                                idlestage2.setCycleCount(1);
                                 idlestage2.play();
 
                                 performAsyncBotMoves();
                             } else {
                                 Timeline idlestage2 =
-                                        new Timeline( new KeyFrame( Duration.millis(2000),
+                                        new Timeline(new KeyFrame(Duration.millis(2000),
                                                 event2 -> {
                                                     if (ch != null)
                                                         ch.flipCard();
@@ -483,13 +483,13 @@ public class Controller {
                                                         ch2.flipCard();
                                                     updateCards();
                                                     blockInput = false;
-                                                }) );
-                                idlestage2.setCycleCount( 1 );
+                                                }));
+                                idlestage2.setCycleCount(1);
                                 idlestage2.play();
                             }
 
-                        }) );
-        idlestage.setCycleCount( 1 );
+                        }));
+        idlestage.setCycleCount(1);
         idlestage.play();
     }
 
@@ -521,8 +521,8 @@ public class Controller {
                             if (!finalBIsPair && mainMenu.getGameModeBot()) {
                                 performAsyncBotMoves();
                             }
-                        }) );
-        idlestage.setCycleCount( 1 );
+                        }));
+        idlestage.setCycleCount(1);
         idlestage.play();
     }
 
@@ -561,19 +561,19 @@ public class Controller {
             endOfGameOutput = "";
         }
 
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Memory");
-            alert.setHeaderText("Game is finished!");
-            if (!mainMenu.getGameModeBot()) {
-                alert.setContentText("You won! " + endOfGameOutput);
-            }
-            alert.showAndWait();
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Memory");
+        alert.setHeaderText("Game is finished!");
+        if (!mainMenu.getGameModeBot()) {
+            alert.setContentText("You won! " + endOfGameOutput);
+        }
+        alert.showAndWait();
 
-            Stage stage =
-                    (Stage) ((Node) click.getSource()).getScene().getWindow();
-            try {
-                GUI.switchScene(stage, CONSTANTS.MAIN_MENU);
-            } catch (IOException e) {  }
+        Stage stage =
+                (Stage) ((Node) click.getSource()).getScene().getWindow();
+        try {
+            GUI.switchScene(stage, CONSTANTS.MAIN_MENU);
+        } catch (IOException e) {
         }
     }
 
