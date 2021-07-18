@@ -1,6 +1,5 @@
 package de.uni_passau.fim.se.memory.view;
 
-import de.uni_passau.fim.se.memory.model.SavingStats;
 
 public class OutputStreamGameModeTime {
     /**
