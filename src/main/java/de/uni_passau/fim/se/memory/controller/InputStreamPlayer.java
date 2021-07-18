@@ -67,7 +67,6 @@ public class InputStreamPlayer {
                 card1 = game.selectCard(row1, col1);
 
 
-
                 if (card1.getValue() == null) {
                     System.out.println(OutputStream.chosenCard1IsNull());
                     return;
@@ -90,7 +89,6 @@ public class InputStreamPlayer {
                 }
 
                 card2 = game.selectCard(row2, col2);
-
 
 
                 if (card2.getValue() == null) {

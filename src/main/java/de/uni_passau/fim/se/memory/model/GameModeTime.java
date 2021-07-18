@@ -1,4 +1,5 @@
 package de.uni_passau.fim.se.memory.model;
+
 import de.uni_passau.fim.se.memory.view.OutputStreamGameModeTime;
 
 /**
@@ -23,6 +24,7 @@ public class GameModeTime extends Game {
 
     /**
      * Getter of end variable
+     *
      * @return current value of end time
      */
     public long getEnd() {
@@ -31,6 +33,7 @@ public class GameModeTime extends Game {
 
     /**
      * Getter of start variable
+     *
      * @return current value of start time
      */
     public long getStart() {
@@ -53,8 +56,9 @@ public class GameModeTime extends Game {
 
     /**
      * Calculates the duration of a time game
+     *
      * @param start time at the start of the time game
-     * @param end time in the end of the time game
+     * @param end   time in the end of the time game
      * @return duration of the game
      */
     public long getCurrentTime(long start, long end) {
@@ -64,6 +68,7 @@ public class GameModeTime extends Game {
 
     /**
      * Compares the time of the current finished game with the values in the highscore list
+     *
      * @param currentTime time of the last finished time game
      * @return True, when record was broken. False if not.
      */

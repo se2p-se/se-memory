@@ -22,9 +22,7 @@ Selbst designte Karten
 
 ## **Probleme**
 
-Stand 12.07.21:
-
-Game-Mode "Bot" funktioniert noch nicht
+Stand 18.07.21:
 
 CSS Font-Family aus gui.css wird nicht korrekt angewendet
 
@@ -39,4 +37,4 @@ Doppelklick auf die "memory.bat" Datei
 Apple/Linux:
 Doppelklick auf die "memory" Datei ohne Endung
 
-Anwendungsprozess bei gestarteten Programm ist selbsterklärend
+Anwendungsprozess bei gestarteten Programm ist selbsterklärend. Viel Spaß!

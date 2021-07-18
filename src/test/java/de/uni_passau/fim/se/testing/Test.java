@@ -42,17 +42,6 @@ class TestView {
 
 
     /**
-     * #299
-     */
-    @Test
-    void testOutputStreamGameModeBot() {
-        GameModeBot game = new GameModeBot();
-        Character ch = game.botMove();
-        assertEquals("The bot picked a pair of " + ch + "s!", OutputStreamGameModeBot.printBotPickedMatch(ch));
-    }
-
-
-    /**
      * #300
      */
     @Test
