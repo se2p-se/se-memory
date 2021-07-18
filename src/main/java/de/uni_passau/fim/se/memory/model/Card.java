@@ -19,7 +19,7 @@ public class Card {
 	 *
 	 * @return Whether the card is hidden or not.
 	 */
-	public boolean getIsHidden() {
+	public boolean isHidden() {
 		return isHidden;
 	}
 
