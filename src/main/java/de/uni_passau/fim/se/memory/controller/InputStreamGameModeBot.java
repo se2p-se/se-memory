@@ -6,7 +6,6 @@ import de.uni_passau.fim.se.memory.model.Game;
 import de.uni_passau.fim.se.memory.model.GameModeBot;
 import de.uni_passau.fim.se.memory.model.GameState;
 import de.uni_passau.fim.se.memory.view.OutputStream;
-import de.uni_passau.fim.se.memory.view.OutputStreamGameModeBot;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -111,17 +110,7 @@ public class InputStreamGameModeBot extends InputStreamPlayer {
 					}
 
 				} else {
-					System.out.println(OutputStream.noPairFound());
-					Character ch = getGame().botMove();
-					while (ch != null) {
-						System.out.println(OutputStreamGameModeBot.printBotPickedMatch(ch));
-						ch = getGame().botMove();
-						if (game.isGameFinished()) {
-							game.setGameState(GameState.END);
-							return;
-						}
-					}
-					System.out.println(OutputStreamGameModeBot.printBotFoundNoPair());
+					// todo: implement bot
 				}
 
 				System.out.println(OutputStream.printBoard(game));
