@@ -3,6 +3,7 @@ package de.uni_passau.fim.se.testing;
 import de.uni_passau.fim.se.memory.model.MainMenu;
 import de.uni_passau.fim.se.memory.view.OutputStreamMainMenu;
 import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class TestMainMenu {

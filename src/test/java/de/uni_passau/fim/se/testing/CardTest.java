@@ -8,21 +8,21 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class CardTest {
     Game game = new Game();
-    Card card = game.selectCard(1,1);
+    Card card = game.selectCard(1, 1);
 
     @Test
     void testCardNotHidden() {
-        assertTrue(card.isHidden(),"Card is hidden but should be not");
+        assertTrue(card.isHidden(), "Card is hidden but should be not");
     }
 
     @Test
     void testCardHidden() {
         card = game.getCards().get(0);
-        assertTrue(card.isHidden(),"Card is not hidden but it should be");
+        assertTrue(card.isHidden(), "Card is not hidden but it should be");
     }
 
     @Test
-    void testCardFlipped(){
+    void testCardFlipped() {
         card.flipCard();
         assertFalse(card.isHidden(), "Card should be flipped");
     }

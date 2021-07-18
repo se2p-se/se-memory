@@ -11,9 +11,9 @@ public class SoundPlayer {
 
     /**
      * Play specific sound on str
-     *
+     * <p>
      * Possible values for str: "Pair", "NoPair", "GameOST"
-     *
+     * <p>
      * If str is not in possible values then a click sound is played
      *
      * @param str
