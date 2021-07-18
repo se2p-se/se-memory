@@ -22,9 +22,7 @@ public class GameModeBot extends Game {
 	 *
 	 * @return A pseudo-random picked card.
 	 */
-	private Card botPickPseudoRandomCard() {
-
-		int diff = MainMenu.getBotDifficulty();
+	private Card botPickPseudoRandomCard(int diff) {
 		Random r = new Random();
 		int cardsLeft = 0;
 		for (Card c : getCards()) cardsLeft += c.getValue() == null ? 0 : 1;
@@ -61,7 +59,7 @@ public class GameModeBot extends Game {
 					cardsLeft -= botKnownCards.size();
 				int result = r.nextInt(cardsLeft);
 				for (Card c : getCards())
-					if (c.getValue() != null && botKnownCards.contains(c) == false
+					if (c.getValue() != null && !botKnownCards.contains(c)
 							&& result-- == 0)
 						return c;
 			}
@@ -78,15 +76,23 @@ public class GameModeBot extends Game {
 	 *
 	 * @return Character if a matching pair was found.
 	 */
-	public Character botMove() {
+	public Card botMove(Card previouslyPicked) {
 
-		Card c1 = null, c2 = null;
+		Card c1 = previouslyPicked, c2 = null;
 		boolean hasMatch = false;
 
-		c1 = botPickPseudoRandomCard();
+		if (previouslyPicked == null)
+			c1 = botPickPseudoRandomCard(MainMenu.getBotDifficulty());
+		if (c1 == null) {
+			c1 = botPickPseudoRandomCard(1);
+		}
 
 		if (c1 == null)
 			return null;
+
+		if (previouslyPicked == null) {
+			return c1;
+		}
 
 		for (Card c : botKnownCards) {
 			if (c.getValue() == c1.getValue() && c != c1) {
@@ -97,18 +103,11 @@ public class GameModeBot extends Game {
 		}
 
 		int maxTries = 3;
-		if (botKnownCards.isEmpty() || hasMatch == false)
+		if (botKnownCards.isEmpty() || !hasMatch)
 		{
 			do {
-				c2 = botPickPseudoRandomCard();
+				c2 = botPickPseudoRandomCard(MainMenu.getBotDifficulty());
 			} while (c1 == c2 && maxTries-- > 0);
-		}
-
-		if (c1 != null && c2 != null && c1.getValue() == c2.getValue()) {
-			Character ret = c1.getValue();
-			c1.setValue(null);
-			c2.setValue(null);
-			return ret;
 		}
 
 		hasMatch = false;
@@ -118,7 +117,7 @@ public class GameModeBot extends Game {
 				break;
 			}
 		}
-		if (hasMatch == false && c1 != null) botKnownCards.add(c1);
+		if (!hasMatch) botKnownCards.add(c1);
 		hasMatch = false;
 		for (Card c : botKnownCards) {
 			if (c == c2) {
@@ -126,8 +125,8 @@ public class GameModeBot extends Game {
 				break;
 			}
 		}
-		if (hasMatch == false && c2 != null) botKnownCards.add(c2);
+		if (!hasMatch && c2 != null) botKnownCards.add(c2);
 
-		return null;
+		return c2;
 	}
 }

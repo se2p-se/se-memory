@@ -26,23 +26,17 @@ Stand 12.07.21:
 
 Game-Mode "Bot" funktioniert noch nicht
 
-Programm lässt sich als jar-Datei noch nicht ausführen
-
 CSS Font-Family aus gui.css wird nicht korrekt angewendet
 
 ## **Anwendungsprozess**
+1. Gradle-Tab öffnen
+2. \distribution\distZip ausführen
+3. Pfad folgen: build\distributions\memory-0.1.zip entpacken
 
 Windows: 
+Doppelklick auf die "memory.bat" Datei
 
-1. Zipdatei entpacken
-2. Pfad folgen: memory-0.1\bin
-3. Doppelklick auf die "memory.bat" Datei
-
-Apple/Linux 
-
-1. Zipdatei entpacken
-2. Pfad folgen: memory-0.1\bin
-3. Doppelklick auf die "memory" Datei ohne Endung
+Apple/Linux:
+Doppelklick auf die "memory" Datei ohne Endung
 
 Anwendungsprozess bei gestarteten Programm ist selbsterklärend
-
